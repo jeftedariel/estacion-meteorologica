@@ -1,6 +1,7 @@
 package claseSensor;
 
 import java.io.IOException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -17,15 +18,15 @@ public class CrudSensores extends javax.swing.JFrame {
         initComponents();
         this.gestioSensor = new GesionSensores();
         String [] nombreColumnas = {"ID","Tipo","Localizacion"};
-         this.modelo.setColumnIdentifiers(nombreColumnas);
+        this.modelo.setColumnIdentifiers(nombreColumnas);
         this.tbSensores.setModel(modelo);
-       
+        actualizarTabla();
     }
     
     
    private void actualizarTabla(){
         this.modelo.setRowCount(0);
-        for(Sensor sensor: this.gestioSensor.getListaSensores()){
+        for(Sensor sensor: this.gestioSensor.getListaSensores().values()){
             this.modelo.addRow(new Object[] {sensor.getId(),sensor.getTipo(),sensor.getLocalizacion()});
         
         }
@@ -45,9 +46,22 @@ public class CrudSensores extends javax.swing.JFrame {
         if (sensor == null) {
             
             this.gestioSensor.agregarSensor(se);
-            System.out.println("entroooo");
+           
         }
-       
+       actualizarTabla();
+    }
+}
+    
+       private void eliminarSensor() {
+     
+    int filaSeleccionada = this.tbSensores.getSelectedRow();
+    if (filaSeleccionada != - 1) {
+        
+        String id = String.valueOf(this.tbSensores.getValueAt(filaSeleccionada, 0)); 
+        this.gestioSensor.eliminarSensor(Integer.parseInt(id));
+        actualizarTabla();
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un propietario para eliminarlo.");
     }
 }
     
@@ -59,7 +73,7 @@ public class CrudSensores extends javax.swing.JFrame {
 
         pPrincipal = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
-        btnMostrar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbSensores = new javax.swing.JTable();
 
@@ -73,10 +87,10 @@ public class CrudSensores extends javax.swing.JFrame {
             }
         });
 
-        btnMostrar.setText("Mostrar");
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -101,7 +115,7 @@ public class CrudSensores extends javax.swing.JFrame {
                 .addGap(71, 71, 71)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
-                .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
             .addGroup(pPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
@@ -112,7 +126,7 @@ public class CrudSensores extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPrincipalLayout.createSequentialGroup()
                 .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMostrar)
+                    .addComponent(btnEliminar)
                     .addComponent(btnAgregar))
                 .addGap(127, 127, 127)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,17 +151,15 @@ public class CrudSensores extends javax.swing.JFrame {
         abrirFormularioAnimal(null);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        System.out.println(this.gestioSensor.getListaSensores());
-        System.out.println("ssss");
-        actualizarTabla();
-    }//GEN-LAST:event_btnMostrarActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       this.eliminarSensor();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnMostrar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pPrincipal;
     private javax.swing.JTable tbSensores;
