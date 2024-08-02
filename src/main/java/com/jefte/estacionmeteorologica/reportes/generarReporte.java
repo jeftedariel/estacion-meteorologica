@@ -36,7 +36,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class generarReporte {
 
-    public static void pdf(JFreeChart chartTemperatura, JFreeChart chartHumedad, JFreeChart chartPresion) {
+    public static void pdf(JFreeChart[] chartsInformacion) {
 
         Document document = new Document();
 
@@ -54,46 +54,27 @@ public class generarReporte {
                 Paragraph title = new Paragraph("Reporte Meteorológico", fontTitle);
                 title.setAlignment(Element.ALIGN_CENTER);
                 document.add(title);
-                
+
                 //Tamaños para el ancho y largo de las estadisticas.
                 //Se podria poner como parámetros, pero prefiero dejarlo así harcodeado
                 //de todos modos van a ser siempre los mismos
-                int width= 600;
-                int height= 650;
-                
-                //Gráfica Temperatura
-                PdfContentByte cb = instance.getDirectContent();
-    		PdfTemplate tp = cb.createTemplate(width, height);
-    		Graphics2D g2d = tp.createGraphics(width, height, new DefaultFontMapper());
-    		Rectangle2D r2d = new Rectangle2D.Double(0, 0, width, height);
-    		chartTemperatura.draw(g2d, r2d);
-    		g2d.dispose();
-    		tp.sanityCheck();
-    		cb.addTemplate(tp, 0, 0);
-                
-                document.newPage();
-                //Gráfica Presion Admosferica
-                PdfContentByte cb2 = instance.getDirectContent();
-    		PdfTemplate tp2 = cb2.createTemplate(width, height);
-    		Graphics2D g2d2 = tp2.createGraphics(width, height, new DefaultFontMapper());
-    		Rectangle2D r2d2 = new Rectangle2D.Double(0, 0, width, height);
-    		chartHumedad.draw(g2d2, r2d2);
-    		g2d2.dispose();
-    		tp2.sanityCheck();
-    		cb2.addTemplate(tp2, 0, 0);
-                
-                document.newPage();
-                //Gráfica Humedad de Suelo
-                PdfContentByte cb3 = instance.getDirectContent();
-    		PdfTemplate tp3 = cb3.createTemplate(width, height);
-    		Graphics2D g2d3 = tp3.createGraphics(width, height, new DefaultFontMapper());
-    		Rectangle2D r2d3 = new Rectangle2D.Double(0, 0, width, height);
-    		chartPresion.draw(g2d3, r2d3);
-    		g2d3.dispose();
-    		tp3.sanityCheck();
-    		cb3.addTemplate(tp3, 0, 0);
-                
-                //Generacion de la estadistica
+                int width = 600;
+                int height = 650;
+
+                //Generacion de las graficas
+                //Se pueden ingresar tantas graficas como se quiera de los sensores necesarios
+                for (int i = 0; i < chartsInformacion.length; i++) {
+                    PdfContentByte cb = instance.getDirectContent();
+                    PdfTemplate tp = cb.createTemplate(width, height);
+                    Graphics2D g2d = tp.createGraphics(width, height, new DefaultFontMapper());
+                    Rectangle2D r2d = new Rectangle2D.Double(0, 0, width, height);
+                    chartsInformacion[i].draw(g2d, r2d);
+                    g2d.dispose();
+                    tp.sanityCheck();
+                    cb.addTemplate(tp, 0, 0);
+                    document.newPage();
+                }
+
                 //Se guarda el archivo y se notifica al usuario
                 document.close();
                 JOptionPane.showMessageDialog(null, "Documento generado exitosamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
@@ -106,6 +87,26 @@ public class generarReporte {
 
     }
 
-
-
+    /*
+        Ejemplo de metodo para crear charts
+        Lo pongo acá como recordatorio
+        para no olvidar como hacerlo luego. 
+    
+    public static JFreeChart getXYChart() {
+        XYSeries series = new XYSeries("Grados Celcius");
+        series.add(1, 5);
+        series.add(2, 7);
+        series.add(3, 3);
+        series.add(4, 5);
+        series.add(5, 4);
+        series.add(6, 5);
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series);
+        return ChartFactory.createXYLineChart(
+                "Temperatura", "Tiempo", "Celcius", dataset,
+                PlotOrientation.VERTICAL, true, true, false);
+    }
+    
+    Esto se debe guardar luego en un array de tipo JFreeChart y ese array pasarlo como argumento en el metodo pdf.
+     */
 }
