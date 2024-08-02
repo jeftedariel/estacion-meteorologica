@@ -26,7 +26,7 @@ public class CrudSensores extends javax.swing.JFrame {
     
    private void actualizarTabla(){
         this.modelo.setRowCount(0);
-        for(Sensor sensor: this.gestioSensor.getListaSensores().values()){
+        for(Sensor sensor: this.gestioSensor.getListaSensores()){
             this.modelo.addRow(new Object[] {sensor.getId(),sensor.getTipo(),sensor.getLocalizacion()});
         
         }
