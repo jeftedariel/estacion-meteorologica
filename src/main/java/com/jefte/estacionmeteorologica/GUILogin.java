@@ -16,7 +16,7 @@ public class GUILogin extends javax.swing.JFrame {
     public GUILogin() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,6 +61,11 @@ public class GUILogin extends javax.swing.JFrame {
 
         btnRegistreseAqui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegistreseAqui.setText("Registrese Aqui");
+        btnRegistreseAqui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistreseAquiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,6 +140,13 @@ public class GUILogin extends javax.swing.JFrame {
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
+
+    private void btnRegistreseAquiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreseAquiActionPerformed
+        GUIRegistro guiRegistro = new GUIRegistro();
+        guiRegistro.setVisible(true);
+        guiRegistro.setResizable(false);
+        guiRegistro.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnRegistreseAquiActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,6 +11,9 @@ package com.jefte.estacionmeteorologica;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       GUILogin guiLogin = new GUILogin();
+       guiLogin.setVisible(true);
+       guiLogin.setResizable(false);
+       guiLogin.setLocationRelativeTo(null);
     }
 }
