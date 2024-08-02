@@ -14,12 +14,24 @@ public class formularioSensor extends javax.swing.JDialog {
     public formularioSensor(java.awt.Frame parent, boolean modal, Sensor sensor) {
         super(parent, modal);
         initComponents();
+        guardarDatos(sensor);
+      
+    }
+    
+    public void guardarDatos(Sensor sensor){
+    
+        if (sensor != null){
+            
+        this.id = sensor.getId();
+        this.txtTipo.setText(sensor.getTipo());
+        this.txtLocalizacion.setText(sensor.getLocalizacion());
         
-          if (sensor != null) {
-            txtTipo.setText(sensor.getTipo());
-            txtLocalizacion.setText(sensor.getLocalizacion());
+        this.edicion = true;
+        
         }
         
+        this.edicion = false;
+    
     }
 
     public boolean confirmacion(){

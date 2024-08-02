@@ -10,13 +10,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Justin Rodriguez Gonzalez
  */
 public class CrudSensores extends javax.swing.JFrame {
-    private GesionSensores gestioSensor;
+    private GesionSensores1 gestioSensor;
     private DefaultTableModel modelo = new DefaultTableModel();
     
    
     public CrudSensores() {
         initComponents();
-        this.gestioSensor = new GesionSensores();
+        this.gestioSensor = new GesionSensores1();
         String [] nombreColumnas = {"ID","Tipo","Localizacion"};
         this.modelo.setColumnIdentifiers(nombreColumnas);
         this.tbSensores.setModel(modelo);
@@ -26,7 +26,7 @@ public class CrudSensores extends javax.swing.JFrame {
     
    private void actualizarTabla(){
         this.modelo.setRowCount(0);
-        for(Sensor sensor: this.gestioSensor.getListaSensores()){
+        for(Sensor sensor: this.gestioSensor.getListaSensores().values()){
             this.modelo.addRow(new Object[] {sensor.getId(),sensor.getTipo(),sensor.getLocalizacion()});
         
         }
@@ -47,7 +47,11 @@ public class CrudSensores extends javax.swing.JFrame {
             
             this.gestioSensor.agregarSensor(se);
            
-        }
+        }else{
+            
+            this.gestioSensor.EditarSensores(se);
+            
+            }
        actualizarTabla();
     }
 }
@@ -64,6 +68,20 @@ public class CrudSensores extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Debe seleccionar un propietario para eliminarlo.");
     }
 }
+       
+        private void actualizar(){
+
+       if(this.tbSensores.getSelectedRow()!= -1){
+          
+           String id = String.valueOf(this.tbSensores.getValueAt(this.tbSensores.getSelectedRow(), 0));
+           Sensor se = this.gestioSensor.obtenerSensor(Integer.parseInt(id));
+           this.abrirFormularioAnimal(se);
+         
+       }else{
+           JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
+       }
+ 
+ }
     
 
    
@@ -76,6 +94,7 @@ public class CrudSensores extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbSensores = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +126,13 @@ public class CrudSensores extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbSensores);
 
+        btnActualizar.setText("Editar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
         pPrincipal.setLayout(pPrincipalLayout);
         pPrincipalLayout.setHorizontalGroup(
@@ -120,6 +146,10 @@ public class CrudSensores extends javax.swing.JFrame {
             .addGroup(pPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1))
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(321, 321, 321)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pPrincipalLayout.setVerticalGroup(
             pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +158,9 @@ public class CrudSensores extends javax.swing.JFrame {
                 .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnAgregar))
-                .addGap(127, 127, 127)
+                .addGap(45, 45, 45)
+                .addComponent(btnActualizar)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -155,9 +187,14 @@ public class CrudSensores extends javax.swing.JFrame {
        this.eliminarSensor();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+     actualizar();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;

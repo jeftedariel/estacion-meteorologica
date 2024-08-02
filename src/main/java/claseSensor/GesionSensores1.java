@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,49 +14,50 @@ import javax.swing.JOptionPane;
  * 
  * @author Justin Rodriguez Gonzalez
  */
-public class GesionSensores {
-    private String nombreJ = "SensoresListas.json";
+public class GesionSensores1 {
+    private String nombreJ = "SensoresHashMaps.json";
     private ObjectMapper mp;
-    private List<Sensor> listaSensores;
+    private Map<Integer,Sensor> listaSensores;
    
     
-    public GesionSensores() {        
+    public GesionSensores1() {        
          mp = new ObjectMapper();
     
         try {
             revisarExistencia();
         } catch (IOException ex) {
-            Logger.getLogger(GesionSensores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GesionSensores1.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
     
-    public List<Sensor> getListaSensores() {
+    public  Map<Integer,Sensor> getListaSensores() {
         return listaSensores;
     }
 
-    public void setListaSensores(List<Sensor> listaSensores) {
+    public void setListaSensores( Map<Integer,Sensor> listaSensores) {
         this.listaSensores = listaSensores;
     }
-
-    private int obtenerUltimoId() {
+  
+     private int obtenerUltimoId() {
         if (this.listaSensores.isEmpty()) {
             return 0; 
         }
-        return this.listaSensores.stream()
+        return this.listaSensores.values().stream()
                 .mapToInt(Sensor::getId)
                 .max()
                 .orElse(0); 
     }
+     
     
     public void agregarSensor(Sensor sensor){
         sensor.setId(obtenerUltimoId() + 1);
-        this.listaSensores.add(sensor);     
+        this.listaSensores.put(sensor.getId(),sensor);     
        
-        resetear();
+        actualizarJson();
     }
     
-    public void resetear(){
+    public void actualizarJson(){
      try {      
             mp.writeValue(new File(nombreJ),this.listaSensores);
         }catch (IOException ex) {
@@ -66,21 +67,28 @@ public class GesionSensores {
     }
     
     public void eliminarSensor(int id){  
-       this.listaSensores.removeIf(lista -> lista.getId() == id);  
-       resetear();  
+       this.listaSensores.remove(id);  
+       actualizarJson();  
     }
     
-       //public Sensor obtenerSensor(Sensor sensor) {
-           //this.listaSensores
-    //}
+       public Sensor obtenerSensor(int id) {
+           
+           return this.listaSensores.get(id);
+     
+    }
+       
+       public void EditarSensores(Sensor sensor){
+       this.listaSensores.put(sensor.getId(), sensor);
+       actualizarJson();
+       }
      
 
-    public List<Sensor> cargarDatos() throws IOException {
+    public Map<Integer,Sensor> cargarDatos() throws IOException {
         File arch = new File(nombreJ);
         if (arch.exists()) {
-            return mp.readValue(arch, new TypeReference<List<Sensor>>() {});
+            return mp.readValue(arch, new TypeReference<Map<Integer,Sensor>>() {});
         } else {
-            return new ArrayList<>();
+            return new HashMap();
         }
     }
     
@@ -89,7 +97,9 @@ public class GesionSensores {
         if (arch.exists()) {    
             this.listaSensores = cargarDatos();
         } else {    
-            this.listaSensores = new ArrayList<>();
+            this.listaSensores = new HashMap();
         }
     }
+
+
 }
