@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,19 +61,17 @@ public class GesionSensores {
     }
     
     public void eliminarSensor(int id){
-        for(Sensor s: this.listaSensores){
-        if(s.getId() == id ){
-        this.listaSensores.remove(id);
-        break;
-           }else{
-        break;
-            }
-        }
+      
+        
+        this.listaSensores.removeIf(s -> s.getId() == id);
+        
+        
         try {
             mp.writeValue(new File(nombreJ), listaSensores);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        //return encontrado;
     }
 
     public List<Sensor> cargarDatos() throws IOException {

@@ -46,12 +46,7 @@ public class Sensor {
 
     @Override
     public String toString() {
-        
-        return "Sensor{" +
-                "tipo='" + tipo + '\'' +
-                ", localizacion='" + localizacion + '\'' +
-                '}';
-    
-    }
+        return "Sensor{" + "id=" + id + ", tipo=" + tipo + ", localizacion=" + localizacion + '}';
+    }   
      
 }
