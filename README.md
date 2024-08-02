@@ -50,6 +50,6 @@ Tener instalado
 
 
 - [Jefté Mendoza <br> <img src="https://github.com/jeftedariel.png" width="60px;"/>](https://github.com/jeftedariel)
-- [Brandon Campos <br> <img src="https://github.com/BrandonCampos.png" width="60px;" />]([https://github.com/KristelGamboaM](https://github.com/BrandonCampos))
+- [Brandon Campos <br> <img src="https://github.com/BrandonCampos.png" width="60px;"/>](https://github.com/BrandonCampos)
 - [Justin Rodriguez <br> <img src="https://github.com/NaxsitoTf.png" width="60px;"/>](https://github.com/NaxsitoTf)
 - [Raul Quesada <br> <img src="https://github.com/Raul-QM.png" width="60px;"/>](https://github.com/Raul-QM)
