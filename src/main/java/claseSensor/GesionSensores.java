@@ -54,24 +54,22 @@ public class GesionSensores {
         sensor.setId(obtenerUltimoId() + 1);
         this.listaSensores.add(sensor);     
         try {      
-            mp.writeValue(new File(nombreJ), listaSensores);    
+             cargarDatos();  
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
     
     public void eliminarSensor(int id){
-      
         
         this.listaSensores.removeIf(s -> s.getId() == id);
         
-        
         try {
-            mp.writeValue(new File(nombreJ), listaSensores);
+           cargarDatos();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        //return encontrado;
+       
     }
 
     public List<Sensor> cargarDatos() throws IOException {
