@@ -22,16 +22,18 @@ public class GesionSensores {
 
     
     
-    public GesionSensores() {
-            mp = new ObjectMapper();
-    try {
-        this.listaSensores = cargarDatos();
-    } catch (IOException e) {
-        this.listaSensores = new ArrayList<>();
-        e.printStackTrace();
-    }
+    public GesionSensores() {        
+         mp = new ObjectMapper();
+    
+        try {
+        revisarExistencia();
+        } catch (IOException ex) {
+            Logger.getLogger(GesionSensores.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
+    
+    
       
     public ArrayList<Sensor> getListaSensores() {
         return listaSensores;
@@ -44,25 +46,47 @@ public class GesionSensores {
 
     
     public void agregarSensor(Sensor sensor){
-        
-        this.listaSensores.add(sensor);
-        try {
-            
-             mp.writeValue(new File(nombreJ), listaSensores);
+        sensor.setId(obtenerUltimoId()+1);
+        this.listaSensores.add(sensor);     
+        try {      
+             mp.writeValue(new File(nombreJ), listaSensores);    
        }catch (IOException ex) {
+           
             JOptionPane.showMessageDialog(null, ex);
     }
  }
     
+ private int obtenerUltimoId() {
+    if (this.listaSensores.isEmpty()) {
+        return 0; 
+    }
+    return this.listaSensores.stream()
+            .mapToInt(Sensor::getId)
+            .max()
+            .orElse(0); 
+}
+
    
 
-    public ArrayList<Sensor> cargarDatos() throws IOException {
-        File file = new File(nombreJ);
-        if (file.exists()) {
-            return mp.readValue(file, new TypeReference<ArrayList<Sensor>>() {});
+    public ArrayList<Sensor> cargarDatos() throws IOException{
+        File arch = new File(nombreJ);
+        if (arch.exists()) {
+            return mp.readValue(arch, new TypeReference<ArrayList<Sensor>>() {});
         } else {
             return new ArrayList<>();
         }
+    }
+    
+    
+    private void revisarExistencia() throws IOException{
+    File arch = new File(nombreJ);
+    if(arch.exists()){    
+        this.listaSensores = cargarDatos();
+        }else{    
+        this.listaSensores = new ArrayList<>();
+        
+        }
+    
     }
     
    

@@ -1,7 +1,6 @@
 package claseSensor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -139,7 +138,8 @@ public class CrudSensores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-
+        System.out.println(this.gestioSensor.getListaSensores());
+        System.out.println("ssss");
         actualizarTabla();
     }//GEN-LAST:event_btnMostrarActionPerformed
 
