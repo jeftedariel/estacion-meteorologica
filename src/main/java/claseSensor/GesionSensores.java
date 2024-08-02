@@ -53,10 +53,10 @@ public class GesionSensores {
         sensor.setId(obtenerUltimoId() + 1);
         this.listaSensores.add(sensor);     
        
-        resetear();
+        actualizar();
     }
     
-    public void resetear(){
+    public void actualizar(){
      try {      
             mp.writeValue(new File(nombreJ),this.listaSensores);
         }catch (IOException ex) {
@@ -67,12 +67,32 @@ public class GesionSensores {
     
     public void eliminarSensor(int id){  
        this.listaSensores.removeIf(lista -> lista.getId() == id);  
-       resetear();  
+       actualizar();  
     }
     
-       //public Sensor obtenerSensor(Sensor sensor) {
-           //this.listaSensores
-    //}
+    public void editar(Sensor sensor){
+            for(int i = 0; i < this.listaSensores.size(); i++){
+           if (this.listaSensores.get(i).getId() == sensor.getId()){
+               this.listaSensores.set(i, sensor);
+    
+           }  
+        }
+    
+    }
+    
+       public Sensor obtenerSensor(int  id) {
+         
+           boolean encontrado = false;
+           for(int i = 0; i < this.listaSensores.size(); i++){
+           if (this.listaSensores.get(i).getId() == id){
+               encontrado = true;
+               return this.listaSensores.get(i);
+    
+           }  
+        }
+           
+         return null;
+    }
      
 
     public List<Sensor> cargarDatos() throws IOException {

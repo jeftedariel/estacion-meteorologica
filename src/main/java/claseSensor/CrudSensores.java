@@ -10,13 +10,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Justin Rodriguez Gonzalez
  */
 public class CrudSensores extends javax.swing.JFrame {
-    private GesionSensores1 gestioSensor;
+    private GesionSensores gestioSensor;
     private DefaultTableModel modelo = new DefaultTableModel();
     
    
     public CrudSensores() {
         initComponents();
-        this.gestioSensor = new GesionSensores1();
+        this.gestioSensor = new GesionSensores();
         String [] nombreColumnas = {"ID","Tipo","Localizacion"};
         this.modelo.setColumnIdentifiers(nombreColumnas);
         this.tbSensores.setModel(modelo);
@@ -26,7 +26,7 @@ public class CrudSensores extends javax.swing.JFrame {
     
    private void actualizarTabla(){
         this.modelo.setRowCount(0);
-        for(Sensor sensor: this.gestioSensor.getListaSensores().values()){
+        for(Sensor sensor: this.gestioSensor.getListaSensores()){
             this.modelo.addRow(new Object[] {sensor.getId(),sensor.getTipo(),sensor.getLocalizacion()});
         
         }
@@ -49,7 +49,7 @@ public class CrudSensores extends javax.swing.JFrame {
            
         }else{
             
-            this.gestioSensor.EditarSensores(se);
+            this.gestioSensor.editar(se);
             
             }
        actualizarTabla();
