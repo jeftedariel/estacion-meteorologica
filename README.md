@@ -31,7 +31,7 @@ Tener instalado
    ```
 5. **Cambiarse a la rama ya creada**
    ```bash
-   git switch nombre-rama"
+   git switch nombre-rama
    ```
 6. **Hacer un commit con los cambios**
    ```bash
