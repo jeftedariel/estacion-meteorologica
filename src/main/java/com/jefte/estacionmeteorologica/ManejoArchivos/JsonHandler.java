@@ -20,7 +20,7 @@ public class JsonHandler {
 
     private ObjectMapper ObjMap;
     private List<Object> listas;
- 
+
     private File archivo;
 
     //Crea archivo para definir esta vara no sé
@@ -28,17 +28,20 @@ public class JsonHandler {
     public JsonHandler(String nombre) {
         this.archivo = new File(nombre);
         this.ObjMap = new ObjectMapper();
-        this.listas = new ArrayList<>();
+        
+        this.listas = (this.archivo.exists()) ? cargarDatos() : new ArrayList<>();
         
         this.crearJson(archivo);
     }
 
     //Simplemente crea el archivo
     private void crearJson(File archivo) {
-        try {
-            this.archivo.createNewFile();
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo crear el archivo json:" + archivo.getName() + "\n" + ex);
+        if (!this.archivo.exists()) {
+            try {
+                this.archivo.createNewFile();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "No se pudo crear el archivo json:" + archivo.getName() + "\n" + ex);
+            }
         }
     }
 
@@ -55,8 +58,8 @@ public class JsonHandler {
         }
     }
 
+    //Devuelve una lista con las entradas del json.
     public List<Object> cargarDatos() {
-
         if (this.archivo.exists()) {
             try {
                 return this.ObjMap.readValue(this.archivo, new TypeReference<List<Object>>() {
@@ -73,7 +76,7 @@ public class JsonHandler {
     //metodo para escribir dentro del json
     public void eliminar(Object objeto) {
         this.listas.remove(objeto);
-
+        
         try {
             this.ObjMap.writeValue(this.archivo, this.listas);
         } catch (IOException e) {
