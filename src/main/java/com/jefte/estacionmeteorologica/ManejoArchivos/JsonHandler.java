@@ -41,8 +41,8 @@ public class JsonHandler {
         if (!this.archivo.exists()) {
             try {
                 this.archivo.createNewFile();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "No se pudo crear el archivo json:" + archivo.getName() + "\n" + ex);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "No se pudo crear el archivo json:" + archivo.getName() + "\n" + e);
             }
         }
     }
@@ -55,8 +55,8 @@ public class JsonHandler {
         try {
             //metodo pa escribir mando el archivo y el objeto
             this.ObjMap.writeValue(archivo, this.listas);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al intentar escribir el archivo.");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al intentar escribir el archivo." + "\n" + e );
         }
     }
 
@@ -66,8 +66,8 @@ public class JsonHandler {
             try {
                 return this.ObjMap.readValue(this.archivo, new TypeReference<Map<Integer,Object>>() {
                 });
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo." + "\n" + ex);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo." + "\n" + e);
                 return null;
             }
         } else {
@@ -82,7 +82,7 @@ public class JsonHandler {
         try {
             this.ObjMap.writeValue(this.archivo, this.listas);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al intentar editar el archivo.");
+            JOptionPane.showMessageDialog(null, "Hubo un error al intentar editar el archivo."+ "\n" + e);
         }
 
     }
