@@ -1,6 +1,6 @@
 # Estación Meteorológica Inteligente 📡
 
-Monorepositorio con un cliente Standalone en java para administrar, visualizar, y generar reportes historicos recibidos por los sensores. Tambien el software controlador para el sistema embedido que controla y recibe la información de los sensores mediante Titigo con Arduino.
+Monorepositorio con un cliente Standalone en java para administrar, visualizar, y generar reportes historicos recibidos por los sensores. Tambien el software controlador para el sistema embedido que controla y recibe la información de los sensores con Arduino atravez de TTGO & LoRa.
 
 ## Características Principales 📍
   - Visualización en tiempo real y historicos de sensores.
