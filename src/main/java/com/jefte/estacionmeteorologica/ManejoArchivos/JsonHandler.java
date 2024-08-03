@@ -38,19 +38,22 @@ public class JsonHandler {
             JOptionPane.showMessageDialog(null, "No se pudo crear el archivo json:"+ archivo.getName() + "\n" + ex);
         } 
     }
+        
     
+    //metodo para escribir dentro del jsob
       public void agregarContenido(Object objeto,String nombre){
+          //agrego a la lista
         this.listas.add(objeto);
+        // el archivo
         File arch = new File(nombre);
         try {
-            ObjMap.writeValue(arch, objeto);
+            //metodo pa escribir mando el archivo y el objeto
+            ObjMap.writeValue(arch, this.listas);
             System.out.println("escribio");
         } catch (IOException ex) {
             Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
+      
 }
 
