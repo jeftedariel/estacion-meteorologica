@@ -4,7 +4,7 @@
 
 package com.jefte.estacionmeteorologica;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
-import java.io.IOException;
+
 /**
  *
  * @author jefte
@@ -18,8 +18,9 @@ public class Main {
         animal a2 = new animal(2, "perico");
         
         
-        json.agregar(a1); 
-        json.eliminar(a1);
+        //json.agregar(a1, a1.getId());
+        //json.agregar(a2, a2.getId());
+        json.eliminar(a1.getId());
         
         
         

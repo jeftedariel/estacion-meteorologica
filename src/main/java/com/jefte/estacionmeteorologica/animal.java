@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.jefte.estacionmeteorologica;
+
+import java.util.Objects;
 
 /**
  *
@@ -36,6 +35,18 @@ public class animal {
     @Override
     public String toString() {
         return "animal{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+
+     @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre);
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        animal that = (animal) obj;
+        return id == that.id && Objects.equals(nombre, that.nombre);
     }
     
 }

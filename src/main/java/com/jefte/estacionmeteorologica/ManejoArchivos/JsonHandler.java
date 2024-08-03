@@ -9,7 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +21,7 @@ import javax.swing.JOptionPane;
 public class JsonHandler {
 
     private ObjectMapper ObjMap;
-    private List<Object> listas;
+    private Map<Integer,Object> listas;
 
     private File archivo;
 
@@ -29,7 +31,7 @@ public class JsonHandler {
         this.archivo = new File(nombre);
         this.ObjMap = new ObjectMapper();
         
-        this.listas = (this.archivo.exists()) ? cargarDatos() : new ArrayList<>();
+        this.listas = (this.archivo.exists()) ? cargarDatos() : new HashMap<>();
         
         this.crearJson(archivo);
     }
@@ -46,9 +48,9 @@ public class JsonHandler {
     }
 
     //metodo para escribir dentro del json
-    public void agregar(Object objeto) {
+    public void agregar(Object objeto, int key) {
         //agrego a la lista
-        this.listas.add(objeto);
+        this.listas.put(key,objeto);
 
         try {
             //metodo pa escribir mando el archivo y el objeto
@@ -59,23 +61,23 @@ public class JsonHandler {
     }
 
     //Devuelve una lista con las entradas del json.
-    public List<Object> cargarDatos() {
+    public Map<Integer,Object> cargarDatos() {
         if (this.archivo.exists()) {
             try {
-                return this.ObjMap.readValue(this.archivo, new TypeReference<List<Object>>() {
+                return this.ObjMap.readValue(this.archivo, new TypeReference<Map<Integer,Object>>() {
                 });
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo.");
                 return null;
             }
         } else {
-            return new ArrayList<>();
+            return new HashMap<>();
         }
     }
 
     //metodo para escribir dentro del json
-    public void eliminar(Object objeto) {
-        this.listas.remove(objeto);
+    public void eliminar(int key) {
+       this.listas.remove(key);
         
         try {
             this.ObjMap.writeValue(this.archivo, this.listas);
