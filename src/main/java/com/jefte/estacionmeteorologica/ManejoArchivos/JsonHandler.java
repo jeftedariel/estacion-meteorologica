@@ -15,31 +15,20 @@ import javax.swing.JOptionPane;
  */
 public class JsonHandler {
 
-    private static JsonHandler instanciaJsonHandler;
-
     private ObjectMapper ObjMap;
 
-    public JsonHandler() {
+    //Crea archivo para definir esta vara no sé
+    //Se debe pasar por parametro el nombre del archivo que se quiere crear.
+    public JsonHandler(String archivo) {
+        this.crearJson(archivo);
         ObjMap = new ObjectMapper();
     }
-
-    public static JsonHandler getInstance(String archivo) {
-        if (instanciaJsonHandler == null) {
-            instanciaJsonHandler = new JsonHandler();
-
-        }
-        return instanciaJsonHandler;
-    }
-
-    public static JsonHandler getInstance() {
-        if (instanciaJsonHandler == null) {
-            instanciaJsonHandler = new JsonHandler();
-        }
-        return instanciaJsonHandler;
-    }
-
-    public void fileHandler(String archivo) {
+    
+    //Simplemente crea el archivo
+    private void crearJson(String archivo) {
         new File(archivo);
     }
+    
+    
 
 }
