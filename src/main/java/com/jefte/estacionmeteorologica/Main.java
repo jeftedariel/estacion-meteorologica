@@ -20,7 +20,7 @@ public class Main {
         
         //json.agregar(a1, a1.getId());
         //json.agregar(a2, a2.getId());
-        json.eliminar(a1.getId());
+        json.eliminar(a2.getId());
         
         
         

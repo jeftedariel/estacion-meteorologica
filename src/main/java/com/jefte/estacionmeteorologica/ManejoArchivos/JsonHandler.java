@@ -67,7 +67,7 @@ public class JsonHandler {
                 return this.ObjMap.readValue(this.archivo, new TypeReference<Map<Integer,Object>>() {
                 });
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo.");
+                JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo." + "\n" + ex);
                 return null;
             }
         } else {
