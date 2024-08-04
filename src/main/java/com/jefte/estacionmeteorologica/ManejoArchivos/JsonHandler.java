@@ -29,7 +29,7 @@ public class JsonHandler {
         this.archivo = new File(nombre);
         this.ObjMap = new ObjectMapper();
         this.crearJson(archivo);
-        this.listas = (this.archivo.exists()) ? cargarDatos() : new HashMap<>();
+        this.listas = (this.archivo.exists()) ? obtenerDatos() : new HashMap<>();
 
     }
 
@@ -57,6 +57,7 @@ public class JsonHandler {
         try {
             //Si el objeto no existe en la lista, procede a intentar agregarlo.
             if (!existe(key)) {
+                
                 this.listas.put(key, objeto);
                 //Se llama al objectMapper para que escriba sobre el archivo la lista actualizada.
                 this.ObjMap.writeValue(archivo, this.listas);
@@ -70,7 +71,7 @@ public class JsonHandler {
     }
 
     //Devuelve una lista con las entradas del json.
-    public Map<Integer, Object> cargarDatos() {
+    public Map<Integer, Object> obtenerDatos() {
         if (this.archivo.exists()) {
             try {
                 return this.ObjMap.readValue(this.archivo, new TypeReference<Map<Integer, Object>>() {
@@ -82,6 +83,15 @@ public class JsonHandler {
         } else {
             return new HashMap<>();
         }
+    }
+    
+    //Devuelve un objeto específico.
+    public Object obtenerObjeto(int key){
+        if (this.archivo.exists()) {
+            return this.listas.get(key);
+        } 
+        JOptionPane.showMessageDialog(null, "No se pudo encontrar el objeto");
+        return null;
     }
 
     //metodo para escribir dentro del json
@@ -116,4 +126,5 @@ public class JsonHandler {
             JOptionPane.showMessageDialog(null, "Hubo un error al intentar escribir el archivo." + "\n" + e);
         }
     }
+    
 }
