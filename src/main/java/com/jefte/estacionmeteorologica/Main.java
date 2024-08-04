@@ -15,14 +15,14 @@ public class Main {
         JsonHandler json = new JsonHandler("animal.json");
         
         animal a1 = new animal(1, "pato"); 
-        animal a2 = new animal(2, "perico");
+        animal a2 = new animal(444, "perico");
         
         
         //json.agregar(a1, a1.getId());
-        //json.agregar(a2, a2.getId());
-        json.eliminar(a2.getId());
+        json.agregar(a2, a2.getId());
+        //json.eliminar(a2.getId());
         
-        
+        //json.editar(a2, 1);
         
         
         
