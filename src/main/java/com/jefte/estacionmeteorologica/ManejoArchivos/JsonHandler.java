@@ -53,7 +53,7 @@ public class JsonHandler {
     }
 
     //metodo para escribir dentro del json
-    public void agregar(Object objeto, int key) {
+    public void agregar(int key, Object objeto) {
         try {
             //Si el objeto no existe en la lista, procede a intentar agregarlo.
             if (!existe(key)) {
@@ -113,10 +113,11 @@ public class JsonHandler {
         }
     }
 
-    public void editar(Object objeto, int key) {
+    public void editar(int key ,Object objeto) {
         try {
             if (existe(key)) {
-                this.listas.replace(key, objeto);
+                this.listas.remove(key);
+                this.listas.put(key, objeto);
                 //reescribe el arch con la entrada editada
                 this.ObjMap.writeValue(archivo, this.listas);
             } else {
