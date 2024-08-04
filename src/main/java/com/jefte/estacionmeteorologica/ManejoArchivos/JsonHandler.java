@@ -28,10 +28,9 @@ public class JsonHandler {
     public JsonHandler(String nombre) {
         this.archivo = new File(nombre);
         this.ObjMap = new ObjectMapper();
-
+        this.crearJson(archivo);
         this.listas = (this.archivo.exists()) ? cargarDatos() : new HashMap<>();
 
-        this.crearJson(archivo);
     }
 
     //Simplemente crea el archivo
@@ -45,25 +44,25 @@ public class JsonHandler {
         }
     }
 
-    private boolean existe(int key) throws ObjetoNoEncontrado {
+    private boolean existe(int key) {
         if (this.listas.containsKey(key)) {
             return true;
         }
-        throw new ObjetoNoEncontrado("EL objeto ingresado no existe.");
+        return false;
+
     }
 
     //metodo para escribir dentro del json
     public void agregar(Object objeto, int key) {
         try {
             //Si el objeto no existe en la lista, procede a intentar agregarlo.
-            if (existe(key)) {
+            if (!existe(key)) {
                 this.listas.put(key, objeto);
                 //Se llama al objectMapper para que escriba sobre el archivo la lista actualizada.
                 this.ObjMap.writeValue(archivo, this.listas);
+            } else {
+                JOptionPane.showMessageDialog(null, "El objeto ya existia, no se pueden agregar datos duplicados.");
             }
-            //Si el obj ya se encontraba en el archivo
-        } catch (ObjetoNoEncontrado e) {
-            JOptionPane.showMessageDialog(null, "El objeto ya existe \n No se permiten objetos duplicados");
             //Algun problema de lectura del archivo json
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al intentar agregar el objeto." + "\n" + e);
@@ -78,7 +77,7 @@ public class JsonHandler {
                 });
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo." + "\n" + e);
-                return null;
+                return new HashMap<>();
             }
         } else {
             return new HashMap<>();
@@ -94,10 +93,10 @@ public class JsonHandler {
                 this.listas.remove(key);
                 //Se llama al objectMapper para que escriba sobre el archivo la lista actualizada.
                 this.ObjMap.writeValue(archivo, this.listas);
+            } else {
+                JOptionPane.showMessageDialog(null, "El objeto no fue encontrado");
             }
-            //Si el obj ya se encontraba en el archivo
-        } catch (ObjetoNoEncontrado e) {
-            JOptionPane.showMessageDialog(null, "El objeto ya existe \n No se permiten objetos duplicados");
+
             //Algun problema de lectura del archivo json
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al intentar eliminar el objeto." + "\n" + e);
@@ -110,11 +109,11 @@ public class JsonHandler {
                 this.listas.replace(key, objeto);
                 //reescribe el arch con la entrada editada
                 this.ObjMap.writeValue(archivo, this.listas);
+            } else {
+                JOptionPane.showMessageDialog(null, "El objeto no fue encontrado");
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al intentar escribir el archivo." + "\n" + e);
-        } catch (ObjetoNoEncontrado e) {
-            JOptionPane.showMessageDialog(null, "El objeto que se intentó editar no existe." + "\n" + e);
         }
     }
 }

@@ -12,15 +12,17 @@ import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 public class Main {
 
     public static void main(String[] args){  
-        JsonHandler json = new JsonHandler("animal.json");
+        JsonHandler json = new JsonHandler("animales.json");
         
         animal a1 = new animal(1, "pato"); 
         animal a2 = new animal(444, "perico");
         
         
-        //json.agregar(a1, a1.getId());
-        json.agregar(a2, a2.getId());
-        //json.eliminar(a2.getId());
+        json.agregar(a1, a1.getId());
+        //json.agregar(a2, a2.getId());
+        
+        //json.eliminar(a1.getId());
+        
         
         //json.editar(a2, 1);
         
