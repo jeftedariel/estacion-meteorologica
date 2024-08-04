@@ -54,10 +54,9 @@ public class JsonHandler {
 
     //metodo para escribir dentro del json
     public void agregar(Object objeto, int key) {
-        //agrego a la lista
         try {
             //Si el objeto no existe en la lista, procede a intentar agregarlo.
-            if (!existe(key)) {
+            if (existe(key)) {
                 this.listas.put(key, objeto);
                 //Se llama al objectMapper para que escriba sobre el archivo la lista actualizada.
                 this.ObjMap.writeValue(archivo, this.listas);
@@ -88,29 +87,34 @@ public class JsonHandler {
 
     //metodo para escribir dentro del json
     public void eliminar(int key) {
-        if (existe(key)) {
-            this.listas.remove(key);
-
-            try {
-                this.ObjMap.writeValue(this.archivo, this.listas);
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Hubo un error al intentar editar el archivo." + "\n" + e);
+        //agrego a la lista
+        try {
+            //Si el objeto no existe en la lista, procede a intentar agregarlo.
+            if (existe(key)) {
+                this.listas.remove(key);
+                //Se llama al objectMapper para que escriba sobre el archivo la lista actualizada.
+                this.ObjMap.writeValue(archivo, this.listas);
             }
+            //Si el obj ya se encontraba en el archivo
+        } catch (ObjetoNoEncontrado e) {
+            JOptionPane.showMessageDialog(null, "El objeto ya existe \n No se permiten objetos duplicados");
+            //Algun problema de lectura del archivo json
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al intentar eliminar el objeto." + "\n" + e);
         }
-
     }
 
     public void editar(Object objeto, int key) {
-        if (existe(key)) {
-            this.listas.replace(key, objeto);
-
-            try {
+        try {
+            if (existe(key)) {
+                this.listas.replace(key, objeto);
                 //reescribe el arch con la entrada editada
                 this.ObjMap.writeValue(archivo, this.listas);
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Hubo un error al intentar escribir el archivo." + "\n" + e);
             }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al intentar escribir el archivo." + "\n" + e);
+        } catch (ObjetoNoEncontrado e) {
+            JOptionPane.showMessageDialog(null, "El objeto que se intentó editar no existe." + "\n" + e);
         }
     }
-
 }
