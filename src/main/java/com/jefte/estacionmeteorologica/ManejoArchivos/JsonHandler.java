@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package com.jefte.estacionmeteorologica.ManejoArchivos;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -16,19 +17,21 @@ import javax.swing.JOptionPane;
  *
  * @author jefte
  */
-public class JsonHandler {
-
+public class JsonHandler <T> {
     private ObjectMapper ObjMap;
-    private Map<Integer, Object> listas;
-
+    private Map<Integer, T> listas;
+    //crear una referecia global para manejar con la que viene por parametros 
+    private TypeReference<Map<Integer,T>> tipoRef;
     private File archivo;
 
     //Crea archivo para definir esta vara no sé
     //Se debe pasar por parametro el nombre del archivo que se quiere crear.
-    public JsonHandler(String nombre) {
+    //se pasa por parametros el tipo de objeto con el que se va a trabajar le llega en al mapa se manda en el crud
+    public JsonHandler(String nombre, TypeReference<Map<Integer, T >> tipoRef ) {
         this.archivo = new File(nombre);
         this.ObjMap = new ObjectMapper();
         this.crearJson(archivo);
+        this.tipoRef = tipoRef;
         this.listas = (this.archivo.exists()) ? obtenerDatos() : new HashMap<>();
 
     }
@@ -36,11 +39,13 @@ public class JsonHandler {
     //Simplemente crea el archivo
     private void crearJson(File archivo) {
         if (!this.archivo.exists()) {
+     
             try {
                 this.archivo.createNewFile();
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "No se pudo crear el archivo json:" + archivo.getName() + "\n" + e);
             }
+          
         }
     }
 
@@ -53,7 +58,7 @@ public class JsonHandler {
     }
 
     //metodo para escribir dentro del json
-    public void agregar(int key, Object objeto) {
+    public void agregar(int key, T objeto) {
         try {
             //Si el objeto no existe en la lista, procede a intentar agregarlo.
             if (!existe(key)) {
@@ -71,11 +76,11 @@ public class JsonHandler {
     }
 
     //Devuelve una lista con las entradas del json.
-    public Map<Integer, Object> obtenerDatos() {
+    public Map<Integer, T> obtenerDatos() {
         if (this.archivo.exists()) {
             try {
-                return this.ObjMap.readValue(this.archivo, new TypeReference<Map<Integer, Object>>() {
-                });
+                //cambie la referencia que esta ya en el programa
+                return this.ObjMap.readValue(this.archivo, this.tipoRef);
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo." + "\n" + e);
                 return new HashMap<>();
@@ -86,7 +91,7 @@ public class JsonHandler {
     }
     
     //Devuelve un objeto específico.
-    public Object obtenerObjeto(int key){
+    public T obtenerObjeto(int key){
         if (this.archivo.exists()) {
             return this.listas.get(key);
         } 
@@ -94,7 +99,7 @@ public class JsonHandler {
         return null;
     }
 
-    //metodo para escribir dentro del json
+   //metodo para escribir dentro del json
     public void eliminar(int key) {
         //agrego a la lista
         try {
@@ -113,19 +118,19 @@ public class JsonHandler {
         }
     }
 
-    public void editar(int key ,Object objeto) {
-        try {
+    public void editar(int key ,T objeto) {
+        
             if (existe(key)) {
                 this.listas.remove(key);
                 this.listas.put(key, objeto);
-                //reescribe el arch con la entrada editada
-                this.ObjMap.writeValue(archivo, this.listas);
+                try {
+                    //reescribe el arch con la entrada editada
+                    this.ObjMap.writeValue(archivo, this.listas);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Hubo un problema al intentar escribir en el archivo." + archivo.getName() + "\n" + e);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "El objeto no fue encontrado");
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al intentar escribir el archivo." + "\n" + e);
-        }
+              JOptionPane.showMessageDialog(null, "El objeto no fue encontrado");
+       }
     }
-    
 }
