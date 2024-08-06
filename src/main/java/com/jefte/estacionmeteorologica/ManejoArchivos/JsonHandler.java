@@ -11,8 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,8 +42,8 @@ public class JsonHandler <T> {
      
             try {
                 this.archivo.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "No se pudo crear el archivo json:" + archivo.getName() + "\n" + e);
             }
           
         }
@@ -128,8 +126,8 @@ public class JsonHandler <T> {
                 try {
                     //reescribe el arch con la entrada editada
                     this.ObjMap.writeValue(archivo, this.listas);
-                } catch (IOException ex) {
-                    Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Hubo un problema al intentar escribir en el archivo." + archivo.getName() + "\n" + e);
                 }
             } else {
               JOptionPane.showMessageDialog(null, "El objeto no fue encontrado");
