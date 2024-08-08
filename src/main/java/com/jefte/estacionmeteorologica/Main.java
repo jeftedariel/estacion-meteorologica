@@ -3,6 +3,7 @@
  */
 
 package com.jefte.estacionmeteorologica;
+import Roles.GUIRoles;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 
 /**
@@ -27,6 +28,7 @@ public class Main {
         
         //json.editar(1, a2);
         //System.out.println(json.obtenerDatos());
-        
+        GUIRoles g = new GUIRoles();
+        g.setVisible(true);
     }
 }

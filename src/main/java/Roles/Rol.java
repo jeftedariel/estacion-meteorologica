@@ -29,6 +29,9 @@ public class Rol {
         this.datosRoles = datosRoles;
     }
 
+    public Rol() {
+    }
+    
     public int getId() {
         return id;
     }
