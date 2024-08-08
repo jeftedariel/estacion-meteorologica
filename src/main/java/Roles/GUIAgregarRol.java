@@ -217,12 +217,12 @@ public class GUIAgregarRol extends javax.swing.JDialog {
         return new Rol(
             this.id_rol,
             this.txtNombre.getText(),
-            (boolean)        this.cbxPermisoDatoSensor.getSelectedItem(),
-            (boolean)this.cbxPermisoDatosEnVivo.getSelectedItem(),
-            (boolean)this.cbxPermisoDatosRol.getSelectedItem(),
-            (boolean)this.cbxPermisoDatosUsuario.getSelectedItem(),
-            (boolean)this.cbxPermisoReportes.getSelectedItem(),
-            (boolean)this.cbxPermisoSensores.getSelectedItem()
+            Boolean.parseBoolean(this.cbxPermisoSensores.getSelectedItem().toString()),
+            Boolean.parseBoolean(this.cbxPermisoDatoSensor.getSelectedItem().toString()),
+            Boolean.parseBoolean(this.cbxPermisoDatosEnVivo.getSelectedItem().toString()),
+            Boolean.parseBoolean(this.cbxPermisoDatosUsuario.getSelectedItem().toString()),
+            Boolean.parseBoolean(this.cbxPermisoDatosRol.getSelectedItem().toString()),
+            Boolean.parseBoolean(this.cbxPermisoReportes.getSelectedItem().toString()) 
         );
     }
     /**

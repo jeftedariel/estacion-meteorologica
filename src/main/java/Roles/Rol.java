@@ -11,23 +11,25 @@ package Roles;
 public class Rol {
     private int id;
     private String nombre;
-    private boolean reportes, sensores, datosSensores, datosEnVivo, datosUsuarios,datosRoles;
+    private boolean sensores, datosSensores,datosEnVivo, datosUsuarios,datosRoles,reportes;
 
     @Override
     public String toString() {
-        return "Rol{" + "id=" + id + ", nombre=" + nombre + ", reportes=" + reportes + ", sensores=" + sensores + ", datosSensores=" + datosSensores + ", datosEnVivo=" + datosEnVivo + ", datosUsuarios=" + datosUsuarios + ", datosRoles=" + datosRoles + '}';
+        return "Rol{" + "id=" + id + ", nombre=" + nombre + ", sensores=" + sensores + ", datosSensores=" + datosSensores + ", datosEnVivo=" + datosEnVivo + ", datosUsuarios=" + datosUsuarios + ", datosRoles=" + datosRoles + ", reportes=" + reportes + '}';
     }
 
-    public Rol(int id, String nombre, boolean reportes, boolean sensores, boolean datosSensores, boolean datosEnVivo, boolean datosUsuarios, boolean datosRoles) {
+    public Rol(int id, String nombre, boolean sensores, boolean datosSensores, boolean datosEnVivo, boolean datosUsuarios, boolean datosRoles, boolean reportes) {
         this.id = id;
         this.nombre = nombre;
-        this.reportes = reportes;
         this.sensores = sensores;
         this.datosSensores = datosSensores;
         this.datosEnVivo = datosEnVivo;
         this.datosUsuarios = datosUsuarios;
         this.datosRoles = datosRoles;
+        this.reportes = reportes;
     }
+
+   
 
     public Rol() {
     }

@@ -51,10 +51,25 @@ public class GUIRoles extends javax.swing.JFrame {
         btnVolver.setText("Volver");
 
         btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
 
@@ -126,18 +141,77 @@ public class GUIRoles extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+       this.abrirFormularioRol(null);
+    }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       this.EditarRol();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       this.eliminarRol();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
     private void actualizarTabla(){
         this.modelo.setRowCount(0);
         for(Rol rol: this.gestionRol.obtenerDatos().values()){
-            this.modelo.addRow(new Object[] {rol.getId(),rol.getNombre()});
+            this.modelo.addRow(new Object[] {rol.getId(),rol.getNombre(),rol.isSensores(),rol.isDatosSensores(),rol.isDatosEnVivo(),rol.isDatosUsuarios(),rol.isDatosRoles(),rol.isReportes()});
         
         }
     
     }
+     private void abrirFormularioRol(Rol rol) {
+         
+    GUIAgregarRol formulario = new GUIAgregarRol(this, true, rol);
     
+    formulario.setVisible(true);
+
+    if (formulario.confirmacion()) {
+        Rol ro = formulario.consultarTarea();
+
+        if (rol == null) {
+            
+            this.gestionRol.agregar(ro.getId(),ro);
+           
+        }else{
+            
+            this.gestionRol.editar(ro.getId(),ro);
+            
+            }
+       actualizarTabla();
+    }
+}
+    
+       private void eliminarRol() {
+     
+    int filaSeleccionada = this.tbRoles.getSelectedRow();
+    if (filaSeleccionada != - 1) {
+        
+        String id = String.valueOf(this.tbRoles.getValueAt(filaSeleccionada, 0)); 
+        this.gestionRol.eliminar(Integer.parseInt(id));
+        actualizarTabla();
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un rol para eliminarlo.");
+    }
+}
+       
+        private void EditarRol(){
+
+       if(this.tbRoles.getSelectedRow()!= -1){
+          
+           String id = String.valueOf(this.tbRoles.getValueAt(this.tbRoles.getSelectedRow(), 0));
+           Rol rol = this.gestionRol.obtenerObjeto(Integer.parseInt(id));
+           this.abrirFormularioRol(rol);
+         
+       }else{
+           JOptionPane.showMessageDialog(this, "Debe seleccionar un rol para poder editarlo.");
+       }
+ 
+ }
     
     
 
