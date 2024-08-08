@@ -1,6 +1,8 @@
 package claseSensor;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,13 +12,14 @@ import javax.swing.table.DefaultTableModel;
  * @author Justin Rodriguez Gonzalez
  */
 public class CrudSensores extends javax.swing.JFrame {
-    private GesionSensores gestioSensor;
+    private JsonHandler<Sensor> gestioSensor;
     private DefaultTableModel modelo = new DefaultTableModel();
+    private String nombreJson = "sensores.json"; 
     
    
     public CrudSensores() {
         initComponents();
-        this.gestioSensor = new GesionSensores();
+        this.gestioSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer,Sensor>>(){});
         String [] nombreColumnas = {"ID","Tipo","Localizacion"};
         this.modelo.setColumnIdentifiers(nombreColumnas);
         this.tbSensores.setModel(modelo);
@@ -26,7 +29,7 @@ public class CrudSensores extends javax.swing.JFrame {
     
    private void actualizarTabla(){
         this.modelo.setRowCount(0);
-        for(Sensor sensor: this.gestioSensor.getListaSensores()){
+        for(Sensor sensor: this.gestioSensor.obtenerDatos().values()){
             this.modelo.addRow(new Object[] {sensor.getId(),sensor.getTipo(),sensor.getLocalizacion()});
         
         }
@@ -45,11 +48,11 @@ public class CrudSensores extends javax.swing.JFrame {
 
         if (sensor == null) {
             
-            this.gestioSensor.agregarSensor(se);
+            this.gestioSensor.agregar(se.getId(),se);
            
         }else{
             
-            this.gestioSensor.editar(se);
+            this.gestioSensor.editar(se.getId(),se);
             
             }
        actualizarTabla();
@@ -62,7 +65,7 @@ public class CrudSensores extends javax.swing.JFrame {
     if (filaSeleccionada != - 1) {
         
         String id = String.valueOf(this.tbSensores.getValueAt(filaSeleccionada, 0)); 
-        this.gestioSensor.eliminarSensor(Integer.parseInt(id));
+        this.gestioSensor.eliminar(Integer.parseInt(id));
         actualizarTabla();
     } else {
         JOptionPane.showMessageDialog(null, "Debe seleccionar un propietario para eliminarlo.");
@@ -74,7 +77,7 @@ public class CrudSensores extends javax.swing.JFrame {
        if(this.tbSensores.getSelectedRow()!= -1){
           
            String id = String.valueOf(this.tbSensores.getValueAt(this.tbSensores.getSelectedRow(), 0));
-           Sensor se = this.gestioSensor.obtenerSensor(Integer.parseInt(id));
+           Sensor se = this.gestioSensor.obtenerObjeto(Integer.parseInt(id));
            this.abrirFormularioAnimal(se);
          
        }else{
@@ -180,11 +183,11 @@ public class CrudSensores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        abrirFormularioAnimal(null);
+     abrirFormularioAnimal(null);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-       this.eliminarSensor();
+     eliminarSensor();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
