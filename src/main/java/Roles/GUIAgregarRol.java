@@ -13,7 +13,10 @@ public class GUIAgregarRol extends javax.swing.JDialog {
     /**
      * Creates new form GUIAgregarRol
      */
-    public GUIAgregarRol(java.awt.Frame parent, boolean modal) {
+     private boolean edicion;
+    private boolean confirmar;
+    private int id_rol;
+    public GUIAgregarRol(java.awt.Frame parent, boolean modal, Rol rol) {
         super(parent, modal);
         initComponents();
     }
@@ -39,7 +42,7 @@ public class GUIAgregarRol extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         cbxPermisoDatosRol = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        cbxPermisoDatosUsuario1 = new javax.swing.JComboBox<>();
+        cbxPermisoDatosUsuario = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         cbxPermisoReportes = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
@@ -67,15 +70,25 @@ public class GUIAgregarRol extends javax.swing.JDialog {
 
         jLabel5.setText("Datos Rol: ");
 
-        cbxPermisoDatosUsuario1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "False", "True" }));
+        cbxPermisoDatosUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "False", "True" }));
 
         jLabel6.setText("Reportes:");
 
         cbxPermisoReportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "False", "True" }));
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,7 +117,7 @@ public class GUIAgregarRol extends javax.swing.JDialog {
                                         .addComponent(cbxPermisoDatoSensor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(cbxPermisoDatosEnVivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(cbxPermisoDatosRol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbxPermisoDatosUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbxPermisoReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
@@ -135,7 +148,7 @@ public class GUIAgregarRol extends javax.swing.JDialog {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cbxPermisoDatosUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -165,6 +178,53 @@ public class GUIAgregarRol extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+         this.confirmar = true;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.confirmar = true;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+     public void guardarDatos(Rol rol){
+    
+        if (rol != null){
+            
+        id_rol = rol.getId();
+        this.txtNombre.setText(rol.getNombre());
+      
+        
+        this.edicion = true;
+        
+        }
+        
+        this.edicion = false;
+    
+    }
+    
+    
+    
+    
+    public boolean confirmacion(){
+     
+        return this.confirmar;
+        
+ }
+    
+    
+     public Rol consultarTarea() {
+        return new Rol(
+            this.id_rol,
+            this.txtNombre.getText(),
+            (boolean)        this.cbxPermisoDatoSensor.getSelectedItem(),
+            (boolean)this.cbxPermisoDatosEnVivo.getSelectedItem(),
+            (boolean)this.cbxPermisoDatosRol.getSelectedItem(),
+            (boolean)this.cbxPermisoDatosUsuario.getSelectedItem(),
+            (boolean)this.cbxPermisoReportes.getSelectedItem(),
+            (boolean)this.cbxPermisoSensores.getSelectedItem()
+        );
+    }
     /**
      * @param args the command line arguments
      */
@@ -176,7 +236,7 @@ public class GUIAgregarRol extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbxPermisoDatoSensor;
     private javax.swing.JComboBox<String> cbxPermisoDatosEnVivo;
     private javax.swing.JComboBox<String> cbxPermisoDatosRol;
-    private javax.swing.JComboBox<String> cbxPermisoDatosUsuario1;
+    private javax.swing.JComboBox<String> cbxPermisoDatosUsuario;
     private javax.swing.JComboBox<String> cbxPermisoReportes;
     private javax.swing.JComboBox<String> cbxPermisoSensores;
     private javax.swing.JLabel jLabel1;

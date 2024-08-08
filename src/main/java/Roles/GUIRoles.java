@@ -4,6 +4,10 @@
  */
 package Roles;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,13 +16,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUIRoles extends javax.swing.JFrame {
 
-    
+     private JsonHandler<Rol> gestionRol;
      private final DefaultTableModel modelo = new DefaultTableModel();
+      private String nombreJson = "roles.json"; 
     public GUIRoles() {
         initComponents();
+        this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer,Rol>>(){});
          String[] nombreColumnas = new String[]{"Id_Rol", "Nombre", "Sensores", "Datos_Sensores", "Datos_En_Vivo","Datos_Usuario","Datos_Roles","Reportes"};
          this.modelo.setColumnIdentifiers(nombreColumnas);
           this.tbRoles.setModel(modelo);
+          this.actualizarTabla();
     }
 
     
@@ -122,6 +129,16 @@ public class GUIRoles extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private void actualizarTabla(){
+        this.modelo.setRowCount(0);
+        for(Rol rol: this.gestionRol.obtenerDatos().values()){
+            this.modelo.addRow(new Object[] {rol.getId(),rol.getNombre()});
+        
+        }
+    
+    }
+    
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
