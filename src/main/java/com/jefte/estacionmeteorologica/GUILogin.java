@@ -4,15 +4,17 @@
  */
 package com.jefte.estacionmeteorologica;
 
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+
 /**
  *
  * @author Brandon Campos
  */
 public class GUILogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUILogin
-     */
+     private JsonHandler<Usuario> gestionUsuario;
+      private String nombreJson = "Usuarios.json";
+    
     public GUILogin() {
         initComponents();
     }
