@@ -73,6 +73,11 @@ public class GUIRoles extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         tbRoles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,9 +159,62 @@ public class GUIRoles extends javax.swing.JFrame {
         this.eliminarRol();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    this.formFiltro();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    private void formFiltro() {
+        GUIBuscarRol guiBuscarRol = new GUIBuscarRol(this, true, "roles.json");
+        guiBuscarRol.setVisible(true);
+
+        if (guiBuscarRol.confirmacion()) {
+            this.modelo.setRowCount(0);
+
+            for (Rol rol : gestionRol.obtenerDatos().values()) {
+                boolean filtro = true;
+                if (guiBuscarRol.obtenerDatos(0).isBlank() || !String.valueOf(rol.isSensores()).contentEquals(guiBuscarRol.obtenerDatos(0))) {
+                    filtro = false;
+                }
+                if (guiBuscarRol.obtenerDatos(1).isBlank() || !String.valueOf(rol.isDatosSensores()).contentEquals(guiBuscarRol.obtenerDatos(1))) {
+                    filtro = false;
+                }
+                if (guiBuscarRol.obtenerDatos(2).isBlank() || !String.valueOf(rol.isDatosEnVivo()).contentEquals(guiBuscarRol.obtenerDatos(2))) {
+                    filtro = false;
+                }
+                if (guiBuscarRol.obtenerDatos(3).isBlank() || !String.valueOf(rol.isDatosRoles()).contentEquals(guiBuscarRol.obtenerDatos(3))) {
+                    filtro = false;
+                }
+                if (guiBuscarRol.obtenerDatos(4).isBlank() || !String.valueOf(rol.isReportes()).contentEquals(guiBuscarRol.obtenerDatos(4))) {
+                    filtro = false;
+                }
+                 if (guiBuscarRol.obtenerDatos(5).isBlank() || !String.valueOf(rol.isDatosUsuarios()).contentEquals(guiBuscarRol.obtenerDatos(5))) {
+                    filtro = false;
+                }
+                if (filtro) {
+                    this.modelo.addRow(new Object[]{
+                        rol.getId(),
+                        rol.getNombre(),
+                        rol.isSensores(),
+                        rol.isDatosSensores(),
+                        rol.isDatosEnVivo(),
+                        rol.isDatosRoles(),
+                        rol.isReportes(),
+                        rol.isDatosUsuarios()
+                        
+                    });
+                }
+
+            }
+
+            this.tbRoles.setModel(modelo);
+            this.tbRoles.repaint();
+        }
+    }
+    
     private void actualizarTabla() {
         this.modelo.setRowCount(0);
         for (Rol rol : this.gestionRol.obtenerDatos().values()) {
@@ -168,7 +226,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
     private void abrirFormularioRol(Rol rol) {
 
-        GUIAgregarRol formulario = new GUIAgregarRol(this, true, rol, "roles.json");
+        GUIAgregarRol_1 formulario = new GUIAgregarRol_1(this, true, rol, "roles.json");
 
         formulario.setVisible(true);
 
