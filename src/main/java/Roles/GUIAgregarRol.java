@@ -4,6 +4,10 @@
  */
 package Roles;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
+
 /**
  *
  * @author Brandon Campos
@@ -13,11 +17,16 @@ public class GUIAgregarRol extends javax.swing.JDialog {
     /**
      * Creates new form GUIAgregarRol
      */
-     private boolean edicion;
+    private boolean edicion;
     private boolean confirmar;
-    private int id_rol;
-    public GUIAgregarRol(java.awt.Frame parent, boolean modal, Rol rol) {
+    private JsonHandler<Rol> gestionRol;
+
+
+    public GUIAgregarRol(java.awt.Frame parent, boolean modal, Rol rol, String nombreJson) {
         super(parent, modal);
+        this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Rol>>() {
+        });
+
         initComponents();
     }
 
@@ -179,56 +188,47 @@ public class GUIAgregarRol extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         this.confirmar = true;
+        this.confirmar = true;
         this.setVisible(false);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.confirmar = true;
+        this.confirmar = false;
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
-     public void guardarDatos(Rol rol){
-    
-        if (rol != null){
-            
-        id_rol = rol.getId();
-        this.txtNombre.setText(rol.getNombre());
-      
-        
-        this.edicion = true;
-        
+    public void guardarDatos(Rol rol) {
+
+        if (rol != null) {
+            this.txtNombre.setText(rol.getNombre());
+            this.edicion = true;
         }
-        
+
         this.edicion = false;
-    
+
     }
-    
-    
-    
-    
-    public boolean confirmacion(){
-     
+
+    public boolean confirmacion() {
+
         return this.confirmar;
-        
- }
-    
-    
-     public Rol consultarTarea() {
+
+    }
+
+    public Rol consultarTarea() {
         return new Rol(
-            this.id_rol,
-            this.txtNombre.getText(),
-            Boolean.parseBoolean(this.cbxPermisoSensores.getSelectedItem().toString()),
-            Boolean.parseBoolean(this.cbxPermisoDatoSensor.getSelectedItem().toString()),
-            Boolean.parseBoolean(this.cbxPermisoDatosEnVivo.getSelectedItem().toString()),
-            Boolean.parseBoolean(this.cbxPermisoDatosUsuario.getSelectedItem().toString()),
-            Boolean.parseBoolean(this.cbxPermisoDatosRol.getSelectedItem().toString()),
-            Boolean.parseBoolean(this.cbxPermisoReportes.getSelectedItem().toString()) 
+                gestionRol.obtenerUltimoId()+1,
+                this.txtNombre.getText(),
+                Boolean.parseBoolean(this.cbxPermisoSensores.getSelectedItem().toString()),
+                Boolean.parseBoolean(this.cbxPermisoDatoSensor.getSelectedItem().toString()),
+                Boolean.parseBoolean(this.cbxPermisoDatosEnVivo.getSelectedItem().toString()),
+                Boolean.parseBoolean(this.cbxPermisoDatosUsuario.getSelectedItem().toString()),
+                Boolean.parseBoolean(this.cbxPermisoDatosRol.getSelectedItem().toString()),
+                Boolean.parseBoolean(this.cbxPermisoReportes.getSelectedItem().toString())
         );
     }
     /**
      * @param args the command line arguments
      */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

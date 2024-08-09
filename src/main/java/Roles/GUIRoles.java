@@ -16,19 +16,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUIRoles extends javax.swing.JFrame {
 
-     private JsonHandler<Rol> gestionRol;
-     private final DefaultTableModel modelo = new DefaultTableModel();
-      private String nombreJson = "roles.json"; 
+    private JsonHandler<Rol> gestionRol;
+    private final DefaultTableModel modelo = new DefaultTableModel();
+    private String nombreJson = "roles.json";
+
     public GUIRoles() {
         initComponents();
-        this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer,Rol>>(){});
-         String[] nombreColumnas = new String[]{"Id_Rol", "Nombre", "Sensores", "Datos_Sensores", "Datos_En_Vivo","Datos_Usuario","Datos_Roles","Reportes"};
-         this.modelo.setColumnIdentifiers(nombreColumnas);
-          this.tbRoles.setModel(modelo);
-          this.actualizarTabla();
+        this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Rol>>() {
+        });
+        String[] nombreColumnas = new String[]{"Id_Rol", "Nombre", "Sensores", "Datos_Sensores", "Datos_En_Vivo", "Datos_Usuario", "Datos_Roles", "Reportes"};
+        this.modelo.setColumnIdentifiers(nombreColumnas);
+        this.tbRoles.setModel(modelo);
+        this.actualizarTabla();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -142,78 +143,79 @@ public class GUIRoles extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-       this.abrirFormularioRol(null);
+        this.abrirFormularioRol(null);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-       this.EditarRol();
+        this.EditarRol();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-       this.eliminarRol();
+        this.eliminarRol();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    private void actualizarTabla(){
+    private void actualizarTabla() {
         this.modelo.setRowCount(0);
-        for(Rol rol: this.gestionRol.obtenerDatos().values()){
-            this.modelo.addRow(new Object[] {rol.getId(),rol.getNombre(),rol.isSensores(),rol.isDatosSensores(),rol.isDatosEnVivo(),rol.isDatosUsuarios(),rol.isDatosRoles(),rol.isReportes()});
-        
+        for (Rol rol : this.gestionRol.obtenerDatos().values()) {
+            this.modelo.addRow(new Object[]{rol.getId(), rol.getNombre(), rol.isSensores(), rol.isDatosSensores(), rol.isDatosEnVivo(), rol.isDatosUsuarios(), rol.isDatosRoles(), rol.isReportes()});
+
         }
-    
+
     }
-     private void abrirFormularioRol(Rol rol) {
-         
-    GUIAgregarRol formulario = new GUIAgregarRol(this, true, rol);
-    
-    formulario.setVisible(true);
 
-    if (formulario.confirmacion()) {
-        Rol ro = formulario.consultarTarea();
+    private void abrirFormularioRol(Rol rol) {
 
-        if (rol == null) {
-            
-            this.gestionRol.agregar(ro.getId(),ro);
-           
-        }else{
-            
-            this.gestionRol.editar(ro.getId(),ro);
-            
+        GUIAgregarRol formulario = new GUIAgregarRol(this, true, rol, "roles.json");
+
+        formulario.setVisible(true);
+
+        if (formulario.confirmacion()) {
+            Rol ro = formulario.consultarTarea();
+
+            if (rol == null) {
+                System.out.println("agregando");
+                this.gestionRol.agregar(ro);
+
+            } else {
+                
+                ro.setId(rol.getId());
+                this.gestionRol.editar(rol.getId(), ro);
+                System.out.println("editando");
+
             }
-       actualizarTabla();
+            actualizarTabla();
+        }
     }
-}
-    
-       private void eliminarRol() {
-     
-    int filaSeleccionada = this.tbRoles.getSelectedRow();
-    if (filaSeleccionada != - 1) {
-        
-        String id = String.valueOf(this.tbRoles.getValueAt(filaSeleccionada, 0)); 
-        this.gestionRol.eliminar(Integer.parseInt(id));
-        actualizarTabla();
-    } else {
-        JOptionPane.showMessageDialog(null, "Debe seleccionar un rol para eliminarlo.");
-    }
-}
-       
-        private void EditarRol(){
 
-       if(this.tbRoles.getSelectedRow()!= -1){
-          
-           String id = String.valueOf(this.tbRoles.getValueAt(this.tbRoles.getSelectedRow(), 0));
-           Rol rol = this.gestionRol.obtenerObjeto(Integer.parseInt(id));
-           this.abrirFormularioRol(rol);
-         
-       }else{
-           JOptionPane.showMessageDialog(this, "Debe seleccionar un rol para poder editarlo.");
-       }
- 
- }
-    
-    
+    private void eliminarRol() {
+
+        int filaSeleccionada = this.tbRoles.getSelectedRow();
+        if (filaSeleccionada != - 1) {
+
+            String id = String.valueOf(this.tbRoles.getValueAt(filaSeleccionada, 0));
+            this.gestionRol.eliminar(Integer.parseInt(id));
+            actualizarTabla();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un rol para eliminarlo.");
+        }
+    }
+
+   
+    private void EditarRol() {
+        if (this.tbRoles.getSelectedRow() != -1) {
+            System.out.println(this.tbRoles.getSelectedRow());
+            Rol rol = this.gestionRol.obtenerObjeto(Integer.parseInt(this.tbRoles.getValueAt(this.tbRoles.getSelectedRow(), 0).toString()));
+            this.abrirFormularioRol(rol);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un rol para poder editarlo.");
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
