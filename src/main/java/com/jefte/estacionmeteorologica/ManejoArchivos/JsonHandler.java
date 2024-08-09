@@ -91,7 +91,6 @@ public class JsonHandler<T> {
                 //cambie la referencia que esta ya en el programa
                 return this.ObjMap.readValue(this.archivo, this.tipoRef);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Hubo un error al intentar cargar el archivo." + "\n" + e);
                 return new HashMap<>();
             }
         } else {
