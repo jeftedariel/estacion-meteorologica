@@ -4,7 +4,10 @@
  */
 package com.jefte.estacionmeteorologica;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +20,7 @@ public class GUILogin extends javax.swing.JFrame {
     
     public GUILogin() {
         initComponents();
+        this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>(){});
     }
     
     /**
@@ -56,7 +60,12 @@ public class GUILogin extends javax.swing.JFrame {
         });
 
         btnIngresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnIngresar.setText("Ingresar");
+        btnIngresar.setText("Iniciar Sesión");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
         lblQuiereRegistrarse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblQuiereRegistrarse.setText("¿Quiere registrarse?");
@@ -87,18 +96,14 @@ public class GUILogin extends javax.swing.JFrame {
                             .addComponent(txtCorreoElectronico)
                             .addComponent(txtContraseña)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(133, 133, 133)
-                                .addComponent(lblIniciarSesion))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(142, 142, 142)
-                                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(133, 133, 133)
+                        .addComponent(lblIniciarSesion)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 120, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIngresar)
                     .addComponent(btnRegistreseAqui)
                     .addComponent(lblQuiereRegistrarse))
                 .addGap(118, 118, 118))
@@ -116,9 +121,9 @@ public class GUILogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContraseña)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addComponent(btnIngresar)
-                .addGap(38, 38, 38)
+                .addGap(36, 36, 36)
                 .addComponent(lblQuiereRegistrarse)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(btnRegistreseAqui)
@@ -149,6 +154,21 @@ public class GUILogin extends javax.swing.JFrame {
         guiRegistro.setResizable(false);
         guiRegistro.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistreseAquiActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+
+        for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
+            if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
+                if (usuario.getContrasena().equals(this.txtContraseña.getText())) {
+                    JOptionPane.showMessageDialog(null, "Se encontro");
+                    GUIMenu guimenu = new GUIMenu(usuario.getId_rol());
+                    guimenu.setVisible(true);
+                    guimenu.setLocationRelativeTo(null);
+                    guimenu.setResizable(false);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments

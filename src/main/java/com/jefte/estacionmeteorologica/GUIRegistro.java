@@ -4,17 +4,22 @@
  */
 package com.jefte.estacionmeteorologica;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Brandon Campos
  */
 public class GUIRegistro extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GUIRegistro
-     */
+     private JsonHandler<Usuario> gestionUsuario;
+     private String nombreJson = "Usuarios.json";
     public GUIRegistro() {
         initComponents();
+        this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>(){});
+
     }
 
     /**
@@ -45,6 +50,11 @@ public class GUIRegistro extends javax.swing.JFrame {
         jLabel1.setText("Contraseña");
 
         btnRegistrarse.setText("Registrarse");
+        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarseActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +130,11 @@ public class GUIRegistro extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+            this.gestionUsuario.agregar(new Usuario(this.gestionUsuario.obtenerUltimoId()+1,this.txtNombre.getText(),this.txtCorreoElectronico.getText(),this.txtContraseña.getText()));
+            JOptionPane.showMessageDialog(null, "Se Registro");
+    }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     /**
      * @param args the command line arguments

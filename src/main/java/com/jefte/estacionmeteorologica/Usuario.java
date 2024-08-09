@@ -12,13 +12,15 @@ public class Usuario {
     public int id, id_rol; 
     public String nombre,correo_electronico,contrasena;
 
-    public Usuario(int id,String nombre,String correo_electronico, String contrasena) {
+    public Usuario(int id, String nombre, String correo_electronico, String contrasena) {
         this.id = id;
         this.id_rol = 0;
         this.nombre = nombre;
         this.correo_electronico = correo_electronico;
         this.contrasena = contrasena;
     }
+
+   
 
     public Usuario() {
     }

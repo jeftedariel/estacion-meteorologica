@@ -4,6 +4,8 @@
  */
 package com.jefte.estacionmeteorologica;
 
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+
 /**
  *
  * @author Brandon Campos
@@ -13,8 +15,12 @@ public class GUIMenu extends javax.swing.JFrame {
     /**
      * Creates new form GUIAdministrador
      */
-    public GUIMenu() {
+    //private JsonHandler<Rol> gestionRol;
+      private String nombreJson = "roles.json";
+    public GUIMenu(int id_Rol) {
         initComponents();
+        
+               
     }
 
     /**
