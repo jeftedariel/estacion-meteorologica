@@ -6,19 +6,26 @@ package claseSensor;
  */
 public class Sensor {
     
-    private int id;
+    private int identificador, id;
     private String tipo, localizacion;
 
     public Sensor() {
     }
 
-    
-    public Sensor(int id, String tipo, String localizacion) {
+    public Sensor(int id, int identificador, String tipo, String localizacion) {
+        this.identificador = identificador;
         this.id = id;
         this.tipo = tipo;
         this.localizacion = localizacion;
     }
-    
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
 
     public int getId() {
         return id;
@@ -44,9 +51,4 @@ public class Sensor {
         this.localizacion = localizacion;
     }
 
-    @Override
-    public String toString() {
-        return "Sensor{" + "id=" + id + ", tipo=" + tipo + ", localizacion=" + localizacion + '}';
-    }   
-     
-}
+ }

@@ -20,7 +20,7 @@ public class CrudSensores extends javax.swing.JFrame {
     public CrudSensores() {
         initComponents();
         this.gestioSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer,Sensor>>(){});
-        String [] nombreColumnas = {"ID","Tipo","Localizacion"};
+        String [] nombreColumnas = {"id","Identificador","Tipo","Localizacion"};
         this.modelo.setColumnIdentifiers(nombreColumnas);
         this.tbSensores.setModel(modelo);
         actualizarTabla();
@@ -30,16 +30,25 @@ public class CrudSensores extends javax.swing.JFrame {
    private void actualizarTabla(){
         this.modelo.setRowCount(0);
         for(Sensor sensor: this.gestioSensor.obtenerDatos().values()){
-            this.modelo.addRow(new Object[] {sensor.getId(),sensor.getTipo(),sensor.getLocalizacion()});
+            this.modelo.addRow(new Object[] {sensor.getId(),sensor.getIdentificador(),sensor.getTipo(),sensor.getLocalizacion()});
         
         }
     
     }
+         private int obtenerUltimoId() {
+        if (this.gestioSensor.obtenerDatos().isEmpty()) {
+            return 0; 
+        }
+        return this.gestioSensor.obtenerDatos().values().stream()
+                .mapToInt(Sensor::getId)
+                .max()
+                .orElse(0); 
+    }
     
     
-    private void abrirFormularioAnimal(Sensor sensor) {
+    private void abrirFormularioSensor(Sensor sensor) {
          
-    formularioSensor formulario = new formularioSensor(this, true, sensor);
+    formularioSensor formulario = new formularioSensor(this, true, sensor, nombreJson);
     
     formulario.setVisible(true);
 
@@ -48,7 +57,7 @@ public class CrudSensores extends javax.swing.JFrame {
 
         if (sensor == null) {
             
-            this.gestioSensor.agregar(se.getId(),se);
+            this.gestioSensor.agregar(se);
            
         }else{
             
@@ -78,7 +87,7 @@ public class CrudSensores extends javax.swing.JFrame {
           
            String id = String.valueOf(this.tbSensores.getValueAt(this.tbSensores.getSelectedRow(), 0));
            Sensor se = this.gestioSensor.obtenerObjeto(Integer.parseInt(id));
-           this.abrirFormularioAnimal(se);
+           this.abrirFormularioSensor(se);
          
        }else{
            JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
@@ -183,7 +192,7 @@ public class CrudSensores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-     abrirFormularioAnimal(null);
+     abrirFormularioSensor(null);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed

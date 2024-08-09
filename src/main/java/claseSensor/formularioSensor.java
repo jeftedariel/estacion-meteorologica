@@ -1,5 +1,9 @@
 package claseSensor;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
+
 /**
  *
  * @author Justin Rodriguez Gonzalez
@@ -7,12 +11,14 @@ package claseSensor;
 public class formularioSensor extends javax.swing.JDialog {
     private boolean edicion;
     private boolean confirmar;
+    private JsonHandler <Sensor> gestionSensor; 
     /**
      * Creates new form formularioSensor
      */
-    public formularioSensor(java.awt.Frame parent, boolean modal, Sensor sensor) {
+    public formularioSensor(java.awt.Frame parent, boolean modal, Sensor sensor, String nombreJson) {
         super(parent, modal);
         initComponents();
+        this.gestionSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer,Sensor>>(){});
         guardarDatos(sensor);
       
     }
@@ -20,7 +26,7 @@ public class formularioSensor extends javax.swing.JDialog {
     public void guardarDatos(Sensor sensor){
     
         if (sensor != null){
-            
+       
         this.txtIdentificadorS.setText(String.valueOf(sensor.getId()));
         this.txtTipo.setText(sensor.getTipo());
         this.txtLocalizacion.setText(sensor.getLocalizacion());
@@ -143,6 +149,7 @@ public class formularioSensor extends javax.swing.JDialog {
 
     public Sensor consultarTarea() {
         return new Sensor(
+            gestionSensor.obtenerUltimoId()+1,
             Integer.parseInt(this.txtIdentificadorS.getText()),
             txtTipo.getText(),
             txtLocalizacion.getText()
