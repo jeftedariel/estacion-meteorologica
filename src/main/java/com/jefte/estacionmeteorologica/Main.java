@@ -18,5 +18,4 @@ public class Main {
         u.setVisible(true);
         u.setLocationRelativeTo(null);
     }
-    
 }
