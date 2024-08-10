@@ -4,7 +4,7 @@
  */
 package claseSensor;
 
-import javax.swing.JCheckBox;
+
 
 /**
  *
@@ -20,8 +20,8 @@ public class FiltroSensor extends javax.swing.JDialog {
      */
     public FiltroSensor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
         this.setUndecorated(true);
+        initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(parent);
         this.confirmar = false;
@@ -51,12 +51,16 @@ public class FiltroSensor extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        pPrincipal.setBackground(new java.awt.Color(204, 204, 255));
+
         ckIdentificador.setText("Indentificador");
         ckIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckIdentificadorActionPerformed(evt);
             }
         });
+
+        txtIdentificador.setEnabled(false);
 
         ckTipo.setText("Tipo");
         ckTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -65,12 +69,16 @@ public class FiltroSensor extends javax.swing.JDialog {
             }
         });
 
+        txtTipo.setEnabled(false);
+
         ckLocalizaciojn.setText("Localizacion");
         ckLocalizaciojn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckLocalizaciojnActionPerformed(evt);
             }
         });
+
+        txtLocalizacion.setEnabled(false);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +150,10 @@ public class FiltroSensor extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    public String getDatos(int indice) {
+        return datos[indice];
+    }
+    
     private void ckIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckIdentificadorActionPerformed
         this.txtIdentificador.setEnabled((this.txtIdentificador.isEnabled()) ? false : true);
     }//GEN-LAST:event_ckIdentificadorActionPerformed

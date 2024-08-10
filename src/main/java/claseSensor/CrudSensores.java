@@ -97,6 +97,44 @@ public class CrudSensores extends javax.swing.JFrame {
        }
  
  }
+        
+        private void formFiltro() {
+
+        FiltroSensor guiFiltro = new FiltroSensor(this, true);
+        guiFiltro.setVisible(true);
+
+        if (guiFiltro.confirmacion()) {
+            this.modelo.setRowCount(0);
+
+            for (Sensor sensor : this.gestioSensor.obtenerDatos().values()) {
+                boolean filtro = true;
+                if (guiFiltro.getCkIdentificador()&& !String.valueOf(sensor.getIdentificador()).contentEquals(guiFiltro.getDatos(0))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCkTipo()&& !String.valueOf(sensor.getTipo()).contentEquals(guiFiltro.getDatos(1))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCkLocalizaciojn()&& !String.valueOf(sensor.getLocalizacion()).contentEquals(guiFiltro.getDatos(2))) {
+                    filtro = false;
+                }
+               
+
+                if (filtro) {
+                    this.modelo.addRow(new Object[]{
+                        sensor.getId(),
+                        sensor.getIdentificador(),
+                        sensor.getTipo(),
+                        sensor.getLocalizacion()
+                       
+                    });
+                }
+
+            }
+
+            this.tbSensores.setModel(modelo);
+            this.tbSensores.repaint();
+        }
+    }
     
 
    
@@ -110,6 +148,7 @@ public class CrudSensores extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbSensores = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,23 +187,30 @@ public class CrudSensores extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
         pPrincipal.setLayout(pPrincipalLayout);
         pPrincipalLayout.setHorizontalGroup(
             pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPrincipalLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
             .addGroup(pPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1))
             .addGroup(pPrincipalLayout.createSequentialGroup()
-                .addGap(321, 321, 321)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
         );
         pPrincipalLayout.setVerticalGroup(
             pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,10 +218,11 @@ public class CrudSensores extends javax.swing.JFrame {
                 .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
-                    .addComponent(btnAgregar))
-                .addGap(45, 45, 45)
-                .addComponent(btnActualizar)
-                .addGap(58, 58, 58)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnActualizar))
+                .addGap(63, 63, 63)
+                .addComponent(btnBuscar)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -206,11 +253,16 @@ public class CrudSensores extends javax.swing.JFrame {
      actualizar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        formFiltro();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pPrincipal;
