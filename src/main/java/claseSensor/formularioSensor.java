@@ -27,7 +27,7 @@ public class formularioSensor extends javax.swing.JDialog {
     
         if (sensor != null){
        
-        this.txtIdentificadorS.setText(String.valueOf(sensor.getId()));
+        this.txtIdentificadorS.setText(String.valueOf(sensor.getIdentificador()));
         this.txtTipo.setText(sensor.getTipo());
         this.txtLocalizacion.setText(sensor.getLocalizacion());
         
@@ -58,9 +58,15 @@ public class formularioSensor extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        pSensor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pSensor.add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 184, -1));
+
         lblTipo.setText("Tipo");
+        pSensor.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 41, -1));
 
         jLabel1.setText("Localizacion");
+        pSensor.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 85, -1));
+        pSensor.add(txtLocalizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 184, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +74,7 @@ public class formularioSensor extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
+        pSensor.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 57, -1));
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -75,67 +82,17 @@ public class formularioSensor extends javax.swing.JDialog {
                 btnVolverActionPerformed(evt);
             }
         });
+        pSensor.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 57, -1));
+        pSensor.add(txtIdentificadorS, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 79, 184, -1));
 
         jLabel2.setText("Identificador");
-
-        javax.swing.GroupLayout pSensorLayout = new javax.swing.GroupLayout(pSensor);
-        pSensor.setLayout(pSensorLayout);
-        pSensorLayout.setHorizontalGroup(
-            pSensorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSensorLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSensorLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addGroup(pSensorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSensorLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSensorLayout.createSequentialGroup()
-                        .addComponent(lblTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSensorLayout.createSequentialGroup()
-                        .addGroup(pSensorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIdentificadorS, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSensorLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98))))
-        );
-        pSensorLayout.setVerticalGroup(
-            pSensorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pSensorLayout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(32, 32, 32)
-                .addComponent(txtIdentificadorS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblTipo)
-                .addGap(18, 18, 18)
-                .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtLocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(pSensorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnVolver))
-                .addGap(34, 34, 34))
-        );
+        pSensor.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 89, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pSensor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pSensor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +107,7 @@ public class formularioSensor extends javax.swing.JDialog {
     public Sensor consultarTarea() {
         return new Sensor(
             gestionSensor.obtenerUltimoId()+1,
-            Integer.parseInt(this.txtIdentificadorS.getText()),
+            this.txtIdentificadorS.getText(),
             txtTipo.getText(),
             txtLocalizacion.getText()
         );

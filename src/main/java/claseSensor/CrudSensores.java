@@ -60,7 +60,9 @@ public class CrudSensores extends javax.swing.JFrame {
             this.gestioSensor.agregar(se);
            
         }else{
-            
+               se.setId(sensor.getId());
+               
+            this.gestioSensor.editar(sensor.getId(), se);
             this.gestioSensor.editar(se.getId(),se);
             
             }
@@ -87,6 +89,7 @@ public class CrudSensores extends javax.swing.JFrame {
           
            String id = String.valueOf(this.tbSensores.getValueAt(this.tbSensores.getSelectedRow(), 0));
            Sensor se = this.gestioSensor.obtenerObjeto(Integer.parseInt(id));
+           System.out.println(id);
            this.abrirFormularioSensor(se);
          
        }else{

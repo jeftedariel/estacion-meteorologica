@@ -6,24 +6,24 @@ package claseSensor;
  */
 public class Sensor {
     
-    private int identificador, id;
-    private String tipo, localizacion;
+    private int id;
+    private String tipo, localizacion,identificador;
 
     public Sensor() {
     }
 
-    public Sensor(int id, int identificador, String tipo, String localizacion) {
+    public Sensor(int id, String identificador, String tipo, String localizacion) {
         this.identificador = identificador;
         this.id = id;
         this.tipo = tipo;
         this.localizacion = localizacion;
     }
 
-    public int getIdentificador() {
+    public String getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(int identificador) {
+    public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
 
