@@ -4,18 +4,22 @@
  */
 package com.jefte.estacionmeteorologica;
 
+import javax.swing.JCheckBox;
 /**
  *
  * @author Raul Quesada Morera
  */
 public class Filtrado extends javax.swing.JDialog {
+    private String[] datos = {"", "", "", "", "", ""};
+    private boolean confirmar;
 
-    /**
-     * Creates new form Filtrado
-     */
     public Filtrado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setUndecorated(true);
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(parent);
+        this.confirmar=false;
     }
 
 
@@ -24,8 +28,6 @@ public class Filtrado extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        checkRol = new javax.swing.JCheckBox();
-        txtRol = new javax.swing.JTextField();
         checkCedula = new javax.swing.JCheckBox();
         txtCedula = new javax.swing.JTextField();
         checkNombre = new javax.swing.JCheckBox();
@@ -42,19 +44,57 @@ public class Filtrado extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        checkRol.setText("Id Rol");
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         checkCedula.setText("Cédula");
+        checkCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkCedulaActionPerformed(evt);
+            }
+        });
+
+        txtCedula.setEnabled(false);
 
         checkNombre.setText("Nombre");
+        checkNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkNombreActionPerformed(evt);
+            }
+        });
+
+        txtNombre.setEnabled(false);
 
         checkPApellido.setText("Primer Apellido");
+        checkPApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkPApellidoActionPerformed(evt);
+            }
+        });
+
+        txtPApellido.setEnabled(false);
 
         checkSApellido.setText("Segundo Apellido");
+        checkSApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkSApellidoActionPerformed(evt);
+            }
+        });
 
         checkCorreo.setText("Correo");
+        checkCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkCorreoActionPerformed(evt);
+            }
+        });
 
         checkContrasena.setText("Contraseña");
+        checkContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkContrasenaActionPerformed(evt);
+            }
+        });
+
+        txtContrasena.setEnabled(false);
 
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,41 +103,40 @@ public class Filtrado extends javax.swing.JDialog {
             }
         });
 
+        txtSApellido.setEnabled(false);
+
+        txtCorreo.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
-                .addComponent(btnAceptar)
-                .addGap(89, 89, 89))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(checkContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkRol, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRol)
-                    .addComponent(txtCedula)
-                    .addComponent(txtNombre)
-                    .addComponent(txtPApellido)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                    .addComponent(checkPApellido)
-                    .addComponent(checkSApellido)
-                    .addComponent(txtSApellido)
-                    .addComponent(txtCorreo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(checkContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCedula)
+                            .addComponent(txtNombre)
+                            .addComponent(txtPApellido)
+                            .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                            .addComponent(checkPApellido)
+                            .addComponent(checkSApellido)
+                            .addComponent(txtSApellido)
+                            .addComponent(txtCorreo)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(btnAceptar)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(checkRol)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(checkCedula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,9 +160,9 @@ public class Filtrado extends javax.swing.JDialog {
                 .addComponent(checkContrasena)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnAceptar)
-                .addContainerGap())
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,10 +178,73 @@ public class Filtrado extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public boolean confirmacion() {
+       return this.confirmar;
+    }  
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
+        //guarda los datos ingresados en el filtro
+        datos[0] = (this.txtCedula.isEnabled()) ? this.txtCedula.getText() : "";
+        datos[1] = (this.txtNombre.isEnabled()) ? this.txtNombre.getText() : "";
+        datos[2] = (this.txtPApellido.isEnabled()) ? this.txtPApellido.getText() : "";
+        datos[3] = (this.txtSApellido.isEnabled()) ? this.txtSApellido.getText() : "";
+        datos[4] = (this.txtCorreo.isEnabled()) ? this.txtCorreo.getText() : "";
+        datos[5] = (this.txtContrasena.isEnabled()) ? this.txtContrasena.getText() : "";
+        this.confirmar = true;
+        this.setVisible(false); 
     }//GEN-LAST:event_btnAceptarActionPerformed
+      
+    public String getDatos(int indice) {
+        return datos[indice];
+    }
+    
+    private void checkCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCedulaActionPerformed
+        this.txtCedula.setEnabled((this.txtCedula.isEnabled()) ? false : true);
+    }//GEN-LAST:event_checkCedulaActionPerformed
+
+    private void checkNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkNombreActionPerformed
+        this.txtNombre.setEnabled((this.txtNombre.isEnabled()) ? false : true);
+    }//GEN-LAST:event_checkNombreActionPerformed
+
+    private void checkPApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPApellidoActionPerformed
+        this.txtPApellido.setEnabled((this.txtPApellido.isEnabled()) ? false : true);
+    }//GEN-LAST:event_checkPApellidoActionPerformed
+
+    private void checkSApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSApellidoActionPerformed
+        this.txtSApellido.setEnabled((this.txtSApellido.isEnabled()) ? false : true);
+    }//GEN-LAST:event_checkSApellidoActionPerformed
+
+    private void checkCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCorreoActionPerformed
+        this.txtCorreo.setEnabled((this.txtCorreo.isEnabled()) ? false : true);
+    }//GEN-LAST:event_checkCorreoActionPerformed
+
+    private void checkContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkContrasenaActionPerformed
+        this.txtContrasena.setEnabled((this.txtContrasena.isEnabled()) ? false : true);
+    }//GEN-LAST:event_checkContrasenaActionPerformed
+
+    public boolean getCheckCedula() {
+        return checkCedula.isSelected();
+    }
+
+    public boolean getCheckContrasena() {
+        return checkContrasena.isSelected();
+    }
+
+    public boolean getCheckCorreo() {
+        return checkCorreo.isSelected();
+    }
+
+    public boolean getCheckNombre() {
+        return checkNombre.isSelected();
+    }
+
+    public boolean getCheckPApellido() {
+        return checkPApellido.isSelected();
+    }
+
+    public boolean getCheckSApellido() {
+        return checkSApellido.isSelected();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -152,7 +254,6 @@ public class Filtrado extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkCorreo;
     private javax.swing.JCheckBox checkNombre;
     private javax.swing.JCheckBox checkPApellido;
-    private javax.swing.JCheckBox checkRol;
     private javax.swing.JCheckBox checkSApellido;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCedula;
@@ -160,7 +261,6 @@ public class Filtrado extends javax.swing.JDialog {
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPApellido;
-    private javax.swing.JTextField txtRol;
     private javax.swing.JTextField txtSApellido;
     // End of variables declaration//GEN-END:variables
 }

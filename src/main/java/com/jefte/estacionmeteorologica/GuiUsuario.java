@@ -4,17 +4,93 @@
  */
 package com.jefte.estacionmeteorologica;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author Raul Quesada Morera
  */
 public class GuiUsuario extends javax.swing.JFrame {
 
+    private JsonHandler<Usuario> gestionUsuario;
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private String nombre = "Usuarios.json";
+    
+    private TableRowSorter trsfiltro;
+    String filtro;
 
     public GuiUsuario() {
+        this.setUndecorated(true);
         initComponents();
+        this.gestionUsuario = new JsonHandler(nombre, new TypeReference<Map<Integer, Usuario>>() {
+        });
+        String[] nombreColumnas = {"Id", "Id Rol", "Cedula", "Nombre", "Apellido 1", "Apellido 2", "Correo", "Contra"};
+        this.modelo.setColumnIdentifiers(nombreColumnas);
+        this.tbUsuarios.setModel(modelo);
+
+        actualizarTabla();
     }
 
+    private void actualizarTabla() {
+        this.modelo.setRowCount(0);
+        this.gestionUsuario.obtenerDatos();
+
+        for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
+            this.modelo.addRow(new Object[]{usuario.getId(), usuario.getId_rol(), usuario.getCedula(), usuario.getNombre(), usuario.getPrimer_apellido(), usuario.getSegundo_apellido(), usuario.getCorreo_electronico(), usuario.getContrasena()});
+        }
+    }
+
+    private void abrirFormularioUsuario(Usuario usuario) {
+
+        formulario formulario = new formulario(this, true, usuario);
+
+        formulario.setVisible(true);
+
+        if (formulario.confirmacion()) {
+            Usuario se = formulario.consultarUsuario();
+
+            if (usuario == null) {
+
+                this.gestionUsuario.agregar(se.getId(), se);
+
+            } else {
+
+                // this.gestioSensor.editar(se);
+            }
+            actualizarTabla();
+        }
+    }
+
+    private void eliminarUsuario() {
+
+        int filaSeleccionada = this.tbUsuarios.getSelectedRow();
+        if (filaSeleccionada != - 1) {
+
+            String id = String.valueOf(this.tbUsuarios.getValueAt(filaSeleccionada, 0));
+            this.gestionUsuario.eliminar(Integer.parseInt(id));
+            actualizarTabla();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un propietario para eliminarlo.");
+        }
+    }
+
+    private void actualizar() {
+
+        if (this.tbUsuarios.getSelectedRow() != -1) {
+
+            String id = String.valueOf(this.tbUsuarios.getValueAt(this.tbUsuarios.getSelectedRow(), 0));
+            //Sensor se = this.gestioSensor.obtenerSensor(Integer.parseInt(id));
+            //this.abrirFormularioAnimal(se);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,6 +102,7 @@ public class GuiUsuario extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -82,13 +159,21 @@ public class GuiUsuario extends javax.swing.JFrame {
             }
         });
 
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
                 .addGap(322, 322, 322))
             .addGroup(layout.createSequentialGroup()
@@ -105,8 +190,11 @@ public class GuiUsuario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTitulo))
+                    .addComponent(btnVolver))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
@@ -125,11 +213,11 @@ public class GuiUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        this.abrirFormularioUsuario(null);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        this.actualizarTabla();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -137,15 +225,68 @@ public class GuiUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        this.formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+    
+    private void formFiltro() {
+
+        Filtrado guiFiltro = new Filtrado(this, true);
+        guiFiltro.setVisible(true);
+
+        if (guiFiltro.confirmacion()) {
+            this.modelo.setRowCount(0);
+
+            for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
+                boolean filtro = true;
+                if (guiFiltro.getCheckCedula() && !String.valueOf(usuario.getCedula()).contentEquals(guiFiltro.getDatos(0))){
+                    filtro = false;
+                }
+                if (guiFiltro.getCheckNombre() && !String.valueOf(usuario.getNombre()).contentEquals(guiFiltro.getDatos(1))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCheckPApellido() && !String.valueOf(usuario.getPrimer_apellido()).contentEquals(guiFiltro.getDatos(2))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCheckSApellido() && !String.valueOf(usuario.getSegundo_apellido()).contentEquals(guiFiltro.getDatos(3))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCheckCorreo() && !String.valueOf(usuario.getCorreo_electronico()).contentEquals(guiFiltro.getDatos(4))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCheckContrasena() && !String.valueOf(usuario.getContrasena()).contentEquals(guiFiltro.getDatos(5))) {
+                    filtro = false;
+                }
+
+                if (filtro) {
+                    this.modelo.addRow(new Object[]{
+                        usuario.getId(),
+                        usuario.getId_rol(),
+                        usuario.getCedula(),
+                        usuario.getNombre(),
+                        usuario.getPrimer_apellido(),
+                        usuario.getSegundo_apellido(),
+                        usuario.getCorreo_electronico(),
+                        usuario.getContrasena()
+                    });
+                }
+
+            }
+
+            this.tbUsuarios.setModel(modelo);
+            this.tbUsuarios.repaint();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tbUsuarios;
