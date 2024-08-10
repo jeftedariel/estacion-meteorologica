@@ -144,14 +144,14 @@ public class FiltroSensor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if(Validar.validaciones(this.txtIdentificador.getText(), "Solo se pueden ingresar letras", "[a-z].*")){
+        
         datos[0] = (this.txtIdentificador.isEnabled()) ? this.txtIdentificador.getText() : "";
         datos[1] = (this.txtTipo.isEnabled()) ? this.txtTipo.getText() : "";
         datos[2] = (this.txtLocalizacion.isEnabled()) ? this.txtLocalizacion.getText() : "";
         
         this.confirmar = true;
         this.setVisible(false);
-        }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     public String getDatos(int indice) {
