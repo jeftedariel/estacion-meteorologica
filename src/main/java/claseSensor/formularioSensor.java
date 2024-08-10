@@ -121,8 +121,12 @@ public class formularioSensor extends javax.swing.JDialog {
 
     public void iniciar() {
         if (!this.txtIdentificadorS.getText().isEmpty() && !this.txtLocalizacion.getText().isEmpty() && !this.txtTipo.getText().isEmpty()) {
+            if(Validar.validaciones(this.txtTipo.getText(), "Solo se aceptan letras", "[a-z].*")){
+                if(Validar.validaciones(this.txtLocalizacion.getText(), "Solo se aceptan letras", "[a-z].*")){
             this.confirmar = true;
             this.setVisible(false);
+                }
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Dejo uno de los campos de texto vacios");
 
