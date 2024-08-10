@@ -4,17 +4,37 @@
  */
 package claseDatosSensor;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Justin Rodriguez Gonzalez
  */
 public class GUIDatosSensores extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUIDatosSensores
-     */
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private JsonHandler<DatosSensor> gestionDatosSensor;
+    private String nombreJson = "datosSensores.json";
+    
     public GUIDatosSensores() {
         initComponents();
+        this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {
+        });
+        String[] columnas = {"id", "Valor", "Id Sensor", "Fecha", "Hora"};
+        this.modelo.setColumnIdentifiers(columnas);
+        tbDatosSensores.setModel(modelo);
+        
+    }
+    
+    private void actualizarTabla() {
+        this.modelo.setRowCount(0);
+        for (DatosSensor datos : this.gestionDatosSensor.obtenerDatos().values()) {
+            this.modelo.addRow(new Object[]{datos.getId(), datos.getValor(), datos.getIdSensor(), datos.getFecha(), datos.getHora()});
+            
+        }
     }
 
     /**
@@ -26,57 +46,99 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pPrincipal = new javax.swing.JPanel();
+        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbDatosSensores = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnAgregar.setText("Agregar");
+
+        btnEliminar.setText("Eliminar");
+
+        btnEditar.setText("Editar");
+
+        btnBuscar.setText("Buscar");
+
+        tbDatosSensores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tbDatosSensores);
+
+        btnVolver.setText("Volver");
+
+        javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
+        pPrincipal.setLayout(pPrincipalLayout);
+        pPrincipalLayout.setHorizontalGroup(
+            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
+        );
+        pPrincipalLayout.setVerticalGroup(
+            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnEditar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(btnVolver)
+                .addGap(29, 29, 29))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIDatosSensores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIDatosSensores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIDatosSensores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIDatosSensores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIDatosSensores().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pPrincipal;
+    private javax.swing.JTable tbDatosSensores;
     // End of variables declaration//GEN-END:variables
 }
