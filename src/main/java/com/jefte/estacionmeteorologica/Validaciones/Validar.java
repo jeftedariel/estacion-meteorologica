@@ -11,16 +11,21 @@ import javax.swing.JOptionPane;
  * @author Brandon Campos
  */
 public class Validar {
-    public static boolean validaciones(String dato, String er, String regex){
-        if(dato.matches(regex)){
-            return true;
-        }else{
-            mensajeError(er);
-            return false;
-        }
+    public static boolean validaciones(String dato, String regex) {
+        return (dato.matches(regex)) ? true : false;
     }
-    
-    public static void mensajeError(String err){
+
+    public static boolean validaciones(String dato, String er, String regex) {
+        if (dato.matches(regex)) {
+            return true;
+        }
+
+        mensajeError(er);
+        return false;
+    }
+
+    public static void
+        mensajeError(String err) {
         JOptionPane.showMessageDialog(null, err);
     }
 
