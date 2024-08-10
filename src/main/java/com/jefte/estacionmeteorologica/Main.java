@@ -4,6 +4,8 @@
  */
 package com.jefte.estacionmeteorologica;
 
+import com.jefte.estacionmeteorologica.Usuarios.GuiUsuario;
+
 /**
  *
  * @author Raul Quesada Morera

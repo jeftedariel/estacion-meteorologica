@@ -2,25 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package com.jefte.estacionmeteorologica;
+package com.jefte.estacionmeteorologica.Usuarios;
+
+import com.jefte.estacionmeteorologica.Usuarios.Usuario;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.util.Map;
 
 /**
  *
  * @author Raul Quesada Morera
  */
 public class formulario extends javax.swing.JDialog {
-        private boolean confirmar;
-        private int idUsuario = 1;
-        private boolean edicion;
-    
+
+    private JsonHandler<Usuario> gestionUsuario;
+    private String nombre = "Usuarios.json";
+    private boolean confirmar;
+    private int idUsuario = 1;
+    private boolean edicion;
+
     public formulario(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         initComponents();
+        this.gestionUsuario = new JsonHandler(nombre, new TypeReference<Map<Integer, Usuario>>() {
+        });
         this.inicializarFormulario(usuario);
         this.setResizable(false);
         this.setLocationRelativeTo(parent);
     }
-    
+
     private void inicializarFormulario(Usuario usuario) {
         if (usuario != null) {
             this.idUsuario = usuario.getId();
@@ -38,19 +48,19 @@ public class formulario extends javax.swing.JDialog {
     public boolean confirmacion() {
         return this.confirmar;
     }
-    
+
     public Usuario consultarUsuario() {
-    return new Usuario(
-            this.edicion ? this.idUsuario : 0,
-            Integer.parseInt(this.txtCedula.getText()),
-            this.txtNombre.getText(),
-            this.txtPApellido.getText(),
-            this.txtSApellido.getText(),
-            this.txtCorreo.getText(),
-            this.txtContrasena.getText()
+        return new Usuario(
+                this.gestionUsuario.obtenerUltimoId() + 1,
+                Integer.parseInt(this.txtCedula.getText()),
+                this.txtNombre.getText(),
+                this.txtPApellido.getText(),
+                this.txtSApellido.getText(),
+                this.txtCorreo.getText(),
+                this.txtContrasena.getText()
         );
     }
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

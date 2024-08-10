@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.jefte.estacionmeteorologica;
+package com.jefte.estacionmeteorologica.Usuarios;
 
+import com.jefte.estacionmeteorologica.Usuarios.Filtrado;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -55,11 +57,11 @@ public class GuiUsuario extends javax.swing.JFrame {
 
             if (usuario == null) {
 
-                this.gestionUsuario.agregar(se.getId(), se);
+                this.gestionUsuario.agregar(se);
 
             } else {
-
-                // this.gestioSensor.editar(se);
+                se.setId(usuario.getId());
+                this.gestionUsuario.editar(usuario.getId(),se);
             }
             actualizarTabla();
         }
