@@ -12,7 +12,7 @@ public class Usuario {
     public int id, id_rol, cedula; 
     public String nombre, primer_apellido, segundo_apellido, correo_electronico,contrasena;
 
-    public Usuario(int id, int cedula, String nombre, String primer_apellido, String segundo_apellido, String correo_electronico, String contrasena) {
+    public Usuario(int id, int id_rol, int cedula, String nombre, String primer_apellido, String segundo_apellido, String correo_electronico, String contrasena) {
         this.id = id;
         this.id_rol = 0;
         this.cedula = cedula;

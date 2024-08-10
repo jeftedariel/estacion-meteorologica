@@ -7,7 +7,9 @@ package com.jefte.estacionmeteorologica.Usuarios;
 import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Validaciones.Validar;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +36,7 @@ public class formulario extends javax.swing.JDialog {
     private void inicializarFormulario(Usuario usuario) {
         if (usuario != null) {
             this.idUsuario = usuario.getId();
+            this.txtId_Rol.setText(String.valueOf(usuario.getId_rol()));
             this.txtCedula.setText(String.valueOf(usuario.getCedula()));
             this.txtNombre.setText(usuario.getNombre());
             this.txtPApellido.setText(usuario.getPrimer_apellido());
@@ -52,6 +55,7 @@ public class formulario extends javax.swing.JDialog {
     public Usuario consultarUsuario() {
         return new Usuario(
                 this.gestionUsuario.obtenerUltimoId() + 1,
+                Integer.parseInt(this.txtId_Rol.getText()),
                 Integer.parseInt(this.txtCedula.getText()),
                 this.txtNombre.getText(),
                 this.txtPApellido.getText(),
@@ -80,10 +84,12 @@ public class formulario extends javax.swing.JDialog {
         txtSApellido = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JTextField();
+        lblId_Rol = new javax.swing.JLabel();
+        txtId_Rol = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         lblCedula.setText("Cédula");
 
@@ -111,41 +117,49 @@ public class formulario extends javax.swing.JDialog {
             }
         });
 
+        lblId_Rol.setText("Id Rol");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblContrasena)
                     .addComponent(lblCorreo)
                     .addComponent(lblSApellido)
                     .addComponent(lblPApellido)
                     .addComponent(lblNombre)
-                    .addComponent(lblCedula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(lblCedula)
+                    .addComponent(lblId_Rol))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                    .addComponent(txtPApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardar)))
+                        .addComponent(btnGuardar))
+                    .addComponent(txtId_Rol))
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblId_Rol)
+                    .addComponent(txtId_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCedula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombre))
@@ -192,10 +206,32 @@ public class formulario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        this.confirmar = true;
-        this.setVisible(false);
+        this.datosValidados();
     }//GEN-LAST:event_btnGuardarActionPerformed
-
+    
+    private void datosValidados(){
+    if(!this.txtCedula.getText().isEmpty() && !this.txtContrasena.getText().isEmpty() && !this.txtCorreo.getText().isEmpty() && !this.txtId_Rol.getText().isEmpty() && !this.txtNombre.getText().isEmpty() && !this.txtPApellido.getText().isEmpty() && !this.txtSApellido.getText().isEmpty()){
+        if(Validar.validaciones(this.txtId_Rol.getText(),"Error de formato del id", "^\\d+$")){
+            if(Validar.validaciones(this.txtCedula.getText(), "Error de formato de la cedula", "^\\d{9}$")){
+                if(Validar.validaciones(this.txtNombre.getText(), "Error de formato del nombre", "^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$")){
+                    if(Validar.validaciones(this.txtPApellido.getText(), "Error de formato del primer apellido", "^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$")){
+                        if(Validar.validaciones(this.txtSApellido.getText(), "Error de formato del segundo apellido", "^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$")){
+                            if(Validar.validaciones(this.txtCorreo.getText(), "Error de formato del correo", "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+                                if(Validar.validaciones(this.txtContrasena.getText(), "Error de formato de la contrasena", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")){
+            this.confirmar = true;
+            this.setVisible(false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Hay algun espacio en blanco");
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -204,12 +240,14 @@ public class formulario extends javax.swing.JDialog {
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblId_Rol;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPApellido;
     private javax.swing.JLabel lblSApellido;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtId_Rol;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPApellido;
     private javax.swing.JTextField txtSApellido;

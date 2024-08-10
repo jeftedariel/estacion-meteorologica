@@ -10,7 +10,7 @@ import javax.swing.JCheckBox;
  * @author Raul Quesada Morera
  */
 public class Filtrado extends javax.swing.JDialog {
-    private String[] datos = {"", "", "", "", "", ""};
+    private String[] datos = {"", "", "", "", "", "", ""};
     private boolean confirmar;
 
     public Filtrado(java.awt.Frame parent, boolean modal) {
@@ -41,6 +41,8 @@ public class Filtrado extends javax.swing.JDialog {
         btnAceptar = new javax.swing.JButton();
         txtSApellido = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
+        checkId_Rol = new javax.swing.JCheckBox();
+        txtId_Rol = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -107,6 +109,15 @@ public class Filtrado extends javax.swing.JDialog {
 
         txtCorreo.setEnabled(false);
 
+        checkId_Rol.setText("Id Rol");
+        checkId_Rol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkId_RolActionPerformed(evt);
+            }
+        });
+
+        txtId_Rol.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,8 +125,12 @@ public class Filtrado extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(btnAceptar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(checkId_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,16 +142,18 @@ public class Filtrado extends javax.swing.JDialog {
                             .addComponent(checkPApellido)
                             .addComponent(checkSApellido)
                             .addComponent(txtSApellido)
-                            .addComponent(txtCorreo)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(btnAceptar)))
+                            .addComponent(txtCorreo)
+                            .addComponent(txtId_Rol))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(checkId_Rol)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtId_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(checkCedula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +169,7 @@ public class Filtrado extends javax.swing.JDialog {
                 .addComponent(checkSApellido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addComponent(checkCorreo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +179,7 @@ public class Filtrado extends javax.swing.JDialog {
                 .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAceptar)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,12 +201,13 @@ public class Filtrado extends javax.swing.JDialog {
     }  
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         //guarda los datos ingresados en el filtro
-        datos[0] = (this.txtCedula.isEnabled()) ? this.txtCedula.getText() : "";
-        datos[1] = (this.txtNombre.isEnabled()) ? this.txtNombre.getText() : "";
-        datos[2] = (this.txtPApellido.isEnabled()) ? this.txtPApellido.getText() : "";
-        datos[3] = (this.txtSApellido.isEnabled()) ? this.txtSApellido.getText() : "";
-        datos[4] = (this.txtCorreo.isEnabled()) ? this.txtCorreo.getText() : "";
-        datos[5] = (this.txtContrasena.isEnabled()) ? this.txtContrasena.getText() : "";
+        datos[0] = (this.txtId_Rol.isEnabled()) ? this.txtId_Rol.getText() : "";
+        datos[1] = (this.txtCedula.isEnabled()) ? this.txtCedula.getText() : "";
+        datos[2] = (this.txtNombre.isEnabled()) ? this.txtNombre.getText() : "";
+        datos[3] = (this.txtPApellido.isEnabled()) ? this.txtPApellido.getText() : "";
+        datos[4] = (this.txtSApellido.isEnabled()) ? this.txtSApellido.getText() : "";
+        datos[5] = (this.txtCorreo.isEnabled()) ? this.txtCorreo.getText() : "";
+        datos[6] = (this.txtContrasena.isEnabled()) ? this.txtContrasena.getText() : "";
         this.confirmar = true;
         this.setVisible(false); 
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -222,6 +240,14 @@ public class Filtrado extends javax.swing.JDialog {
         this.txtContrasena.setEnabled((this.txtContrasena.isEnabled()) ? false : true);
     }//GEN-LAST:event_checkContrasenaActionPerformed
 
+    private void checkId_RolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkId_RolActionPerformed
+        this.txtId_Rol.setEnabled((this.txtId_Rol.isEnabled()) ? false : true);
+    }//GEN-LAST:event_checkId_RolActionPerformed
+
+    public boolean getCheckId_Rol() {
+        return checkId_Rol.isSelected();
+    }
+    
     public boolean getCheckCedula() {
         return checkCedula.isSelected();
     }
@@ -252,6 +278,7 @@ public class Filtrado extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkCedula;
     private javax.swing.JCheckBox checkContrasena;
     private javax.swing.JCheckBox checkCorreo;
+    private javax.swing.JCheckBox checkId_Rol;
     private javax.swing.JCheckBox checkNombre;
     private javax.swing.JCheckBox checkPApellido;
     private javax.swing.JCheckBox checkSApellido;
@@ -259,6 +286,7 @@ public class Filtrado extends javax.swing.JDialog {
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtId_Rol;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPApellido;
     private javax.swing.JTextField txtSApellido;
