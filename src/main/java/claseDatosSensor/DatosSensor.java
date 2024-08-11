@@ -36,8 +36,6 @@ public class DatosSensor {
 
     public DatosSensor() {
     }
-    
-    
 
     public int getId() {
         return id;
@@ -94,7 +92,10 @@ public class DatosSensor {
     public void setDate(Date date) {
         this.date = date;
     }
+    
+    
 
+   
     @Override
     public String toString() {
         return "DatosSensor{" + "id=" + id + ", valor=" + valor + ", idSensor=" + idSensor + ", fecha=" + fecha + ", hora=" + hora + ", dateFormat=" + dateFormat + ", date=" + date + '}';
