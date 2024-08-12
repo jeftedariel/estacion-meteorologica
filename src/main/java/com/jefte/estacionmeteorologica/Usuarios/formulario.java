@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class formulario extends javax.swing.JDialog {
 
     private JsonHandler<Usuario> gestionUsuario;
-    private String nombre = "Usuarios.json";
+    private String nombre = "usuarios.json";
     private boolean confirmar;
     private int idUsuario = 1;
     private boolean edicion;
