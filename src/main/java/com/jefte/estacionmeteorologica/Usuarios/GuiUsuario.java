@@ -20,7 +20,7 @@ public class GuiUsuario extends javax.swing.JFrame {
 
     private JsonHandler<Usuario> gestionUsuario;
     private DefaultTableModel modelo = new DefaultTableModel();
-    private String nombre = "Usuarios.json";
+    private String nombre = "usuarios.json";
     
     private TableRowSorter trsfiltro;
     String filtro;
