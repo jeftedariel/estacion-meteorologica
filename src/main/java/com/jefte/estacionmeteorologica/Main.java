@@ -1,32 +1,23 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-
 package com.jefte.estacionmeteorologica;
-import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+
+import com.jefte.estacionmeteorologica.Usuarios.GuiUsuario;
 
 /**
  *
- * @author jefte
+ * @author Raul Quesada Morera
  */
 public class Main {
 
-    public static void main(String[] args){  
-        //JsonHandler json = new JsonHandler("animales.json");
-        
-        //animal a1 = new animal(1,"pato"); 
-        //animal a2 = new animal(2,"perico");
-        
-        
-        //json.agregar(a1, a1.getId());
-        //json.agregar(a2, a2.getId());
-        
-        //json.eliminar(a1.getId());
-        //json.eliminar(a2.getId());
-        
-        
-        //json.editar(1, a2);
-        //System.out.println(json.obtenerDatos());
-        
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        GuiUsuario u = new GuiUsuario();
+        u.setVisible(true);
+        u.setLocationRelativeTo(null);
     }
 }
