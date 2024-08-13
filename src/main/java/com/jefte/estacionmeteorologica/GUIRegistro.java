@@ -6,6 +6,9 @@ package com.jefte.estacionmeteorologica;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Usuarios.Usuario;
+import com.jefte.estacionmeteorologica.Validaciones.Validar;
+import java.awt.Color;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
@@ -14,12 +17,23 @@ import javax.swing.JOptionPane;
  * @author Brandon Campos
  */
 public class GUIRegistro extends javax.swing.JFrame {
-     private JsonHandler<Usuario> gestionUsuario;
-     private String nombreJson = "Usuarios.json";
+
+    private JsonHandler<Usuario> gestionUsuario;
+    private String nombreJson = "Usuarios.json";
+    private boolean[] checks = {false, false, false, false, false};
+
     public GUIRegistro() {
         initComponents();
-        this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>(){});
+        this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>() {
+        });
 
+    }
+
+    private boolean isCheck() {
+        if (checks[0] && checks[1] && checks[2] && checks[3] && checks[4]) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -36,20 +50,43 @@ public class GUIRegistro extends javax.swing.JFrame {
         txtCorreoElectronico = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblContraseña = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JTextField();
         btnRegistrarse = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        lblPApellido = new javax.swing.JLabel();
+        txtPApellido = new javax.swing.JTextField();
+        lblSApellido = new javax.swing.JLabel();
+        txtSApellido = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblCorreo.setText("Correo Electronico");
 
+        txtCorreoElectronico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCorreoElectronicoKeyReleased(evt);
+            }
+        });
+
         lblNombre.setText("Nombre");
 
-        jLabel1.setText("Contraseña");
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+        });
+
+        lblContraseña.setText("Contraseña");
+
+        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContraseñaKeyReleased(evt);
+            }
+        });
 
         btnRegistrarse.setText("Registrarse");
+        btnRegistrarse.setEnabled(false);
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarseActionPerformed(evt);
@@ -63,33 +100,57 @@ public class GUIRegistro extends javax.swing.JFrame {
             }
         });
 
+        lblPApellido.setText("Primer Apellido");
+
+        txtPApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPApellidoKeyReleased(evt);
+            }
+        });
+
+        lblSApellido.setText("Segundo Apellido");
+
+        txtSApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSApellidoKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCorreo)
-                            .addComponent(lblNombre)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNombre)
+                            .addComponent(lblSApellido)
+                            .addComponent(lblPApellido)
+                            .addComponent(lblCorreo)
+                            .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCorreoElectronico)
-                            .addComponent(txtNombre)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnRegistrarse)
-                        .addGap(56, 56, 56))))
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtContraseña)
+                    .addComponent(txtSApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,15 +159,23 @@ public class GUIRegistro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPApellido)
+                    .addComponent(txtPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSApellido)
+                    .addComponent(txtSApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCorreo)
                     .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblContraseña)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(110, 110, 110)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,24 +201,90 @@ public class GUIRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-            this.gestionUsuario.agregar(new Usuario(this.gestionUsuario.obtenerUltimoId()+1,this.txtNombre.getText(),this.txtCorreoElectronico.getText(),this.txtContraseña.getText()));
-            JOptionPane.showMessageDialog(null, "Se Registro");
+        this.gestionUsuario.agregar(new Usuario(this.gestionUsuario.obtenerUltimoId() + 1, this.txtNombre.getText(), this.txtPApellido.getText(), this.txtSApellido.getText(), this.txtCorreoElectronico.getText(), this.txtContraseña.getText()));
+        JOptionPane.showMessageDialog(null, "Usuario Registrado existosamente!");
+        this.dispose();
+        GUILogin guiLogin = new GUILogin();
+        guiLogin.setVisible(true);
+        guiLogin.setResizable(false);
+        guiLogin.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistrarseActionPerformed
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        if (Validar.validaciones(this.txtNombre.getText(), "[a-zA-Z]+")) {
+            this.lblNombre.setForeground(Color.black);
+            this.checks[0] = true;
+        } else {
+            this.checks[0] = false;
+            this.lblNombre.setForeground(Color.red);
+        }
+        this.btnRegistrarse.setEnabled(isCheck());
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtPApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPApellidoKeyReleased
+        if (Validar.validaciones(this.txtPApellido.getText(), "[a-zA-Z]+")) {
+            this.lblPApellido.setForeground(Color.black);
+            this.checks[1] = true;
+        } else {
+            this.checks[1] = false;
+            this.lblPApellido.setForeground(Color.red);
+        }
+        this.btnRegistrarse.setEnabled(isCheck());
+    }//GEN-LAST:event_txtPApellidoKeyReleased
+
+    private void txtSApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSApellidoKeyReleased
+
+        if (Validar.validaciones(this.txtSApellido.getText(), "[a-zA-Z]+")) {
+            this.lblSApellido.setForeground(Color.black);
+            this.checks[2] = true;
+        } else {
+            this.checks[2] = false;
+            this.lblSApellido.setForeground(Color.red);
+        }
+        this.btnRegistrarse.setEnabled(isCheck());
+
+    }//GEN-LAST:event_txtSApellidoKeyReleased
+
+    private void txtCorreoElectronicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoKeyReleased
+        if (Validar.validaciones(this.txtCorreoElectronico.getText(), "[A-Za-z0-9\\._%+\\-]+@[A-Za-z0-9\\.\\-]+\\.[A-Za-z]{2,}")) {
+            this.lblCorreo.setForeground(Color.black);
+            this.checks[3] = true;
+        } else {
+            this.checks[3] = false;
+            this.lblCorreo.setForeground(Color.red);
+        }
+        this.btnRegistrarse.setEnabled(isCheck());
+    }//GEN-LAST:event_txtCorreoElectronicoKeyReleased
+
+
+    private void txtContraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyReleased
+        if (Validar.validaciones(this.txtContraseña.getText(), "[\\S]+")) {
+            this.lblContraseña.setForeground(Color.black);
+            this.checks[4] = true;
+        } else {
+            this.checks[4] = false;
+            this.lblContraseña.setForeground(Color.red);
+        }
+        this.btnRegistrarse.setEnabled(isCheck());
+    }//GEN-LAST:event_txtContraseñaKeyReleased
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRegistrarse;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPApellido;
+    private javax.swing.JLabel lblSApellido;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPApellido;
+    private javax.swing.JTextField txtSApellido;
     // End of variables declaration//GEN-END:variables
 }

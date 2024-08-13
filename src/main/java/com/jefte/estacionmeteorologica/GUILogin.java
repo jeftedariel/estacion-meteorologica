@@ -6,10 +6,10 @@ package com.jefte.estacionmeteorologica;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.jefte.estacionmeteorologica.Validaciones.Validar;
 import java.awt.Color;
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -176,17 +176,19 @@ public class GUILogin extends javax.swing.JFrame {
         guiRegistro.setVisible(true);
         guiRegistro.setResizable(false);
         guiRegistro.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnRegistreseAquiActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
             if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
                 if (usuario.getContrasena().equals(this.txtContraseña.getText())) {
-                    JOptionPane.showMessageDialog(null, "Se encontro");
                     GUIMenu guimenu = new GUIMenu(usuario.getId_rol());
                     guimenu.setVisible(true);
                     guimenu.setLocationRelativeTo(null);
                     guimenu.setResizable(false);
+                    
+                    this.dispose();
                 }
             }
         }
@@ -196,13 +198,11 @@ public class GUILogin extends javax.swing.JFrame {
         if (Validar.validaciones(this.txtCorreoElectronico.getText(), "[A-Za-z0-9\\._%+\\-]+@[A-Za-z0-9\\.\\-]+\\.[A-Za-z]{2,}")) {
             this.lblCorreoElectronico.setForeground(Color.black);
             this.checks[0]=true;
-            this.btnIngresar.setEnabled(isCheck());
         } else {
             this.checks[0]=false;
-            this.btnIngresar.setEnabled(isCheck());
             this.lblCorreoElectronico.setForeground(Color.red);
-            this.btnIngresar.setEnabled(false);
         }
+        this.btnIngresar.setEnabled(isCheck());
         
     }//GEN-LAST:event_txtCorreoElectronicoKeyReleased
 
@@ -210,14 +210,12 @@ public class GUILogin extends javax.swing.JFrame {
         if (Validar.validaciones(this.txtContraseña.getText(), "[\\S]+")) {
             this.lblContraseña.setForeground(Color.black);
             this.checks[1]=true;
-            this.btnIngresar.setEnabled(isCheck());
-
         } else {
             this.checks[1]=false;
-            this.btnIngresar.setEnabled(isCheck());
             this.lblContraseña.setForeground(Color.red);
-            this.btnIngresar.setEnabled(false);
         }
+        
+        this.btnIngresar.setEnabled(isCheck());
     }//GEN-LAST:event_txtContraseñaKeyReleased
 
     /**
