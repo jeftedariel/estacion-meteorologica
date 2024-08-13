@@ -22,6 +22,17 @@ public class Usuario {
         this.correo_electronico = correo_electronico;
         this.contrasena = contrasena;
     }
+    public Usuario(int id, int id_rol,int cedula, String nombre, String primer_apellido, String segundo_apellido, String correo_electronico, String contrasena) {
+        this.id = id;
+        this.id_rol = id_rol;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.primer_apellido = primer_apellido;
+        this.segundo_apellido = segundo_apellido;
+        this.correo_electronico = correo_electronico;
+        this.contrasena = contrasena;
+    }
+
 
     public Usuario() {
     }
