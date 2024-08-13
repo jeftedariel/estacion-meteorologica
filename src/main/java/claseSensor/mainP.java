@@ -1,7 +1,5 @@
 package claseSensor;
 
-import java.util.List;
-
 /**
  *
  * @author Justin Rodriguez Gonzalez

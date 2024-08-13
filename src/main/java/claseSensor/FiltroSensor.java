@@ -4,7 +4,6 @@
  */
 package claseSensor;
 
-import com.jefte.estacionmeteorologica.Validaciones.Validar;
 
 
 

@@ -102,9 +102,7 @@ public class formularioSensor extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pSensor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 48, Short.MAX_VALUE))
+            .addComponent(pSensor, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
         );
 
         pack();
@@ -121,8 +119,8 @@ public class formularioSensor extends javax.swing.JDialog {
 
     public void iniciar() {
         if (!this.txtIdentificadorS.getText().isEmpty() && !this.txtLocalizacion.getText().isEmpty() && !this.txtTipo.getText().isEmpty()) {
-            if(Validar.validaciones(this.txtTipo.getText(), "Solo se aceptan letras", "[a-z].*")){
-                if(Validar.validaciones(this.txtLocalizacion.getText(), "Solo se aceptan letras", "[a-z].*")){
+            if(Validar.validaciones(this.txtTipo.getText(), "Solo se aceptan letras", "^[a-zA-Z\\p{P}\\p{S}]+$")){
+                if(Validar.validaciones(this.txtLocalizacion.getText(), "Solo se aceptan letras", "^[a-zA-Z\\p{P}\\p{S}]+$")){
             this.confirmar = true;
             this.setVisible(false);
                 }

@@ -4,12 +4,9 @@
  */
 package claseDatosSensor;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Date;
 
 
