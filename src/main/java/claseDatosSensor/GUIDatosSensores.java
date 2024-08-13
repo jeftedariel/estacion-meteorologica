@@ -4,8 +4,7 @@
  */
 package claseDatosSensor;
 
-import claseSensor.Sensor;
-import claseSensor.formularioSensor;
+import claseSensor.FiltroSensor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.util.Map;
@@ -90,6 +89,46 @@ public class GUIDatosSensores extends javax.swing.JFrame {
        }
  
  }
+          
+           private void formFiltro() {
+
+        Filtro guiFiltro = new Filtro(this, true);
+        guiFiltro.setVisible(true);
+
+        if (guiFiltro.confirmacion()) {
+            this.modelo.setRowCount(0);
+
+            for (DatosSensor datosSensor : this.gestionDatosSensor.obtenerDatos().values()) {
+                boolean filtro = true;
+                if (guiFiltro.getCkIdentificador()&& !String.valueOf(datosSensor.getIdSensor()).contentEquals(guiFiltro.getDatos(0))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCkFecha()&& !String.valueOf(datosSensor.getFecha()).contentEquals(guiFiltro.getDatos(1))) {
+                    filtro = false;
+                }
+                if (guiFiltro.getCkHora()&& !String.valueOf(datosSensor.getHora()).contentEquals(guiFiltro.getDatos(2))) {
+                    filtro = false;
+                }
+               
+
+                if (filtro) {
+                    this.modelo.addRow(new Object[]{
+                        datosSensor.getId(),
+                        datosSensor.getValor(),
+                        datosSensor.getIdSensor(),
+                        datosSensor.getFecha(),
+                        datosSensor.getHora()
+                       
+                    });
+                }
+
+            }
+
+            this.tbDatosSensores.setModel(modelo);
+            this.tbDatosSensores.repaint();
+        }
+    }
+    
    
     
     
@@ -138,6 +177,11 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         tbDatosSensores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -215,6 +259,10 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
        actualizar();
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       formFiltro();
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
