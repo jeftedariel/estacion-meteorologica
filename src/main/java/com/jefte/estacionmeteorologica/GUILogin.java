@@ -6,6 +6,8 @@ package com.jefte.estacionmeteorologica;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Validaciones.Validar;
+import java.awt.Color;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
@@ -15,14 +17,16 @@ import javax.swing.JOptionPane;
  */
 public class GUILogin extends javax.swing.JFrame {
 
-     private JsonHandler<Usuario> gestionUsuario;
-      private String nombreJson = "Usuarios.json";
-    
+    private JsonHandler<Usuario> gestionUsuario;
+    private String nombreJson = "Usuarios.json";
+    private boolean[] checks = {false, false};
     public GUILogin() {
         initComponents();
-        this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>(){});
+        this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>() {
+        });
+        
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +54,12 @@ public class GUILogin extends javax.swing.JFrame {
         lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCorreoElectronico.setText("Correo Electronico");
 
+        txtCorreoElectronico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCorreoElectronicoKeyReleased(evt);
+            }
+        });
+
         lblContraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblContraseña.setText("Contraseña");
 
@@ -58,9 +68,15 @@ public class GUILogin extends javax.swing.JFrame {
                 txtContraseñaActionPerformed(evt);
             }
         });
+        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContraseñaKeyReleased(evt);
+            }
+        });
 
         btnIngresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnIngresar.setText("Iniciar Sesión");
+        btnIngresar.setEnabled(false);
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -143,7 +159,14 @@ public class GUILogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private boolean isCheck(){
+        if(checks[0] && checks[1]){
+            return true;
+        }
+        return false;
+    }
+    
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
@@ -156,7 +179,6 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistreseAquiActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-
         for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
             if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
                 if (usuario.getContrasena().equals(this.txtContraseña.getText())) {
@@ -170,10 +192,37 @@ public class GUILogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    private void txtCorreoElectronicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoKeyReleased
+        if (Validar.validaciones(this.txtCorreoElectronico.getText(), "[A-Za-z0-9\\._%+\\-]+@[A-Za-z0-9\\.\\-]+\\.[A-Za-z]{2,}")) {
+            this.lblCorreoElectronico.setForeground(Color.black);
+            this.checks[0]=true;
+            this.btnIngresar.setEnabled(isCheck());
+        } else {
+            this.checks[0]=false;
+            this.btnIngresar.setEnabled(isCheck());
+            this.lblCorreoElectronico.setForeground(Color.red);
+            this.btnIngresar.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_txtCorreoElectronicoKeyReleased
+
+    private void txtContraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyReleased
+        if (Validar.validaciones(this.txtContraseña.getText(), "[\\S]+")) {
+            this.lblContraseña.setForeground(Color.black);
+            this.checks[1]=true;
+            this.btnIngresar.setEnabled(isCheck());
+
+        } else {
+            this.checks[1]=false;
+            this.btnIngresar.setEnabled(isCheck());
+            this.lblContraseña.setForeground(Color.red);
+            this.btnIngresar.setEnabled(false);
+        }
+    }//GEN-LAST:event_txtContraseñaKeyReleased
+
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
