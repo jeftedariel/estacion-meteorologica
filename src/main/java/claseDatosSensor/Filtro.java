@@ -4,18 +4,25 @@
  */
 package claseDatosSensor;
 
+import javax.swing.JCheckBox;
+
 /**
  *
  * @author Justin Rodriguez Gonzalez
  */
 public class Filtro extends javax.swing.JDialog {
-
+    private String[] datos = {"", "", "", "", ""};
+    private boolean confirmar;
     /**
      * Creates new form Filtro
      */
     public Filtro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setUndecorated(true);
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(parent);
+        this.confirmar = false;
     }
 
     /**
@@ -27,64 +34,157 @@ public class Filtro extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pPrincipal = new javax.swing.JPanel();
+        ckIdentificador = new javax.swing.JCheckBox();
+        txtIdenficador = new javax.swing.JTextField();
+        ckFecha = new javax.swing.JCheckBox();
+        txtFecha = new javax.swing.JTextField();
+        ckHora = new javax.swing.JCheckBox();
+        txtHora = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        ckIdentificador.setText("Identificador Sensor");
+        ckIdentificador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckIdentificadorActionPerformed(evt);
+            }
+        });
+
+        txtIdenficador.setEnabled(false);
+
+        ckFecha.setText("Fecha");
+        ckFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckFechaActionPerformed(evt);
+            }
+        });
+
+        txtFecha.setEnabled(false);
+
+        ckHora.setText("Hora");
+        ckHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckHoraActionPerformed(evt);
+            }
+        });
+
+        txtHora.setEnabled(false);
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
+        pPrincipal.setLayout(pPrincipalLayout);
+        pPrincipalLayout.setHorizontalGroup(
+            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ckHora)
+                    .addComponent(ckIdentificador, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(txtIdenficador)
+                    .addComponent(ckFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFecha)
+                    .addComponent(txtHora))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPrincipalLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        pPrincipalLayout.setVerticalGroup(
+            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPrincipalLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(ckIdentificador)
+                .addGap(18, 18, 18)
+                .addComponent(txtIdenficador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ckFecha)
+                .addGap(28, 28, 28)
+                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ckHora)
+                .addGap(18, 18, 18)
+                .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Filtro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Filtro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Filtro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Filtro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Filtro dialog = new Filtro(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+        datos[0] = (this.txtIdenficador.isEnabled()) ? this.txtIdenficador.getText() : "";
+        datos[1] = (this.txtFecha.isEnabled()) ? this.txtFecha.getText() : "";
+        datos[2] = (this.txtHora.isEnabled()) ? this.txtHora.getText() : "";
+
+        this.confirmar = true;
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void ckIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckIdentificadorActionPerformed
+        this.txtIdenficador.setEnabled((this.txtIdenficador.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckIdentificadorActionPerformed
+
+    private void ckFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckFechaActionPerformed
+       this.txtFecha.setEnabled((this.txtFecha.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckFechaActionPerformed
+
+    private void ckHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckHoraActionPerformed
+       this.txtHora.setEnabled((this.txtHora.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckHoraActionPerformed
+
+    public boolean confirmacion() {
+        return this.confirmar;
+    }
+    
+     public String getDatos(int indice) {
+        return datos[indice];
     }
 
+    public boolean getCkFecha() {
+        return this.ckFecha.isSelected();
+    }
+
+    public boolean getCkHora() {
+        return this.ckHora.isSelected();
+    }
+
+    public boolean getCkIdentificador() {
+        return this.ckIdentificador.isSelected();
+    }
+
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JCheckBox ckFecha;
+    private javax.swing.JCheckBox ckHora;
+    private javax.swing.JCheckBox ckIdentificador;
+    private javax.swing.JPanel pPrincipal;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtIdenficador;
     // End of variables declaration//GEN-END:variables
 }
