@@ -36,6 +36,7 @@ public class GUIMenu extends javax.swing.JFrame {
         btnSensores = new javax.swing.JButton();
         btnDatosSensores = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
+        btnReportesEnVivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,8 @@ public class GUIMenu extends javax.swing.JFrame {
 
         btnReportes.setText("Reportes");
 
+        btnReportesEnVivo.setText("Reportes en vivo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -60,8 +63,10 @@ public class GUIMenu extends javax.swing.JFrame {
                     .addComponent(btnSensores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDatosSensores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(94, 94, 94)
-                .addComponent(btnReportes)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReportesEnVivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +76,9 @@ public class GUIMenu extends javax.swing.JFrame {
                     .addComponent(btnSensores, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReportes))
                 .addGap(34, 34, 34)
-                .addComponent(btnDatosSensores, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDatosSensores, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addComponent(btnReportesEnVivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(224, Short.MAX_VALUE))
         );
 
@@ -101,6 +108,7 @@ public class GUIMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatosSensores;
     private javax.swing.JButton btnReportes;
+    private javax.swing.JButton btnReportesEnVivo;
     private javax.swing.JButton btnSensores;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -45,8 +45,11 @@
                       <Component id="btnDatosSensores" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="btnReportes" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="308" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnReportes" max="32767" attributes="0"/>
+                      <Component id="btnReportesEnVivo" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="267" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -59,7 +62,10 @@
                       <Component id="btnReportes" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="btnDatosSensores" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnDatosSensores" pref="46" max="32767" attributes="0"/>
+                      <Component id="btnReportesEnVivo" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="224" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -82,6 +88,11 @@
         <Component class="javax.swing.JButton" name="btnReportes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reportes"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnReportesEnVivo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reportes en vivo"/>
           </Properties>
         </Component>
       </SubComponents>
