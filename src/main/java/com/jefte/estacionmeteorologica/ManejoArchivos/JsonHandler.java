@@ -126,6 +126,8 @@ public class JsonHandler<T> {
             JOptionPane.showMessageDialog(null, "Hubo un error al intentar eliminar el objeto." + "\n" + e);
         }
     }
+    
+   
 
     public void editar(int key, T objeto) {
         
