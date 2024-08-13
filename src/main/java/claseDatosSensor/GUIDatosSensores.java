@@ -9,6 +9,7 @@ import claseSensor.formularioSensor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,11 +24,11 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     
     public GUIDatosSensores() {
         initComponents();
-        this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {
-        });
+        this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {});
         String[] columnas = {"id", "Valor", "Id Sensor", "Fecha", "Hora"};
         this.modelo.setColumnIdentifiers(columnas);
         tbDatosSensores.setModel(modelo);
+        actualizarTabla();
         
     }
     
@@ -39,7 +40,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         }
     }
     
-    private void abrirFormularioSensor(DatosSensor datosSensor) {
+    private void abrirFormularioDatosSensor(DatosSensor datosSensor) {
          
     FormularioDatosSensor formulario = new FormularioDatosSensor(this, true,nombreJson,datosSensor);
     
@@ -62,6 +63,35 @@ public class GUIDatosSensores extends javax.swing.JFrame {
        actualizarTabla();
     }
 }
+        private void eliminarDatoSensor() {
+     
+    int filaSeleccionada = this.tbDatosSensores.getSelectedRow();
+    if (filaSeleccionada != - 1) {
+        
+        String id = String.valueOf(this.tbDatosSensores.getValueAt(filaSeleccionada, 0)); 
+        this.gestionDatosSensor.eliminar(Integer.parseInt(id));
+        actualizarTabla();
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un propietario para eliminarlo.");
+    }
+}
+        
+          private void actualizar(){
+
+       if(this.tbDatosSensores.getSelectedRow()!= -1){
+          
+           String id = String.valueOf(this.tbDatosSensores.getValueAt(this.tbDatosSensores.getSelectedRow(), 0));
+           DatosSensor ds = this.gestionDatosSensor.obtenerObjeto(Integer.parseInt(id));
+           System.out.println(id);
+           this.abrirFormularioDatosSensor(ds);
+         
+       }else{
+           JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
+       }
+ 
+ }
+   
+    
     
     
     
@@ -94,8 +124,18 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
 
@@ -165,8 +205,16 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        abrirFormularioSensor(null);
+        abrirFormularioDatosSensor(null);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+      eliminarDatoSensor();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       actualizar();
+    }//GEN-LAST:event_btnEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

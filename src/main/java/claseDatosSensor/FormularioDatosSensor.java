@@ -37,7 +37,7 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
 
         if (datosSensor != null) {
 
-         //   this.cbxIdSensores.setR
+         //this.cbxIdSensores.setR
 
             this.edicion = true;
 
@@ -84,6 +84,8 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setText("Sensores Registrados");
+
+        cbxIdSensores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
