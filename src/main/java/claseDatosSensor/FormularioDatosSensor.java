@@ -8,37 +8,39 @@ import claseSensor.Sensor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Justin Rodriguez Gonzalez
  */
 public class FormularioDatosSensor extends javax.swing.JDialog {
+
     private boolean edicion;
     private boolean confirmar;
     private JsonHandler<Sensor> gestionSensor;
     private JsonHandler<DatosSensor> gestionDatosSensor;
     private String nombreJsonSensores = "sensores.json";
-   
-    
+
     /**
      * Creates new form FormularioDatosSensor
      */
     public FormularioDatosSensor(java.awt.Frame parent, boolean modal, String nombreDatosSensores, DatosSensor datosSensor) {
         super(parent, modal);
         initComponents();
-        this.gestionSensor = new JsonHandler(nombreJsonSensores, new TypeReference<Map<Integer, Sensor>>(){});
-        this.gestionDatosSensor = new JsonHandler(nombreDatosSensores, new TypeReference<Map<Integer, DatosSensor>>(){});
+        this.gestionSensor = new JsonHandler(nombreJsonSensores, new TypeReference<Map<Integer, Sensor>>() {
+        });
+        this.gestionDatosSensor = new JsonHandler(nombreDatosSensores, new TypeReference<Map<Integer, DatosSensor>>() {
+        });
         llenarCBX();
-        
+
     }
-    
-      public void guardarDatos(DatosSensor datosSensor) {
+
+    public void guardarDatos(DatosSensor datosSensor) {
 
         if (datosSensor != null) {
 
-         //this.cbxIdSensores.setR
-
+            //this.cbxIdSensores.setR
             this.edicion = true;
 
         }
@@ -46,23 +48,31 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
         this.edicion = false;
 
     }
-    
+
     public boolean confirmacion() {
         return this.confirmar;
     }
-    
-    public void llenarCBX(){
-    for(Sensor sensor: this.gestionSensor.obtenerDatos().values()){
-        this.cbxIdSensores.addItem(sensor.getIdentificador());  
+
+    private void llenarCBX() {
+        for (Sensor sensor : this.gestionSensor.obtenerDatos().values()) {
+            this.cbxIdSensores.addItem(sensor.getIdentificador());
         }
     }
-    
-     public DatosSensor consultarTarea() {
+
+    private void iniciar() {
+        if (!this.cbxIdSensores.getSelectedItem().equals("Elegir")) {
+            this.confirmar = true;
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe de elegir una opcion");
+        }
+    }
+
+    public DatosSensor consultarTarea() {
         return new DatosSensor(
                 gestionDatosSensor.obtenerUltimoId() + 1,
                 1,
                 this.cbxIdSensores.getSelectedItem().toString()
-                
         );
     }
 
@@ -154,12 +164,10 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         this.confirmar = true;
-         this.setVisible(false);
+        iniciar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-   
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnVolver;
