@@ -4,10 +4,13 @@
  */
 package claseDatosSensor;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
 
 
 /**
@@ -18,17 +21,23 @@ public class DatosSensor {
     int id;
     double valor;
     String idSensor;
-    LocalDate fecha;
-    String hora;
+    String fecha;
+   
+    
+   LocalDate localDate = LocalDate.now();
+   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+   String formattedLocalDate = localDate.format(formatter);
+   
     DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     Date date = new Date();
+    String hora = dateFormat.format(date);
     
     public DatosSensor(int id, double valor, String idSensor) {
         this.id = id;
         this.valor = valor;
         this.idSensor = idSensor;
-        this.fecha = LocalDate.now();
-        this.hora =  dateFormat.format(date);
+        this.fecha = formattedLocalDate;
+        this.hora =  hora;
     }
 
     public DatosSensor() {
@@ -58,11 +67,11 @@ public class DatosSensor {
         this.idSensor = idSensor;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -74,28 +83,9 @@ public class DatosSensor {
         this.hora = hora;
     }
 
-    public DateFormat getDateFormat() {
-        return dateFormat;
-    }
-
-    public void setDateFormat(DateFormat dateFormat) {
-        this.dateFormat = dateFormat;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-    
-    
-
-   
     @Override
     public String toString() {
-        return "DatosSensor{" + "id=" + id + ", valor=" + valor + ", idSensor=" + idSensor + ", fecha=" + fecha + ", hora=" + hora + ", dateFormat=" + dateFormat + ", date=" + date + '}';
+        return "DatosSensor{" + "id=" + id + ", valor=" + valor + ", idSensor=" + idSensor + ", fecha=" + fecha + ", hora=" + hora;
     }
     
     

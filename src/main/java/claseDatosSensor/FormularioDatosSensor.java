@@ -14,6 +14,8 @@ import java.util.Map;
  * @author Justin Rodriguez Gonzalez
  */
 public class FormularioDatosSensor extends javax.swing.JDialog {
+    private boolean edicion;
+    private boolean confirmar;
     private JsonHandler<Sensor> gestionSensor;
     private JsonHandler<DatosSensor> gestionDatosSensor;
     private String nombreJsonSensores = "sensores.json";
@@ -22,11 +24,46 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
     /**
      * Creates new form FormularioDatosSensor
      */
-    public FormularioDatosSensor(java.awt.Frame parent, boolean modal, String nombreDatosSensores) {
+    public FormularioDatosSensor(java.awt.Frame parent, boolean modal, String nombreDatosSensores, DatosSensor datosSensor) {
         super(parent, modal);
         initComponents();
         this.gestionSensor = new JsonHandler(nombreJsonSensores, new TypeReference<Map<Integer, Sensor>>(){});
         this.gestionDatosSensor = new JsonHandler(nombreDatosSensores, new TypeReference<Map<Integer, DatosSensor>>(){});
+        llenarCBX();
+        
+    }
+    
+      public void guardarDatos(DatosSensor datosSensor) {
+
+        if (datosSensor != null) {
+
+         //   this.cbxIdSensores.setR
+
+            this.edicion = true;
+
+        }
+
+        this.edicion = false;
+
+    }
+    
+    public boolean confirmacion() {
+        return this.confirmar;
+    }
+    
+    public void llenarCBX(){
+    for(Sensor sensor: this.gestionSensor.obtenerDatos().values()){
+        this.cbxIdSensores.addItem(sensor.getIdentificador());  
+        }
+    }
+    
+     public DatosSensor consultarTarea() {
+        return new DatosSensor(
+                gestionDatosSensor.obtenerUltimoId() + 1,
+                1,
+                this.cbxIdSensores.getSelectedItem().toString()
+                
+        );
     }
 
     /**
@@ -49,8 +86,18 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
         jLabel2.setText("Sensores Registrados");
 
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
         pPrincipal.setLayout(pPrincipalLayout);
@@ -98,6 +145,16 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.confirmar = false;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+         this.confirmar = true;
+         this.setVisible(false);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
    
  

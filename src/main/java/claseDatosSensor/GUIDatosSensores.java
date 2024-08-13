@@ -4,6 +4,8 @@
  */
 package claseDatosSensor;
 
+import claseSensor.Sensor;
+import claseSensor.formularioSensor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.util.Map;
@@ -37,6 +39,31 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         }
     }
     
+    private void abrirFormularioSensor(DatosSensor datosSensor) {
+         
+    FormularioDatosSensor formulario = new FormularioDatosSensor(this, true,nombreJson,datosSensor);
+    
+    formulario.setVisible(true);
+
+    if (formulario.confirmacion()) {
+        DatosSensor ds = formulario.consultarTarea();
+
+        if (datosSensor == null) {
+            
+            this.gestionDatosSensor.agregar(ds);
+           
+        }else{
+               ds.setId(datosSensor.getId());
+               
+            this.gestionDatosSensor.editar(datosSensor.getId(), ds);
+            this.gestionDatosSensor.editar(ds.getId(),ds);
+            
+            }
+       actualizarTabla();
+    }
+}
+    
+    
     
 
     /**
@@ -60,6 +87,11 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -131,6 +163,10 @@ public class GUIDatosSensores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        abrirFormularioSensor(null);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
