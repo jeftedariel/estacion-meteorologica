@@ -6,18 +6,11 @@ package com.jefte.estacionmeteorologica;
 
 import com.jefte.estacionmeteorologica.Usuarios.GuiUsuario;
 
-/**
- *
- * @author Raul Quesada Morera
- */
 public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        GuiUsuario u = new GuiUsuario();
-        u.setVisible(true);
-        u.setLocationRelativeTo(null);
+       GUILogin guiLogin = new GUILogin();
+       guiLogin.setVisible(true);
+       guiLogin.setResizable(false);
+       guiLogin.setLocationRelativeTo(null);
     }
 }
