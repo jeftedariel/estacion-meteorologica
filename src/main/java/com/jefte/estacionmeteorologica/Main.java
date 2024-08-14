@@ -3,7 +3,7 @@
  */
 
 package com.jefte.estacionmeteorologica;
-import Roles.GUIRoles;
+import com.jefte.estacionmeteorologica.Roles.GUIRoles;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 
 /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package Roles;
+package com.jefte.estacionmeteorologica.Roles;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
