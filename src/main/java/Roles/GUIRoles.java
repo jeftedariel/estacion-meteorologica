@@ -175,23 +175,26 @@ public class GUIRoles extends javax.swing.JFrame {
             this.modelo.setRowCount(0);
 
             for (Rol rol : gestionRol.obtenerDatos().values()) {
+                System.out.println(rol.isSensores() + "- " + guiBuscarRol.obtenerDatos(0));
+                
+                
                 boolean filtro = true;
-                if (guiBuscarRol.obtenerDatos(0).isBlank() || !String.valueOf(rol.isSensores()).contentEquals(guiBuscarRol.obtenerDatos(0))) {
+                if (guiBuscarRol.getCkSensores() && !String.valueOf(rol.isSensores()).equals(guiBuscarRol.obtenerDatos(0))) {
                     filtro = false;
                 }
-                if (guiBuscarRol.obtenerDatos(1).isBlank() || !String.valueOf(rol.isDatosSensores()).contentEquals(guiBuscarRol.obtenerDatos(1))) {
+                if (guiBuscarRol.getCkDatosSensores() && !String.valueOf(rol.isDatosSensores()).equals(guiBuscarRol.obtenerDatos(1))) {
                     filtro = false;
                 }
-                if (guiBuscarRol.obtenerDatos(2).isBlank() || !String.valueOf(rol.isDatosEnVivo()).contentEquals(guiBuscarRol.obtenerDatos(2))) {
+                if (guiBuscarRol.getCkVivo() && !String.valueOf(rol.isDatosEnVivo()).equals(guiBuscarRol.obtenerDatos(2))) {
                     filtro = false;
                 }
-                if (guiBuscarRol.obtenerDatos(3).isBlank() || !String.valueOf(rol.isDatosRoles()).contentEquals(guiBuscarRol.obtenerDatos(3))) {
+                if (guiBuscarRol.getCkRol() && !String.valueOf(rol.isDatosRoles()).equals(guiBuscarRol.obtenerDatos(3))) {
                     filtro = false;
                 }
-                if (guiBuscarRol.obtenerDatos(4).isBlank() || !String.valueOf(rol.isReportes()).contentEquals(guiBuscarRol.obtenerDatos(4))) {
+                if (guiBuscarRol.getCkReportes() && !String.valueOf(rol.isReportes()).equals(guiBuscarRol.obtenerDatos(4))) {
                     filtro = false;
                 }
-                 if (guiBuscarRol.obtenerDatos(5).isBlank() || !String.valueOf(rol.isDatosUsuarios()).contentEquals(guiBuscarRol.obtenerDatos(5))) {
+                 if (guiBuscarRol.getCkUsuario() && !String.valueOf(rol.isDatosUsuarios()).equals(guiBuscarRol.obtenerDatos(5))) {
                     filtro = false;
                 }
                 if (filtro) {
@@ -201,10 +204,9 @@ public class GUIRoles extends javax.swing.JFrame {
                         rol.isSensores(),
                         rol.isDatosSensores(),
                         rol.isDatosEnVivo(),
+                        rol.isDatosUsuarios(),
                         rol.isDatosRoles(),
-                        rol.isReportes(),
-                        rol.isDatosUsuarios()
-                        
+                        rol.isReportes()
                     });
                 }
 
@@ -226,7 +228,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
     private void abrirFormularioRol(Rol rol) {
 
-        GUIAgregarRol_1 formulario = new GUIAgregarRol_1(this, true, rol, "roles.json");
+        GUIAgregarRol formulario = new GUIAgregarRol(this, true, rol, "roles.json");
 
         formulario.setVisible(true);
 

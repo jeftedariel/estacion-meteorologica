@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author Brandon Campos
  */
-public class GUIAgregarRol_1 extends javax.swing.JDialog {
+public class GUIAgregarRol extends javax.swing.JDialog {
 
     /**
      * Creates new form GUIAgregarRol
@@ -22,7 +22,7 @@ public class GUIAgregarRol_1 extends javax.swing.JDialog {
     private JsonHandler<Rol> gestionRol;
 
 
-    public GUIAgregarRol_1(java.awt.Frame parent, boolean modal, Rol rol, String nombreJson) {
+    public GUIAgregarRol(java.awt.Frame parent, boolean modal, Rol rol, String nombreJson) {
         super(parent, modal);
         this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Rol>>() {
         });

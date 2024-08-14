@@ -7,6 +7,7 @@ package Roles;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.util.Map;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -39,7 +40,6 @@ public class GUIBuscarRol extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cbxPermisoSensores = new javax.swing.JComboBox<>();
@@ -55,24 +55,39 @@ public class GUIBuscarRol extends javax.swing.JDialog {
         cbxPermisoReportes = new javax.swing.JComboBox<>();
         btnVolver = new javax.swing.JButton();
         btnFiltrar = new javax.swing.JButton();
+        ckSensores = new javax.swing.JCheckBox();
+        ckDatosSensores = new javax.swing.JCheckBox();
+        ckVivo = new javax.swing.JCheckBox();
+        ckUsuario = new javax.swing.JCheckBox();
+        ckRol = new javax.swing.JCheckBox();
+        ckReportes = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Sensores:");
 
-        cbxPermisoSensores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "False", "True" }));
+        cbxPermisoSensores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoSensores.setEnabled(false);
 
         jLabel2.setText("Datos Sensores:");
 
-        cbxPermisoDatoSensor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "False", "True" }));
+        cbxPermisoDatoSensor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatoSensor.setEnabled(false);
+        cbxPermisoDatoSensor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPermisoDatoSensorActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Datos en Vivo:");
 
-        cbxPermisoDatosEnVivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "False", "True" }));
+        cbxPermisoDatosEnVivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatosEnVivo.setEnabled(false);
 
         jLabel4.setText("Datos Usuario:");
 
-        cbxPermisoDatosRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "False", "True" }));
+        cbxPermisoDatosRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatosRol.setEnabled(false);
         cbxPermisoDatosRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxPermisoDatosRolActionPerformed(evt);
@@ -81,11 +96,13 @@ public class GUIBuscarRol extends javax.swing.JDialog {
 
         jLabel5.setText("Datos Rol: ");
 
-        cbxPermisoDatosUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "False", "True" }));
+        cbxPermisoDatosUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatosUsuario.setEnabled(false);
 
         jLabel6.setText("Reportes:");
 
-        cbxPermisoReportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "False", "True" }));
+        cbxPermisoReportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoReportes.setEnabled(false);
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +118,42 @@ public class GUIBuscarRol extends javax.swing.JDialog {
             }
         });
 
+        ckSensores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckSensoresActionPerformed(evt);
+            }
+        });
+
+        ckDatosSensores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckDatosSensoresActionPerformed(evt);
+            }
+        });
+
+        ckVivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckVivoActionPerformed(evt);
+            }
+        });
+
+        ckUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckUsuarioActionPerformed(evt);
+            }
+        });
+
+        ckRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckRolActionPerformed(evt);
+            }
+        });
+
+        ckReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,20 +165,37 @@ public class GUIBuscarRol extends javax.swing.JDialog {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ckUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ckReportes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbxPermisoReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ckSensores)
+                                    .addComponent(ckDatosSensores)
+                                    .addComponent(ckVivo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(ckRol)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cbxPermisoSensores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cbxPermisoDatoSensor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbxPermisoDatosEnVivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cbxPermisoDatosRol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxPermisoReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(151, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxPermisoSensores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxPermisoDatoSensor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbxPermisoDatosEnVivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxPermisoDatosRol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(149, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,34 +207,48 @@ public class GUIBuscarRol extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxPermisoSensores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbxPermisoDatoSensor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cbxPermisoDatosEnVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cbxPermisoDatosRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(cbxPermisoSensores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1)
+                                            .addComponent(ckSensores))
+                                        .addGap(57, 57, 57)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel2)
+                                            .addComponent(cbxPermisoDatoSensor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(ckDatosSensores))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel3)
+                                        .addComponent(cbxPermisoDatosEnVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ckVivo))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ckUsuario))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(cbxPermisoDatosRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(ckRol))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cbxPermisoReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(cbxPermisoReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ckReportes))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,16 +274,68 @@ public class GUIBuscarRol extends javax.swing.JDialog {
     }//GEN-LAST:event_cbxPermisoDatosRolActionPerformed
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
-        datos[0] = (this.cbxPermisoSensores.getSelectedItem().toString().isBlank()) ? "" : this.cbxPermisoSensores.getSelectedItem().toString();
-        datos[1] = (this.cbxPermisoDatoSensor.getSelectedItem().toString().isBlank()) ? "" : this.cbxPermisoDatoSensor.getSelectedItem().toString();
-        datos[2] = (this.cbxPermisoDatosEnVivo.getSelectedItem().toString().isBlank()) ? "" : this.cbxPermisoDatosEnVivo.getSelectedItem().toString();
-        datos[3] = (this.cbxPermisoDatosRol.getSelectedItem().toString().isBlank()) ? "" : this.cbxPermisoDatosRol.getSelectedItem().toString();
-        datos[4] = (this.cbxPermisoReportes.getSelectedItem().toString().isBlank()) ? "" : this.cbxPermisoReportes.getSelectedItem().toString();
-        datos[5] = (this.cbxPermisoDatosUsuario.getSelectedItem().toString().isBlank()) ? "" : this.cbxPermisoDatosUsuario.getSelectedItem().toString();
+        datos[0] = (this.cbxPermisoSensores.isEnabled()) ? this.cbxPermisoSensores.getSelectedItem().toString() : "";
+        datos[1] = (this.cbxPermisoDatoSensor.isEnabled()) ? this.cbxPermisoDatoSensor.getSelectedItem().toString() : "";
+        datos[2] = (this.cbxPermisoDatosEnVivo.isEnabled()) ? this.cbxPermisoDatosEnVivo.getSelectedItem().toString() : "";
+        datos[3] = (this.cbxPermisoDatosRol.isEnabled()) ? this.cbxPermisoDatosRol.getSelectedItem().toString() : "";
+        datos[4] = (this.cbxPermisoReportes.isEnabled()) ? this.cbxPermisoReportes.getSelectedItem().toString() : "";
+        datos[5] = (this.cbxPermisoDatosUsuario.isEnabled()) ? this.cbxPermisoDatosUsuario.getSelectedItem().toString() : "";
         this.confirmar = true;
         this.setVisible(false);
         
     }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    public Boolean getCkDatosSensores() {
+        return ckDatosSensores.isSelected();
+    }
+
+    public Boolean getCkReportes() {
+        return ckReportes.isSelected();
+    }
+
+    public Boolean getCkRol() {
+        return ckRol.isSelected();
+    }
+
+    public Boolean getCkSensores() {
+        return ckSensores.isSelected();
+    }
+
+    public Boolean getCkUsuario() {
+        return ckUsuario.isSelected();
+    }
+
+    public Boolean getCkVivo() {
+        return ckVivo.isSelected();
+    }
+
+    private void cbxPermisoDatoSensorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPermisoDatoSensorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxPermisoDatoSensorActionPerformed
+
+    private void ckSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckSensoresActionPerformed
+        this.cbxPermisoSensores.setEnabled((this.cbxPermisoSensores.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckSensoresActionPerformed
+
+    private void ckDatosSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckDatosSensoresActionPerformed
+        this.cbxPermisoDatoSensor.setEnabled((this.cbxPermisoDatoSensor.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckDatosSensoresActionPerformed
+
+    private void ckVivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckVivoActionPerformed
+        this.cbxPermisoDatosEnVivo.setEnabled((this.cbxPermisoDatosEnVivo.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckVivoActionPerformed
+
+    private void ckUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckUsuarioActionPerformed
+        this.cbxPermisoDatosUsuario.setEnabled((this.cbxPermisoDatosUsuario.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckUsuarioActionPerformed
+
+    private void ckRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckRolActionPerformed
+        this.cbxPermisoDatosRol.setEnabled((this.cbxPermisoDatosRol.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckRolActionPerformed
+
+    private void ckReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckReportesActionPerformed
+       this.cbxPermisoReportes.setEnabled((this.cbxPermisoReportes.isEnabled()) ? false : true);
+    }//GEN-LAST:event_ckReportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +358,12 @@ public class GUIBuscarRol extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbxPermisoDatosUsuario;
     private javax.swing.JComboBox<String> cbxPermisoReportes;
     private javax.swing.JComboBox<String> cbxPermisoSensores;
+    private javax.swing.JCheckBox ckDatosSensores;
+    private javax.swing.JCheckBox ckReportes;
+    private javax.swing.JCheckBox ckRol;
+    private javax.swing.JCheckBox ckSensores;
+    private javax.swing.JCheckBox ckUsuario;
+    private javax.swing.JCheckBox ckVivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -229,6 +371,5 @@ public class GUIBuscarRol extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }
