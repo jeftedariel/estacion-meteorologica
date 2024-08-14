@@ -224,13 +224,34 @@ public class GUIRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        this.gestionUsuario.agregar(new Usuario(this.gestionUsuario.obtenerUltimoId() + 1,Integer.parseInt(this.txtCedula.getText()), this.txtNombre.getText(), this.txtPApellido.getText(), this.txtSApellido.getText(), this.txtCorreoElectronico.getText(), this.txtContraseña.getText()));
-        JOptionPane.showMessageDialog(null, "Usuario Registrado existosamente!");
-        this.dispose();
-        GUILogin guiLogin = new GUILogin();
-        guiLogin.setVisible(true);
-        guiLogin.setResizable(false);
-        guiLogin.setLocationRelativeTo(null);
+        boolean valido = true;
+        for (Usuario usuario : gestionUsuario.obtenerDatos().values()) {
+            if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
+                valido = false;
+                JOptionPane.showMessageDialog(null, "El correo ya se encuentra en uso.");
+            }
+            
+            if (String.valueOf(usuario.getCedula()).equals(this.txtCedula.getText())) {
+                valido = false;
+                JOptionPane.showMessageDialog(null, "El numero de cedula ya se encuentra registrado.");
+            }
+            
+        }
+
+        if (valido) {
+            this.gestionUsuario.agregar(new Usuario(this.gestionUsuario.obtenerUltimoId() + 1, Integer.parseInt(this.txtCedula.getText()), this.txtNombre.getText(), this.txtPApellido.getText(), this.txtSApellido.getText(), this.txtCorreoElectronico.getText(), this.txtContraseña.getText()));
+            JOptionPane.showMessageDialog(null, "Usuario Registrado existosamente!");
+            this.dispose();
+            GUILogin guiLogin = new GUILogin();
+            guiLogin.setVisible(true);
+            guiLogin.setResizable(false);
+            guiLogin.setLocationRelativeTo(null);
+        }
+        
+        
+        
+
+
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
@@ -292,7 +313,7 @@ public class GUIRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaKeyReleased
 
     private void txtCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyReleased
-       if (Validar.validaciones(this.txtCedula.getText(), "[0-9]{9}")) {
+        if (Validar.validaciones(this.txtCedula.getText(), "[0-9]{9}")) {
             this.lblCedula.setForeground(Color.black);
             this.checks[5] = true;
         } else {

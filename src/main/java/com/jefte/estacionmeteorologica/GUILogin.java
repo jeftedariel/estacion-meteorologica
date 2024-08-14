@@ -10,6 +10,7 @@ import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.jefte.estacionmeteorologica.Validaciones.Validar;
 import java.awt.Color;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,11 +21,12 @@ public class GUILogin extends javax.swing.JFrame {
     private JsonHandler<Usuario> gestionUsuario;
     private String nombreJson = "Usuarios.json";
     private boolean[] checks = {false, false};
+
     public GUILogin() {
         initComponents();
         this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>() {
         });
-        
+
     }
 
     /**
@@ -159,14 +161,14 @@ public class GUILogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private boolean isCheck(){
-        if(checks[0] && checks[1]){
+
+    private boolean isCheck() {
+        if (checks[0] && checks[1]) {
             return true;
         }
         return false;
     }
-    
+
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
@@ -180,41 +182,54 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistreseAquiActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        boolean existe = false, passCorrecta = false;
+
         for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
             if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
-                if (usuario.getContrasena().equals(this.txtContraseña.getText())) {
-                    GUIMenu guimenu = new GUIMenu(usuario.getId_rol());
-                    guimenu.setVisible(true);
-                    guimenu.setLocationRelativeTo(null);
-                    guimenu.setResizable(false);
-                    
-                    this.dispose();
-                }
+                existe = true;
             }
+
+            if (usuario.getContrasena().equals(this.txtContraseña.getText())) {
+                passCorrecta = true;
+            }
+            
+            if (passCorrecta && existe ) {
+                this.dispose();
+                GUIMenu guimenu = new GUIMenu(usuario.getId_rol());
+                guimenu.setVisible(true);
+                guimenu.setLocationRelativeTo(null);
+                guimenu.setResizable(false);
+            }
+        }
+        
+        if(!existe){
+            JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado.");
+        } else if(!passCorrecta){
+            JOptionPane.showMessageDialog(null, "La contraseña no es correcta.");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtCorreoElectronicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoKeyReleased
         if (Validar.validaciones(this.txtCorreoElectronico.getText(), "[A-Za-z0-9\\._%+\\-]+@[A-Za-z0-9\\.\\-]+\\.[A-Za-z]{2,}")) {
             this.lblCorreoElectronico.setForeground(Color.black);
-            this.checks[0]=true;
+            this.checks[0] = true;
         } else {
-            this.checks[0]=false;
+            this.checks[0] = false;
             this.lblCorreoElectronico.setForeground(Color.red);
         }
         this.btnIngresar.setEnabled(isCheck());
-        
+
     }//GEN-LAST:event_txtCorreoElectronicoKeyReleased
 
     private void txtContraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyReleased
         if (Validar.validaciones(this.txtContraseña.getText(), "[\\S]+")) {
             this.lblContraseña.setForeground(Color.black);
-            this.checks[1]=true;
+            this.checks[1] = true;
         } else {
-            this.checks[1]=false;
+            this.checks[1] = false;
             this.lblContraseña.setForeground(Color.red);
         }
-        
+
         this.btnIngresar.setEnabled(isCheck());
     }//GEN-LAST:event_txtContraseñaKeyReleased
 
