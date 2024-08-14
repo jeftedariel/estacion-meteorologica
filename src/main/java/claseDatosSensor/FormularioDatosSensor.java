@@ -36,18 +36,6 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
 
     }
 
-    public void guardarDatos(DatosSensor datosSensor) {
-
-        if (datosSensor != null) {
-
-            //this.cbxIdSensores.setR
-            this.edicion = true;
-
-        }
-
-        this.edicion = false;
-
-    }
 
     public boolean confirmacion() {
         return this.confirmar;

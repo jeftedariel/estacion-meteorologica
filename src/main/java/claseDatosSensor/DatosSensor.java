@@ -21,26 +21,40 @@ public class DatosSensor {
     int id;
     double valor;
     String idSensor;
-    String fecha;
-   
+    String fecha = formatoFecha();
+    String hora = formatoHora();
     
-   LocalDate localDate = LocalDate.now();
-   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-   String formattedLocalDate = localDate.format(formatter);
    
-    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-    Date date = new Date();
-    String hora = dateFormat.format(date);
+   
+ 
     
     public DatosSensor(int id, double valor, String idSensor) {
         this.id = id;
         this.valor = valor;
         this.idSensor = idSensor;
-        this.fecha = formattedLocalDate;
+        this.fecha = fecha;
         this.hora =  hora;
     }
 
     public DatosSensor() {
+    }
+    
+    public String formatoHora(){
+    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    Date date = new Date();
+    String hora = dateFormat.format(date);
+    
+    return hora;
+    
+    }
+    
+    public String formatoFecha(){
+    LocalDate localDate = LocalDate.now();
+   DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+   String formateado = localDate.format(formato);
+    
+    return formateado;
+    
     }
 
     public int getId() {
