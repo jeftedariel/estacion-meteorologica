@@ -37,151 +37,195 @@ public class GUILogin extends javax.swing.JFrame {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated
   // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+  // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
+  // Code">//GEN-BEGIN:initComponents
+  private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        lblIniciarSesion = new javax.swing.JLabel();
-        lblCorreoElectronico = new javax.swing.JLabel();
-        txtCorreoElectronico = new javax.swing.JTextField();
-        lblContraseña = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
-        btnIngresar = new javax.swing.JButton();
-        lblQuiereRegistrarse = new javax.swing.JLabel();
-        btnRegistreseAqui = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+    jPanel1 = new javax.swing.JPanel();
+    lblIniciarSesion = new javax.swing.JLabel();
+    lblCorreoElectronico = new javax.swing.JLabel();
+    txtCorreoElectronico = new javax.swing.JTextField();
+    lblContraseña = new javax.swing.JLabel();
+    txtContraseña = new javax.swing.JTextField();
+    btnIngresar = new javax.swing.JButton();
+    lblQuiereRegistrarse = new javax.swing.JLabel();
+    btnRegistreseAqui = new javax.swing.JButton();
+    jLabel6 = new javax.swing.JLabel();
+    jLabel7 = new javax.swing.JLabel();
+    jLabel8 = new javax.swing.JLabel();
+    jPanel2 = new javax.swing.JPanel();
+    jLabel5 = new javax.swing.JLabel();
+    jLabel4 = new javax.swing.JLabel();
+    jLabel1 = new javax.swing.JLabel();
+    jLabel3 = new javax.swing.JLabel();
+    jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblIniciarSesion.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        lblIniciarSesion.setText("Iniciar Sesión");
+    lblIniciarSesion.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
+    lblIniciarSesion.setForeground(new java.awt.Color(0, 0, 0));
+    lblIniciarSesion.setText("INICIAR SESION");
 
-        lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCorreoElectronico.setText("Correo Electronico");
+    lblCorreoElectronico.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+    lblCorreoElectronico.setText("Correo Electronico");
 
-        txtCorreoElectronico.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCorreoElectronicoKeyReleased(evt);
-            }
-        });
+    txtCorreoElectronico.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyReleased(java.awt.event.KeyEvent evt) {
+        txtCorreoElectronicoKeyReleased(evt);
+      }
+    });
 
-        lblContraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblContraseña.setText("Contraseña");
+    lblContraseña.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+    lblContraseña.setText("Contraseña");
 
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
-            }
-        });
-        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtContraseñaKeyReleased(evt);
-            }
-        });
+    txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtContraseñaActionPerformed(evt);
+      }
+    });
+    txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyReleased(java.awt.event.KeyEvent evt) {
+        txtContraseñaKeyReleased(evt);
+      }
+    });
 
-        btnIngresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnIngresar.setText("Iniciar Sesión");
-        btnIngresar.setEnabled(false);
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
-            }
-        });
+    btnIngresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+    btnIngresar.setText("Iniciar Sesión");
+    btnIngresar.setEnabled(false);
+    btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnIngresarActionPerformed(evt);
+      }
+    });
 
-        lblQuiereRegistrarse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblQuiereRegistrarse.setText("¿Quiere registrarse?");
+    lblQuiereRegistrarse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+    lblQuiereRegistrarse.setText("¿Quiere registrarse?");
 
-        btnRegistreseAqui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnRegistreseAqui.setText("Registrese Aqui");
-        btnRegistreseAqui.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistreseAquiActionPerformed(evt);
-            }
-        });
+    btnRegistreseAqui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+    btnRegistreseAqui.setText("Registrese Aqui");
+    btnRegistreseAqui.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRegistreseAquiActionPerformed(evt);
+      }
+    });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    jLabel6.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+    jLabel6.setForeground(new java.awt.Color(82, 82, 82));
+    jLabel6.setText("Debes iniciar sesión para ingresar al sistema");
+
+    jLabel7.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/usuario.png"))); // NOI18N
+
+    jLabel8.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/contraseña.png"))); // NOI18N
+
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(lblIniciarSesion))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(659, 659, 659)
+                        .addComponent(btnIngresar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(btnRegistreseAqui))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(lblIniciarSesion))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblQuiereRegistrarse)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(
+                                    jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING,
+                                            jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblContraseña, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING,
+                                            jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblCorreoElectronico)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 245,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 245,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap()));
+    jPanel1Layout.setVerticalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(btnIngresar))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(lblQuiereRegistrarse))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(292, 292, 292)
-                .addComponent(btnRegistreseAqui))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(83, 83, 83)
                 .addComponent(lblIniciarSesion)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCorreoElectronico)
+                    .addComponent(jLabel7)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCorreoElectronico)
+                            .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblContraseña)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(btnIngresar)
-                .addGap(36, 36, 36)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblContraseña))))
+                .addGap(272, 272, 272)
                 .addComponent(lblQuiereRegistrarse)
-                .addGap(374, 374, 374)
-                .addComponent(btnRegistreseAqui))
-        );
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnIngresar)
+                .addGap(43, 43, 43)
+                .addComponent(btnRegistreseAqui)));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 730));
+    getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 730));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+    jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/Estación Meteorológica.png"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+    jLabel5.setIcon(new javax.swing.ImageIcon(
+        getClass().getResource("/com/jefte/estacionmeteorologica/assets/Estación Meteorológica.png"))); // NOI18N
+    jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/estacion.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+    jLabel4.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/estacion.png"))); // NOI18N
+    jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/iconoRayo.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, -1, -1));
+    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("./assets/iconoRayo.png"))); // NOI18N
+    jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/fondoTexto.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
+    jLabel3.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/fondoTexto.png"))); // NOI18N
+    jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/fondo.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 730));
+    jLabel2.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/fondo.png"))); // NOI18N
+    jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 730));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 0, -1, -1));
+    getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 0, -1, -1));
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+    pack();
+  }// </editor-fold>//GEN-END:initComponents
 
   private boolean isCheck() {
     if (checks[0] && checks[1]) {
@@ -259,21 +303,24 @@ public class GUILogin extends javax.swing.JFrame {
    * @param args the command line arguments
    */
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnRegistreseAqui;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblContraseña;
-    private javax.swing.JLabel lblCorreoElectronico;
-    private javax.swing.JLabel lblIniciarSesion;
-    private javax.swing.JLabel lblQuiereRegistrarse;
-    private javax.swing.JTextField txtContraseña;
-    private javax.swing.JTextField txtCorreoElectronico;
-    // End of variables declaration//GEN-END:variables
+  // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton btnIngresar;
+  private javax.swing.JButton btnRegistreseAqui;
+  private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
+  private javax.swing.JLabel jLabel3;
+  private javax.swing.JLabel jLabel4;
+  private javax.swing.JLabel jLabel5;
+  private javax.swing.JLabel jLabel6;
+  private javax.swing.JLabel jLabel7;
+  private javax.swing.JLabel jLabel8;
+  private javax.swing.JPanel jPanel1;
+  private javax.swing.JPanel jPanel2;
+  private javax.swing.JLabel lblContraseña;
+  private javax.swing.JLabel lblCorreoElectronico;
+  private javax.swing.JLabel lblIniciarSesion;
+  private javax.swing.JLabel lblQuiereRegistrarse;
+  private javax.swing.JTextField txtContraseña;
+  private javax.swing.JTextField txtCorreoElectronico;
+  // End of variables declaration//GEN-END:variables
 }
