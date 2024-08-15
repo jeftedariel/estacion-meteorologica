@@ -24,6 +24,7 @@ public class GUILogin extends javax.swing.JFrame {
 
   public GUILogin() {
     initComponents();
+    this.btnIngresar.setEnabled(false);
     this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>() {
     });
 
@@ -39,14 +40,16 @@ public class GUILogin extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated
   // <editor-fold defaultstate="collapsed" desc="Generated
   // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
   // Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
     jPanel1 = new javax.swing.JPanel();
     lblIniciarSesion = new javax.swing.JLabel();
-    lblCorreoElectronico = new javax.swing.JLabel();
     txtCorreoElectronico = new javax.swing.JTextField();
-    lblContraseña = new javax.swing.JLabel();
     txtContraseña = new javax.swing.JTextField();
     btnIngresar = new javax.swing.JButton();
     lblQuiereRegistrarse = new javax.swing.JLabel();
@@ -54,6 +57,8 @@ public class GUILogin extends javax.swing.JFrame {
     jLabel6 = new javax.swing.JLabel();
     jLabel7 = new javax.swing.JLabel();
     jLabel8 = new javax.swing.JLabel();
+    jLabel9 = new javax.swing.JLabel();
+    jLabel10 = new javax.swing.JLabel();
     jPanel2 = new javax.swing.JPanel();
     jLabel5 = new javax.swing.JLabel();
     jLabel4 = new javax.swing.JLabel();
@@ -65,23 +70,46 @@ public class GUILogin extends javax.swing.JFrame {
     getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     lblIniciarSesion.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
     lblIniciarSesion.setForeground(new java.awt.Color(0, 0, 0));
     lblIniciarSesion.setText("INICIAR SESION");
+    jPanel1.add(lblIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 83, -1, -1));
 
-    lblCorreoElectronico.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-    lblCorreoElectronico.setText("Correo Electronico");
-
+    txtCorreoElectronico.setBackground(new java.awt.Color(240, 237, 255));
+    txtCorreoElectronico.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+    txtCorreoElectronico.setText("Correo Electronico");
+    txtCorreoElectronico.setToolTipText("Correo Electronico");
+    txtCorreoElectronico.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+    txtCorreoElectronico.setOpaque(true);
+    txtCorreoElectronico.addFocusListener(new java.awt.event.FocusAdapter() {
+      public void focusGained(java.awt.event.FocusEvent evt) {
+        txtCorreoElectronicoFocusGained(evt);
+      }
+    });
+    txtCorreoElectronico.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mousePressed(java.awt.event.MouseEvent evt) {
+        txtCorreoElectronicoMousePressed(evt);
+      }
+    });
     txtCorreoElectronico.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyReleased(java.awt.event.KeyEvent evt) {
         txtCorreoElectronicoKeyReleased(evt);
       }
     });
+    jPanel1.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 290, 30));
 
-    lblContraseña.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-    lblContraseña.setText("Contraseña");
-
+    txtContraseña.setBackground(new java.awt.Color(240, 237, 255));
+    txtContraseña.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+    txtContraseña.setText("Contraseña");
+    txtContraseña.setToolTipText("Contraseña");
+    txtContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+    txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+      public void focusGained(java.awt.event.FocusEvent evt) {
+        txtContraseñaFocusGained(evt);
+      }
+    });
     txtContraseña.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtContraseñaActionPerformed(evt);
@@ -92,126 +120,72 @@ public class GUILogin extends javax.swing.JFrame {
         txtContraseñaKeyReleased(evt);
       }
     });
+    jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 290, -1));
 
+    btnIngresar.setBackground(new java.awt.Color(255, 255, 255));
     btnIngresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    btnIngresar.setText("Iniciar Sesión");
-    btnIngresar.setEnabled(false);
+    btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+    btnIngresar.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/login.png"))); // NOI18N
+    btnIngresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
     btnIngresar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnIngresarActionPerformed(evt);
       }
     });
+    jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 130, 70));
 
-    lblQuiereRegistrarse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    lblQuiereRegistrarse.setText("¿Quiere registrarse?");
+    lblQuiereRegistrarse.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+    lblQuiereRegistrarse.setText("¿No tienes cuenta?, Registrate!");
+    jPanel1.add(lblQuiereRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, -1, -1));
 
+    btnRegistreseAqui.setBackground(new java.awt.Color(255, 255, 255));
     btnRegistreseAqui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    btnRegistreseAqui.setText("Registrese Aqui");
+    btnRegistreseAqui.setForeground(new java.awt.Color(255, 255, 255));
+    btnRegistreseAqui.setIcon(new javax.swing.ImageIcon(getClass().getResource("./assets/registro.png"))); // NOI18N
+    btnRegistreseAqui.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
     btnRegistreseAqui.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnRegistreseAquiActionPerformed(evt);
       }
     });
+    jPanel1.add(btnRegistreseAqui, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 250, 70));
 
     jLabel6.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
     jLabel6.setForeground(new java.awt.Color(82, 82, 82));
     jLabel6.setText("Debes iniciar sesión para ingresar al sistema");
+    jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 135, -1, -1));
 
     jLabel7.setIcon(
         new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/usuario.png"))); // NOI18N
+    jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
 
     jLabel8.setIcon(
         new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/contraseña.png"))); // NOI18N
+    jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(659, 659, 659)
-                        .addComponent(btnIngresar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(btnRegistreseAqui))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(lblIniciarSesion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblQuiereRegistrarse)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(
-                                    jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING,
-                                            jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lblContraseña, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING,
-                                            jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lblCorreoElectronico)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 245,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 245,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap()));
-    jPanel1Layout.setVerticalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(lblIniciarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCorreoElectronico)
-                            .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblContraseña))))
-                .addGap(272, 272, 272)
-                .addComponent(lblQuiereRegistrarse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnIngresar)
-                .addGap(43, 43, 43)
-                .addComponent(btnRegistreseAqui)));
+    jLabel9.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/txtField.png"))); // NOI18N
+    jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
+
+    jLabel10.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/txtField.png"))); // NOI18N
+    jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
 
     getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 730));
 
     jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jLabel5.setIcon(new javax.swing.ImageIcon(
-        getClass().getResource("./assets/Estación Meteorológica.png"))); // NOI18N
+        getClass().getResource("/com/jefte/estacionmeteorologica/assets/Estación Meteorológica.png"))); // NOI18N
     jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
     jLabel4.setIcon(
         new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/estacion.png"))); // NOI18N
     jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
 
-    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("./assets/iconoRayo.png"))); // NOI18N
+    jLabel1.setIcon(
+        new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/iconoRayo.png"))); // NOI18N
     jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, -1, -1));
 
     jLabel3.setIcon(
@@ -226,6 +200,23 @@ public class GUILogin extends javax.swing.JFrame {
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
+
+  private void txtCorreoElectronicoFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_txtCorreoElectronicoFocusGained
+    if (this.txtCorreoElectronico.getText().equals("Correo Electronico")) {
+      this.txtCorreoElectronico.setText("");
+    }
+  }// GEN-LAST:event_txtCorreoElectronicoFocusGained
+
+  private void txtContraseñaFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_txtContraseñaFocusGained
+    if (this.txtContraseña.getText().equals("Contraseña")) {
+      this.txtContraseña.setText("");
+    }
+
+  }// GEN-LAST:event_txtContraseñaFocusGained
+
+  private void txtCorreoElectronicoMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_txtCorreoElectronicoMousePressed
+
+  }// GEN-LAST:event_txtCorreoElectronicoMousePressed
 
   private boolean isCheck() {
     if (checks[0] && checks[1]) {
@@ -277,11 +268,11 @@ public class GUILogin extends javax.swing.JFrame {
   private void txtCorreoElectronicoKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtCorreoElectronicoKeyReleased
     if (Validar.validaciones(this.txtCorreoElectronico.getText(),
         "[A-Za-z0-9\\._%+\\-]+@[A-Za-z0-9\\.\\-]+\\.[A-Za-z]{2,}")) {
-      this.lblCorreoElectronico.setForeground(Color.black);
+      // this.lblCorreoElectronico.setForeground(Color.black);
       this.checks[0] = true;
     } else {
       this.checks[0] = false;
-      this.lblCorreoElectronico.setForeground(Color.red);
+      // this.lblCorreoElectronico.setForeground(Color.red);
     }
     this.btnIngresar.setEnabled(isCheck());
 
@@ -289,11 +280,11 @@ public class GUILogin extends javax.swing.JFrame {
 
   private void txtContraseñaKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtContraseñaKeyReleased
     if (Validar.validaciones(this.txtContraseña.getText(), "[\\S]+")) {
-      this.lblContraseña.setForeground(Color.black);
+      // this.lblContraseña.setForeground(Color.black);
       this.checks[1] = true;
     } else {
       this.checks[1] = false;
-      this.lblContraseña.setForeground(Color.red);
+      // this.lblContraseña.setForeground(Color.red);
     }
 
     this.btnIngresar.setEnabled(isCheck());
@@ -307,6 +298,7 @@ public class GUILogin extends javax.swing.JFrame {
   private javax.swing.JButton btnIngresar;
   private javax.swing.JButton btnRegistreseAqui;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
@@ -314,10 +306,9 @@ public class GUILogin extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel jLabel7;
   private javax.swing.JLabel jLabel8;
+  private javax.swing.JLabel jLabel9;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
-  private javax.swing.JLabel lblContraseña;
-  private javax.swing.JLabel lblCorreoElectronico;
   private javax.swing.JLabel lblIniciarSesion;
   private javax.swing.JLabel lblQuiereRegistrarse;
   private javax.swing.JTextField txtContraseña;
