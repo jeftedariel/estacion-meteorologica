@@ -204,7 +204,7 @@ public class GUILogin extends javax.swing.JFrame {
     jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jLabel5.setIcon(new javax.swing.ImageIcon(
-        getClass().getResource("/com/jefte/estacionmeteorologica/assets/Estación Meteorológica.png"))); // NOI18N
+        getClass().getResource("./assets/Estación Meteorológica.png"))); // NOI18N
     jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
     jLabel4.setIcon(
