@@ -124,7 +124,7 @@ public class GUILogin extends javax.swing.JFrame {
 
         txtContraseña.setBackground(new java.awt.Color(243, 241, 255));
         txtContraseña.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(243, 241, 255));
+        txtContraseña.setForeground(new java.awt.Color(0, 0, 0));
         txtContraseña.setToolTipText("Contraseña");
         txtContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -149,6 +149,7 @@ public class GUILogin extends javax.swing.JFrame {
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/login.png"))); // NOI18N
         btnIngresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnIngresar.setContentAreaFilled(false);
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -156,6 +157,7 @@ public class GUILogin extends javax.swing.JFrame {
         });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 130, 70));
 
+        lblQuiereRegistrarse.setBackground(new java.awt.Color(187, 187, 187));
         lblQuiereRegistrarse.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         lblQuiereRegistrarse.setText("¿No tienes cuenta?, Registrate!");
         jPanel1.add(lblQuiereRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, -1, -1));
@@ -165,6 +167,7 @@ public class GUILogin extends javax.swing.JFrame {
         btnRegistreseAqui.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistreseAqui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/registro.png"))); // NOI18N
         btnRegistreseAqui.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnRegistreseAqui.setContentAreaFilled(false);
         btnRegistreseAqui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistreseAquiActionPerformed(evt);

@@ -155,6 +155,7 @@ public class GUIRegistro extends javax.swing.JFrame {
         btnRegistrarse.setBackground(new java.awt.Color(60, 63, 65));
         btnRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/registrarme.png"))); // NOI18N
         btnRegistrarse.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnRegistrarse.setContentAreaFilled(false);
         btnRegistrarse.setEnabled(false);
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +167,7 @@ public class GUIRegistro extends javax.swing.JFrame {
         btnCancelar.setBackground(new java.awt.Color(60, 63, 65));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/cancelar.png"))); // NOI18N
         btnCancelar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnCancelar.setOpaque(true);
+        btnCancelar.setContentAreaFilled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
