@@ -90,7 +90,6 @@ public class GUILogin extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblIniciarSesion.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
-        lblIniciarSesion.setForeground(new java.awt.Color(0, 0, 0));
         lblIniciarSesion.setText("INICIAR SESION");
         jPanel1.add(lblIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
@@ -124,7 +123,6 @@ public class GUILogin extends javax.swing.JFrame {
 
         txtContraseña.setBackground(new java.awt.Color(243, 241, 255));
         txtContraseña.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(0, 0, 0));
         txtContraseña.setToolTipText("Contraseña");
         txtContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -144,10 +142,9 @@ public class GUILogin extends javax.swing.JFrame {
         });
         jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 290, -1));
 
-        btnIngresar.setBackground(new java.awt.Color(255, 255, 255));
         btnIngresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
-        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/login.png"))); // NOI18N
+        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/login.png"))); // NOI18N
         btnIngresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnIngresar.setContentAreaFilled(false);
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,10 +159,9 @@ public class GUILogin extends javax.swing.JFrame {
         lblQuiereRegistrarse.setText("¿No tienes cuenta?, Registrate!");
         jPanel1.add(lblQuiereRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, -1, -1));
 
-        btnRegistreseAqui.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistreseAqui.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegistreseAqui.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistreseAqui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/registro.png"))); // NOI18N
+        btnRegistreseAqui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro.png"))); // NOI18N
         btnRegistreseAqui.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnRegistreseAqui.setContentAreaFilled(false);
         btnRegistreseAqui.addActionListener(new java.awt.event.ActionListener() {
@@ -180,25 +176,23 @@ public class GUILogin extends javax.swing.JFrame {
         jLabel6.setText("Debes iniciar sesión para ingresar al sistema");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 135, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/usuario.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/usuario.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/contraseña.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/contraseña.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/txtField.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtField.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/txtField.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtField.png"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
         lblContraseña.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-        lblContraseña.setForeground(new java.awt.Color(0, 0, 0));
         lblContraseña.setText("Contraseña");
         jPanel1.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         lblCorreo.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-        lblCorreo.setForeground(new java.awt.Color(0, 0, 0));
         lblCorreo.setText("Correo Electronico");
         jPanel1.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
@@ -206,19 +200,19 @@ public class GUILogin extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/Estación Meteorológica.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Estación Meteorológica.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/estacion.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/estacion.png"))); // NOI18N
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/iconoRayo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/iconoRayo.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/fondoTexto.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jefte/estacionmeteorologica/assets/fondoSideLogin.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/fondoSideLogin.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 730));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
