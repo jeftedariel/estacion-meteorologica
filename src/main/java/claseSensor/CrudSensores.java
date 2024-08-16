@@ -5,6 +5,7 @@ import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import com.jefte.estacionmeteorologica.Validaciones.ConfiguracionTablas;
 
 
+
 import java.util.Map;
 import javax.swing.JOptionPane;
 
@@ -21,12 +22,15 @@ public class CrudSensores extends javax.swing.JFrame {
     private String nombreJson = "sensores.json";
 
     public CrudSensores() {
+        ConfiguracionTablas.inicializar();
         initComponents();
         this.gestioSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Sensor>>() {});
         String[] nombreColumnas = {"id", "Identificador", "Tipo", "Localizacion"};
         this.modelo.setColumnIdentifiers(nombreColumnas);
         this.tbSensores.setModel(modelo); 
         actualizarTabla();
+        ConfiguracionTablas.noEditable();
+        ConfiguracionTablas.styleTable(tbSensores);
         
 
     }

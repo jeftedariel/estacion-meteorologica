@@ -6,6 +6,7 @@ package claseDatosSensor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Validaciones.ConfiguracionTablas;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,12 +22,15 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     private String nombreJson = "datosSensores.json";
     
     public GUIDatosSensores() {
+        ConfiguracionTablas.inicializar();
         initComponents();
         this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {});
         String[] columnas = {"id", "Valor", "Id Sensor", "Fecha", "Hora"};
         this.modelo.setColumnIdentifiers(columnas);
         tbDatosSensores.setModel(modelo);
         actualizarTabla();
+        ConfiguracionTablas.noEditable();
+        ConfiguracionTablas.styleTable(tbDatosSensores);
         
     }
     
