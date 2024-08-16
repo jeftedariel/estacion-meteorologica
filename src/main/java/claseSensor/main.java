@@ -12,4 +12,4 @@ public class main {
        c.setVisible(true);
        c.setLocationRelativeTo(null);
     }
-}
+}  
