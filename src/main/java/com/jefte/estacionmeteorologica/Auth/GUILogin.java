@@ -10,6 +10,7 @@ import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.jefte.estacionmeteorologica.Validaciones.Validar;
 import java.awt.Color;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 /**
@@ -86,7 +87,7 @@ public class GUILogin extends javax.swing.JFrame {
         lblIniciarSesion.setText("INICIAR SESION");
         jPanel1.add(lblIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
-        txtCorreoElectronico.setBackground(new java.awt.Color(240, 237, 255));
+        txtCorreoElectronico.setBackground(new java.awt.Color(243, 241, 255));
         txtCorreoElectronico.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         txtCorreoElectronico.setToolTipText("Correo Electronico");
         txtCorreoElectronico.setActionCommand("<Not Set>");
@@ -114,8 +115,9 @@ public class GUILogin extends javax.swing.JFrame {
         });
         jPanel1.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 290, 30));
 
-        txtContraseña.setBackground(new java.awt.Color(240, 237, 255));
+        txtContraseña.setBackground(new java.awt.Color(243, 241, 255));
         txtContraseña.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        txtContraseña.setForeground(new java.awt.Color(243, 241, 255));
         txtContraseña.setToolTipText("Contraseña");
         txtContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -290,6 +292,7 @@ public class GUILogin extends javax.swing.JFrame {
         } else {
             this.checks[0] = false;
             this.lblCorreo.setForeground(Color.red);
+
         }
         this.btnIngresar.setEnabled(isCheck());
 
