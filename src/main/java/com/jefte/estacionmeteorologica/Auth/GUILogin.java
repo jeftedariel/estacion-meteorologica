@@ -93,12 +93,11 @@ public class GUILogin extends javax.swing.JFrame {
         lblIniciarSesion.setText("INICIAR SESION");
         jPanel1.add(lblIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
-        txtCorreoElectronico.setBackground(new java.awt.Color(243, 241, 255));
+        txtCorreoElectronico.setBackground(new java.awt.Color(204, 204, 204));
         txtCorreoElectronico.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         txtCorreoElectronico.setToolTipText("Correo Electronico");
         txtCorreoElectronico.setActionCommand("<Not Set>");
         txtCorreoElectronico.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtCorreoElectronico.setOpaque(true);
         txtCorreoElectronico.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCorreoElectronicoFocusGained(evt);
