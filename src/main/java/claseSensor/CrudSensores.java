@@ -149,15 +149,20 @@ public class CrudSensores extends javax.swing.JFrame {
     private void initComponents() {
 
         pPrincipal = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbSensores = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         pBotones = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -165,25 +170,6 @@ public class CrudSensores extends javax.swing.JFrame {
 
         pPrincipal.setBackground(new java.awt.Color(204, 204, 255));
         pPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        pPrincipal.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         tbSensores.setBackground(new java.awt.Color(51, 51, 51));
         tbSensores.setModel(new javax.swing.table.DefaultTableModel(
@@ -206,47 +192,85 @@ public class CrudSensores extends javax.swing.JFrame {
         tbSensores.setSelectionBackground(new java.awt.Color(153, 153, 153));
         jScrollPane1.setViewportView(tbSensores);
 
-        pPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 670, 300));
+        pPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 750, 350));
 
-        getContentPane().add(pPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 0, 890, 490));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Principal2.png"))); // NOI18N
+        pPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.jpeg"))); // NOI18N
+        pPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 620));
+
+        getContentPane().add(pPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 1000, 610));
 
         pBotones.setBackground(new java.awt.Color(255, 255, 255));
         pBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnActualizar.setText("Editar");
+        jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Eliminar");
+        pBotones.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 70, 30));
+
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Buscar");
+        pBotones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 50, 30));
+
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Agregar");
+        pBotones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 80, 30));
+
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Editar");
+        pBotones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 50, 30));
+
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
+        btnActualizar.setBorder(null);
+        btnActualizar.setFocusPainted(false);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        pBotones.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 48, 302, 34));
+        pBotones.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 250, 55));
 
-        btnAgregar.setText("Agregar");
+        btnAgregar.setBackground(new java.awt.Color(255, 0, 0));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
         btnAgregar.setToolTipText("");
+        btnAgregar.setBorder(null);
+        btnAgregar.setFocusPainted(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        pBotones.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 167, 302, 35));
+        pBotones.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 250, 55));
 
-        btnBuscar.setText("Buscar");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
+        btnBuscar.setBorder(null);
+        btnBuscar.setFocusable(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        pBotones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 288, 302, 38));
+        pBotones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 250, 55));
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setFocusable(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        pBotones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 412, 302, 36));
+        pBotones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 250, 55));
 
-        getContentPane().add(pBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 480, 500));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (4).png"))); // NOI18N
+        pBotones.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 90, 70));
+
+        getContentPane().add(pBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,13 +283,13 @@ public class CrudSensores extends javax.swing.JFrame {
         eliminarSensor();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        actualizar();
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        actualizar();
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
 
 
@@ -275,7 +299,12 @@ public class CrudSensores extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pBotones;
     private javax.swing.JPanel pPrincipal;
