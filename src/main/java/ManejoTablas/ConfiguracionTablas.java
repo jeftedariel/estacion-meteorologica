@@ -1,6 +1,5 @@
 package ManejoTablas;
 import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
 import java.awt.Component;
@@ -57,7 +56,6 @@ private static String estiloTablaHeader() {
     return tableHeader;
 }
 
-   
    // esteme metodso lo que hace es mejor varias partes voy a escribir dentro
    private static void estilosMejorados(JTable table){
     table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
