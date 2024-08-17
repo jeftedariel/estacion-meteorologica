@@ -10,8 +10,9 @@ import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.jefte.estacionmeteorologica.Validaciones.Validar;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Base64;
+import java.util.Base64.Decoder;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 /**
@@ -93,7 +94,7 @@ public class GUILogin extends javax.swing.JFrame {
         lblIniciarSesion.setText("INICIAR SESION");
         jPanel1.add(lblIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
-        txtCorreoElectronico.setBackground(new java.awt.Color(204, 204, 204));
+        txtCorreoElectronico.setBackground(new java.awt.Color(243, 241, 255));
         txtCorreoElectronico.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         txtCorreoElectronico.setToolTipText("Correo Electronico");
         txtCorreoElectronico.setActionCommand("<Not Set>");
@@ -258,14 +259,17 @@ public class GUILogin extends javax.swing.JFrame {
 
   private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnIngresarActionPerformed
     boolean existe = false, passCorrecta = false;
-
+    Decoder decoder = Base64.getDecoder();
     for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
+
+        
       if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
         existe = true;
       }
-
-      if (usuario.getContrasena().equals(this.txtContraseña.getText())) {
+      
+      if (new String(decoder.decode(usuario.getContrasena())).equals(this.txtContraseña.getText())) {
         passCorrecta = true;
+        
       }
 
       if (passCorrecta && existe) {

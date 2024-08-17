@@ -10,6 +10,8 @@ import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.jefte.estacionmeteorologica.Validaciones.Validar;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
@@ -272,6 +274,7 @@ public class GUIRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegistrarseActionPerformed
+        Encoder encoder = Base64.getEncoder();
         boolean valido = true;
         for (Usuario usuario : gestionUsuario.obtenerDatos().values()) {
             if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
@@ -289,7 +292,7 @@ public class GUIRegistro extends javax.swing.JFrame {
         if (valido) {
             this.gestionUsuario.agregar(new Usuario(this.gestionUsuario.obtenerUltimoId() + 1,
                     Integer.parseInt(this.txtCedula.getText()), this.txtNombre.getText(), this.txtPApellido.getText(),
-                    this.txtSApellido.getText(), this.txtCorreoElectronico.getText(), this.txtContraseña.getText()));
+                    this.txtSApellido.getText(), this.txtCorreoElectronico.getText(), encoder.encodeToString(this.txtContraseña.getText().getBytes())));
             JOptionPane.showMessageDialog(null, "Usuario Registrado existosamente!");
             this.dispose();
             GUILogin.initGUI();
