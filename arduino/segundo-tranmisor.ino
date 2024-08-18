@@ -1,8 +1,6 @@
-/* CÃ“DIGO DE TRANSMISOR LORA CON CONTADOR Y PANTALLA OLED
-Visita www.domandoingenieria.com para mÃ¡s cÃ³digos, tutoriales y recomendaciones de proyectos de 
-ingenierÃ­a.  SÃ­guenos en Youtube: https://www.youtube.com/channel/UC4l_rsWoPPi8weKHFPqRaQg?sub_confirmation=1  */
+// Codigo para el segundo transmisor.
 
-//LibrerÃ­as para LoRa
+//Librerias para LoRa
 #include <LoRa.h>
 #include <SPI.h>
 
@@ -11,7 +9,12 @@ ingenierÃ­a.  SÃ­guenos en Youtube: https://www.youtube.com/channel/UC4l_rsW
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-//Debemos definir los pines que se utilizarÃ¡n por el mÃ³dulo LoRa
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
+
+Adafruit_BME280 bme
+
+//Debemos definir los pines que se utilizaran por el modulo LoRa
 #define SCK 5
 #define MISO 19
 #define MOSI 27
@@ -19,7 +22,7 @@ ingenierÃ­a.  SÃ­guenos en Youtube: https://www.youtube.com/channel/UC4l_rsW
 #define RST 14
 #define DIO0 26
 
-//AquÃ­ definimos una frecuencia de operaciÃ³n segÃºn nuestra ubicaciÃ³n. 433E6 para Asia, 866E6 para Europa, 915E6 para AmÃ©rica
+//Aqui definimos una frecuencia de operacion, aqui es la de America
 #define BAND 915E6
 
 //Definimos los pines necesarios para conectar con pantalla OLED
@@ -29,7 +32,7 @@ ingenierÃ­a.  SÃ­guenos en Youtube: https://www.youtube.com/channel/UC4l_rsW
 #define OLED_SCL 15 
 #define OLED_RST 16
 
-int  Contador = 0;//Haremos un contador de paquetes enviados
+double datos[3][3];
 
 Adafruit_SSD1306 display(ANCHOPANTALLA, ALTOPANTALLA, &Wire, OLED_RST);
 
@@ -72,14 +75,45 @@ void setup() {
 }
 
 void loop() {
-   
+  int tamanoPaquete = LoRa.parsePacket();  //analizamos paquete
+  if (tamanoPaquete) {//Si nos llega paquete de datos
+    Serial.print("Paquete recibido ");//Muestra confirmaciÃ³n
+
+    while (LoRa.available()) {//Leemos el paquete
+      DatoLoRa = LoRa.readString();//Guardamos cadena en variable
+      Serial.print(DatoLoRa);//Lo imprimimos en monitor serial
+    }
+
+    int rssi = LoRa.packetRssi();//Esto nos imprime la intensidad de seÃ±al recibida
+    Serial.print(" con RSSI ");    
+    Serial.println(rssi);
+
+   // Mostramos informaciÃ³n captada
+   display.clearDisplay();
+   display.setCursor(0,0);
+   display.print("Receptor LoRa");//Mensaje
+   display.setCursor(0,20);
+   display.print("Paquete recibido:");//Imprime datos recibidos
+   display.setCursor(0,30);
+   display.print(DatoLoRa);
+   display.setCursor(0,40);
+   display.print("RSSI:");//Imprime intensidad de seÃ±al
+   display.setCursor(30,40);
+   display.print(rssi);
+   display.display();   
+  }
+  
+  datos[1][0] = bme.readTemperature();
+  datos[1][1] = bme.readHumidity();
+  datos[1][2] = bme.readPressure() / 100.0F; 
+
   Serial.print("Enviando paquete: ");//Muestra mensaje
-  Serial.println( Contador);//Muestra la cuenta actual
+  Serial.println(datos);//Muestra la cuenta actual
 
 
   //Para mandar paquete al LoRa receptor
   LoRa.beginPacket();//Inicia protocolo
-  LoRa.print( Contador);//Manda cuenta actual
+  LoRa.print(datos);
   LoRa.endPacket();//Fin de paquete enviado
   
   display.clearDisplay();//Limpia pantalla
@@ -89,13 +123,11 @@ void loop() {
   display.setCursor(0,30);
   display.print("Paquete LoRa enviado.");//Mensaje de confirmaciÃ³n
   display.setCursor(0,50);
-  display.print(" Contador:");//Mensaje
+  display.print(" Datos:");//Mensaje
   display.setCursor(80,50);
-  display.print( Contador);//La cuenta actual que se envÃ­a 
+  display.print( datos);
   display.display();
-
-  Contador++;
   
-  delay(1500);//Esperamos 10 segundos entre cada envÃ­o
+  delay(1000);
 }
 

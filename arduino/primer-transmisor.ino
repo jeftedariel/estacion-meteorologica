@@ -9,6 +9,11 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
+
+Adafruit_BME280 bme
+
 //Debemos definir los pines que se utilizaran por el modulo LoRa
 #define SCK 5
 #define MISO 19
@@ -27,7 +32,7 @@
 #define OLED_SCL 15 
 #define OLED_RST 16
 
-int  Contador = 0;//Haremos un contador de paquetes enviados
+double datos[3][3];
 
 Adafruit_SSD1306 display(ANCHOPANTALLA, ALTOPANTALLA, &Wire, OLED_RST);
 
@@ -70,14 +75,17 @@ void setup() {
 }
 
 void loop() {
-   
+  datos[0][0] = bme.readTemperature();
+  datos[0][1] = bme.readHumidity();
+  datos[0][2] = bme.readPressure() / 100.0F; 
+
   Serial.print("Enviando paquete: ");//Muestra mensaje
-  Serial.println( Contador);//Muestra la cuenta actual
+  Serial.println(datos);//Muestra la cuenta actual
 
 
   //Para mandar paquete al LoRa receptor
   LoRa.beginPacket();//Inicia protocolo
-  LoRa.print( Contador);//Manda cuenta actual
+  LoRa.print(datos);
   LoRa.endPacket();//Fin de paquete enviado
   
   display.clearDisplay();//Limpia pantalla
@@ -87,13 +95,11 @@ void loop() {
   display.setCursor(0,30);
   display.print("Paquete LoRa enviado.");//Mensaje de confirmaciÃ³n
   display.setCursor(0,50);
-  display.print(" Contador:");//Mensaje
+  display.print(" Datos:");//Mensaje
   display.setCursor(80,50);
-  display.print( Contador);//La cuenta actual que se envÃ­a 
+  display.print( datos);
   display.display();
-
-  Contador++;
   
-  delay(1500);//Esperamos 10 segundos entre cada envÃ­o
+  delay(1000);
 }
 
