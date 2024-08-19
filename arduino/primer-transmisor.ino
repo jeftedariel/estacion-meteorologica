@@ -72,7 +72,12 @@ void setup() {
   display.print("Inicio exitoso de LoRa!");//Mensaje de todo bien en pantalla OLED
   display.display();
   delay(2000);//Esperamos un par de segundos
-}
+
+  for(int i = 0; i<3; i++){
+    for(int k = 0; k<3; i++){
+      datos[i][k] = 0;
+    }
+  }
 
 void loop() {
   datos[0][0] = bme.readTemperature();
@@ -91,7 +96,7 @@ void loop() {
   display.clearDisplay();//Limpia pantalla
   display.setCursor(0,0);//Posicionamos en siguiente renglÃ³n
   display.setTextSize(1);//TamaÃ±o de fuente a 1 punto
-  display.println("Transmisor LoRa");// 
+  display.println("Transmisor #1 LoRa");// 
   display.setCursor(0,30);
   display.print("Paquete LoRa enviado.");//Mensaje de confirmaciÃ³n
   display.setCursor(0,50);

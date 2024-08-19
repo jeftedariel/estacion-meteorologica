@@ -123,9 +123,9 @@ void loop() {
    display.display();   
   }
   
-  datos[1][0] = bme.readTemperature();
-  datos[1][1] = bme.readHumidity();
-  datos[1][2] = bme.readPressure() / 100.0F; 
+  datos[2][0] = bme.readTemperature();
+  datos[2][1] = bme.readHumidity();
+  datos[2][2] = bme.readPressure() / 100.0F; 
 
   Serial.print("Enviando paquete: ");//Muestra mensaje
   Serial.println(datos);//Muestra la cuenta actual
