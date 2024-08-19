@@ -4,10 +4,13 @@
  */
 package com.jefte.estacionmeteorologica;
 
-import com.jefte.estacionmeteorologica.Auth.GUILogin;
+import com.jefte.estacionmeteorologica.Roles.GUIRoles;
+
 
 public class Main {
     public static void main(String[] args) {
-       GUILogin.initGUI();
+       GUIRoles g = new GUIRoles();
+       g.setVisible(true);
+       
     }
 }
