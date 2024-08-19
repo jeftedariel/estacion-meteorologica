@@ -198,7 +198,7 @@ public class CrudSensores extends javax.swing.JFrame {
         pPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.jpeg"))); // NOI18N
-        pPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 620));
+        pPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 610));
 
         getContentPane().add(pPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 1000, 610));
 
