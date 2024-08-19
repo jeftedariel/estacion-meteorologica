@@ -69,132 +69,178 @@ public class formulario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        lblCedula = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblId_Rol = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
+        lblCedula = new javax.swing.JLabel();
         lblPApellido = new javax.swing.JLabel();
         lblSApellido = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
         lblContrasena = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        txtCedula = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
         txtPApellido = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtId_Rol = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
         txtSApellido = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JTextField();
-        lblId_Rol = new javax.swing.JLabel();
-        txtId_Rol = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCedula.setText("Cédula");
+        lblId_Rol.setBackground(new java.awt.Color(255, 255, 255));
+        lblId_Rol.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lblId_Rol.setForeground(new java.awt.Color(255, 255, 255));
+        lblId_Rol.setText("Id Rol");
+        jPanel2.add(lblId_Rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 50, -1));
 
+        lblNombre.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre");
+        jPanel2.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
+        lblCedula.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lblCedula.setForeground(new java.awt.Color(255, 255, 255));
+        lblCedula.setText("Cédula");
+        jPanel2.add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
+        lblPApellido.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lblPApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblPApellido.setText("Primer Apellido");
+        jPanel2.add(lblPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
+        lblSApellido.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lblSApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblSApellido.setText("Segundo Apellido");
+        jPanel2.add(lblSApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
+        lblCorreo.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
         lblCorreo.setText("Correo");
+        jPanel2.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 70, -1));
 
+        lblContrasena.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lblContrasena.setForeground(new java.awt.Color(255, 255, 255));
         lblContrasena.setText("Contraseña");
+        jPanel2.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
+        txtPApellido.setBackground(new java.awt.Color(240, 237, 255));
+        txtPApellido.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtPApellido.setBorder(null);
+        txtPApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPApellidoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 260, 30));
+
+        txtNombre.setBackground(new java.awt.Color(240, 237, 255));
+        txtNombre.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtNombre.setBorder(null);
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 260, 30));
+
+        txtId_Rol.setBackground(new java.awt.Color(240, 237, 255));
+        txtId_Rol.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtId_Rol.setBorder(null);
+        jPanel2.add(txtId_Rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 260, 30));
+
+        txtCedula.setBackground(new java.awt.Color(240, 237, 255));
+        txtCedula.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtCedula.setBorder(null);
+        jPanel2.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 260, 30));
+
+        txtSApellido.setBackground(new java.awt.Color(240, 237, 255));
+        txtSApellido.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtSApellido.setBorder(null);
+        jPanel2.add(txtSApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 260, 30));
+
+        txtCorreo.setBackground(new java.awt.Color(240, 237, 255));
+        txtCorreo.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtCorreo.setBorder(null);
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 260, 30));
+
+        txtContrasena.setBackground(new java.awt.Color(240, 237, 255));
+        txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtContrasena.setBorder(null);
+        jPanel2.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 260, 30));
+
+        jLabel9.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Cancelar");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 552, -1, 30));
+
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 190, 54));
 
+        jLabel10.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Guardar");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, -1, 30));
+
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 190, 54));
 
-        lblId_Rol.setText("Id Rol");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtRedem.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 320, 90));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblContrasena)
-                    .addComponent(lblCorreo)
-                    .addComponent(lblSApellido)
-                    .addComponent(lblPApellido)
-                    .addComponent(lblNombre)
-                    .addComponent(lblCedula)
-                    .addComponent(lblId_Rol))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                    .addComponent(txtPApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardar))
-                    .addComponent(txtId_Rol))
-                .addGap(30, 30, 30))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblId_Rol)
-                    .addComponent(txtId_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCedula))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombre))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPApellido))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSApellido))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCorreo))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblContrasena))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
-                .addGap(29, 29, 29))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtRedem.png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 300, 70));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtRedem.png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 290, 70));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtRedem.png"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 290, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtRedem.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 290, 50));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtRedem.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 280, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtRedem.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 280, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (7).png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -208,6 +254,10 @@ public class formulario extends javax.swing.JDialog {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         this.datosValidados();
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtPApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPApellidoActionPerformed
     
     private void datosValidados(){
     if(!this.txtCedula.getText().isEmpty() && !this.txtContrasena.getText().isEmpty() && !this.txtCorreo.getText().isEmpty() && !this.txtId_Rol.getText().isEmpty() && !this.txtNombre.getText().isEmpty() && !this.txtPApellido.getText().isEmpty() && !this.txtSApellido.getText().isEmpty()){
@@ -236,7 +286,17 @@ public class formulario extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblCorreo;
