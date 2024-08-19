@@ -123,12 +123,12 @@ public class formularioSensor extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Cancelar");
-        pSensor.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 580, -1, -1));
+        pSensor.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Guardar");
-        pSensor.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, -1, -1));
+        pSensor.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, -1, -1));
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnGuardar.setText("Guardar");
