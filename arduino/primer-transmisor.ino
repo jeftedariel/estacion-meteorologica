@@ -32,7 +32,7 @@ Adafruit_BME280 bme
 #define OLED_SCL 15 
 #define OLED_RST 16
 
-double datos[3][3];
+double datos[1][1];
 
 Adafruit_SSD1306 display(ANCHOPANTALLA, ALTOPANTALLA, &Wire, OLED_RST);
 
@@ -72,12 +72,6 @@ void setup() {
   display.print("Inicio exitoso de LoRa!");//Mensaje de todo bien en pantalla OLED
   display.display();
   delay(2000);//Esperamos un par de segundos
-
-  for(int i = 0; i<3; i++){
-    for(int k = 0; k<3; i++){
-      datos[i][k] = 0;
-    }
-  }
 
 void loop() {
   datos[0][0] = bme.readTemperature();
