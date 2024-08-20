@@ -6,8 +6,10 @@ package com.jefte.estacionmeteorologica;
 
 import com.jefte.estacionmeteorologica.Auth.GUILogin;
 
+
 public class Main {
     public static void main(String[] args) {
        GUILogin.initGUI();
+       
     }
 }

@@ -5,6 +5,7 @@
 package com.jefte.estacionmeteorologica.Auth;
 
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
 
 /**
  *
@@ -94,7 +95,8 @@ public class GUIMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSensoresActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        CrudSensores.initGUI();
     }//GEN-LAST:event_btnSensoresActionPerformed
 
     /**

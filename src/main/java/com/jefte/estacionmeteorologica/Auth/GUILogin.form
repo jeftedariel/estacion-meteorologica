@@ -69,7 +69,6 @@
                 <EmptyBorder/>
               </Border>
             </Property>
-            <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCorreoElectronicoFocusGained"/>

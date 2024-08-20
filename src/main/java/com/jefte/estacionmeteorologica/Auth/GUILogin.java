@@ -10,8 +10,9 @@ import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.jefte.estacionmeteorologica.Validaciones.Validar;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Base64;
+import java.util.Base64.Decoder;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 /**
@@ -98,7 +99,6 @@ public class GUILogin extends javax.swing.JFrame {
         txtCorreoElectronico.setToolTipText("Correo Electronico");
         txtCorreoElectronico.setActionCommand("<Not Set>");
         txtCorreoElectronico.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtCorreoElectronico.setOpaque(true);
         txtCorreoElectronico.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCorreoElectronicoFocusGained(evt);
@@ -259,14 +259,17 @@ public class GUILogin extends javax.swing.JFrame {
 
   private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnIngresarActionPerformed
     boolean existe = false, passCorrecta = false;
-
+    Decoder decoder = Base64.getDecoder();
     for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
+
+        
       if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
         existe = true;
       }
-
-      if (usuario.getContrasena().equals(this.txtContraseña.getText())) {
+      
+      if (new String(decoder.decode(usuario.getContrasena())).equals(this.txtContraseña.getText())) {
         passCorrecta = true;
+        
       }
 
       if (passCorrecta && existe) {

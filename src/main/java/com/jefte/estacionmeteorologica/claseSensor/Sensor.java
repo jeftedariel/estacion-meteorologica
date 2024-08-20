@@ -1,4 +1,4 @@
-package claseSensor;
+package com.jefte.estacionmeteorologica.claseSensor;
 
 /**
  *
