@@ -40,227 +40,223 @@ public class GUIBuscarRol extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        cbxPermisoSensores = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        cbxPermisoDatoSensor = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        cbxPermisoDatosEnVivo = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        btnFiltrar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        cbxPermisoReportes = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        ckReportes = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
         cbxPermisoDatosRol = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        ckRol = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         cbxPermisoDatosUsuario = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        cbxPermisoReportes = new javax.swing.JComboBox<>();
-        btnVolver = new javax.swing.JButton();
-        btnFiltrar = new javax.swing.JButton();
-        ckSensores = new javax.swing.JCheckBox();
-        ckDatosSensores = new javax.swing.JCheckBox();
-        ckVivo = new javax.swing.JCheckBox();
+        jLabel11 = new javax.swing.JLabel();
         ckUsuario = new javax.swing.JCheckBox();
-        ckRol = new javax.swing.JCheckBox();
-        ckReportes = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        cbxPermisoDatosEnVivo = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        ckVivo = new javax.swing.JCheckBox();
+        cbxPermisoDatoSensor = new javax.swing.JComboBox<>();
+        ckDatosSensores = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        ckSensores = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        cbxPermisoSensores = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Sensores:");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cbxPermisoSensores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
-        cbxPermisoSensores.setEnabled(false);
+        jLabel15.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Filtrar");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
 
-        jLabel2.setText("Datos Sensores:");
+        jLabel14.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Volver");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
 
-        cbxPermisoDatoSensor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
-        cbxPermisoDatoSensor.setEnabled(false);
-        cbxPermisoDatoSensor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxPermisoDatoSensorActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Datos en Vivo:");
-
-        cbxPermisoDatosEnVivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
-        cbxPermisoDatosEnVivo.setEnabled(false);
-
-        jLabel4.setText("Datos Usuario:");
-
-        cbxPermisoDatosRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
-        cbxPermisoDatosRol.setEnabled(false);
-        cbxPermisoDatosRol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxPermisoDatosRolActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Datos Rol: ");
-
-        cbxPermisoDatosUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
-        cbxPermisoDatosUsuario.setEnabled(false);
-
-        jLabel6.setText("Reportes:");
-
-        cbxPermisoReportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
-        cbxPermisoReportes.setEnabled(false);
-
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
-
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 115, 50));
 
-        ckSensores.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckSensoresActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
+        jPanel2.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 103, 50));
 
-        ckDatosSensores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckDatosSensoresActionPerformed(evt);
-            }
-        });
+        cbxPermisoReportes.setBackground(new java.awt.Color(240, 237, 255));
+        cbxPermisoReportes.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        cbxPermisoReportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoReportes.setBorder(null);
+        cbxPermisoReportes.setEnabled(false);
+        jPanel2.add(cbxPermisoReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 402, 260, 30));
 
-        ckVivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckVivoActionPerformed(evt);
-            }
-        });
-
-        ckUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckUsuarioActionPerformed(evt);
-            }
-        });
-
-        ckRol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckRolActionPerformed(evt);
-            }
-        });
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BrandonImagen.png"))); // NOI18N
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 300, 50));
 
         ckReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckReportesActionPerformed(evt);
             }
         });
+        jPanel2.add(ckReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ckUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ckReportes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbxPermisoReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ckSensores)
-                                    .addComponent(ckDatosSensores)
-                                    .addComponent(ckVivo, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(ckRol)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbxPermisoSensores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbxPermisoDatoSensor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(cbxPermisoDatosEnVivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbxPermisoDatosRol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(149, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(ckSensores, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(cbxPermisoSensores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel1)))
-                                        .addGap(57, 57, 57)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel2)
-                                            .addComponent(cbxPermisoDatoSensor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(ckDatosSensores))
-                                .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel3)
-                                        .addComponent(cbxPermisoDatosEnVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(ckVivo))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(cbxPermisoDatosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(ckUsuario))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cbxPermisoDatosRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(ckRol))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(cbxPermisoReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ckReportes))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Reportes:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 94, -1));
+
+        cbxPermisoDatosRol.setBackground(new java.awt.Color(240, 237, 255));
+        cbxPermisoDatosRol.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        cbxPermisoDatosRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatosRol.setBorder(null);
+        cbxPermisoDatosRol.setEnabled(false);
+        cbxPermisoDatosRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPermisoDatosRolActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbxPermisoDatosRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 250, 30));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BrandonImagen.png"))); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 300, 50));
+
+        ckRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckRolActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ckRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Datos Rol: ");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 94, -1));
+
+        cbxPermisoDatosUsuario.setBackground(new java.awt.Color(240, 237, 255));
+        cbxPermisoDatosUsuario.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        cbxPermisoDatosUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatosUsuario.setBorder(null);
+        cbxPermisoDatosUsuario.setEnabled(false);
+        jPanel2.add(cbxPermisoDatosUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 260, 30));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BrandonImagen.png"))); // NOI18N
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 300, 50));
+
+        ckUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ckUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Datos Usuario:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 100, -1));
+
+        cbxPermisoDatosEnVivo.setBackground(new java.awt.Color(240, 237, 255));
+        cbxPermisoDatosEnVivo.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        cbxPermisoDatosEnVivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatosEnVivo.setBorder(null);
+        cbxPermisoDatosEnVivo.setEnabled(false);
+        jPanel2.add(cbxPermisoDatosEnVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 260, 30));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BrandonImagen.png"))); // NOI18N
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 300, 50));
+
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Datos en Vivo:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 110, -1));
+
+        ckVivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckVivoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ckVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
+
+        cbxPermisoDatoSensor.setBackground(new java.awt.Color(240, 237, 255));
+        cbxPermisoDatoSensor.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        cbxPermisoDatoSensor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoDatoSensor.setBorder(null);
+        cbxPermisoDatoSensor.setEnabled(false);
+        cbxPermisoDatoSensor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPermisoDatoSensorActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbxPermisoDatoSensor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 102, 260, 30));
+
+        ckDatosSensores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckDatosSensoresActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ckDatosSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Datos Sensores:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 120, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BrandonImagen.png"))); // NOI18N
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 300, 50));
+
+        ckSensores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckSensoresActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ckSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Sensores:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 94, -1));
+
+        cbxPermisoSensores.setBackground(new java.awt.Color(240, 237, 255));
+        cbxPermisoSensores.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        cbxPermisoSensores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "false", "true" }));
+        cbxPermisoSensores.setBorder(null);
+        cbxPermisoSensores.setEnabled(false);
+        jPanel2.add(cbxPermisoSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 260, 30));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BrandonImagen.png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 300, 50));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (7).png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -30, 500, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -366,11 +362,20 @@ public class GUIBuscarRol extends javax.swing.JDialog {
     private javax.swing.JCheckBox ckUsuario;
     private javax.swing.JCheckBox ckVivo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
