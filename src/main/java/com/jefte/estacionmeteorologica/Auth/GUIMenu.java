@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.jefte.estacionmeteorologica;
+package com.jefte.estacionmeteorologica.Auth;
 
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
 
 /**
  *
@@ -110,7 +111,8 @@ public class GUIMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSensoresActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        CrudSensores.initGUI();
     }//GEN-LAST:event_btnSensoresActionPerformed
 
     /**
