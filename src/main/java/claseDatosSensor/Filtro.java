@@ -4,7 +4,6 @@
  */
 package claseDatosSensor;
 
-import javax.swing.JCheckBox;
 
 /**
  *
@@ -36,98 +35,106 @@ public class Filtro extends javax.swing.JDialog {
 
         pPrincipal = new javax.swing.JPanel();
         ckIdentificador = new javax.swing.JCheckBox();
-        txtIdenficador = new javax.swing.JTextField();
         ckFecha = new javax.swing.JCheckBox();
-        txtFecha = new javax.swing.JTextField();
         ckHora = new javax.swing.JCheckBox();
-        txtHora = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
+        txtIdenficador = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ckIdentificador.setBackground(new java.awt.Color(255, 255, 255));
+        ckIdentificador.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        ckIdentificador.setForeground(new java.awt.Color(255, 255, 255));
         ckIdentificador.setText("Identificador Sensor");
+        ckIdentificador.setBorder(null);
+        ckIdentificador.setContentAreaFilled(false);
         ckIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckIdentificadorActionPerformed(evt);
             }
         });
+        pPrincipal.add(ckIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 210, 40));
 
-        txtIdenficador.setEnabled(false);
-
+        ckFecha.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        ckFecha.setForeground(new java.awt.Color(255, 255, 255));
         ckFecha.setText("Fecha");
+        ckFecha.setBorder(null);
+        ckFecha.setContentAreaFilled(false);
         ckFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckFechaActionPerformed(evt);
             }
         });
+        pPrincipal.add(ckFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 210, 40));
 
-        txtFecha.setEnabled(false);
-
+        ckHora.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        ckHora.setForeground(new java.awt.Color(255, 255, 255));
         ckHora.setText("Hora");
+        ckHora.setContentAreaFilled(false);
         ckHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckHoraActionPerformed(evt);
             }
         });
+        pPrincipal.add(ckHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 210, 40));
 
-        txtHora.setEnabled(false);
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Buscar");
+        pPrincipal.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 90, 60));
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(null);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
+        pPrincipal.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 290, 80));
 
-        javax.swing.GroupLayout pPrincipalLayout = new javax.swing.GroupLayout(pPrincipal);
-        pPrincipal.setLayout(pPrincipalLayout);
-        pPrincipalLayout.setHorizontalGroup(
-            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPrincipalLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ckHora)
-                    .addComponent(ckIdentificador, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                    .addComponent(txtIdenficador)
-                    .addComponent(ckFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFecha)
-                    .addComponent(txtHora))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPrincipalLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        pPrincipalLayout.setVerticalGroup(
-            pPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPrincipalLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(ckIdentificador)
-                .addGap(18, 18, 18)
-                .addComponent(txtIdenficador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ckFecha)
-                .addGap(28, 28, 28)
-                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ckHora)
-                .addGap(18, 18, 18)
-                .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        txtIdenficador.setBackground(new java.awt.Color(240, 237, 255));
+        txtIdenficador.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtIdenficador.setBorder(null);
+        txtIdenficador.setEnabled(false);
+        pPrincipal.add(txtIdenficador, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 320, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        txtFecha.setBackground(new java.awt.Color(240, 237, 255));
+        txtFecha.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtFecha.setBorder(null);
+        txtFecha.setEnabled(false);
+        pPrincipal.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 320, 40));
+
+        txtHora.setBackground(new java.awt.Color(240, 237, 255));
+        txtHora.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtHora.setForeground(new java.awt.Color(240, 237, 255));
+        txtHora.setBorder(null);
+        txtHora.setEnabled(false);
+        pPrincipal.add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 320, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtField2.png"))); // NOI18N
+        pPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 380, 80));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtField2.png"))); // NOI18N
+        pPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 380, 80));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/txtField2.png"))); // NOI18N
+        pPrincipal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 380, 80));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (7).png"))); // NOI18N
+        pPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 640));
+
+        getContentPane().add(pPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,6 +189,11 @@ public class Filtro extends javax.swing.JDialog {
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckHora;
     private javax.swing.JCheckBox ckIdentificador;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel pPrincipal;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;

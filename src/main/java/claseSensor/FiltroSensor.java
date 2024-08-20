@@ -61,9 +61,10 @@ public class FiltroSensor extends javax.swing.JDialog {
         pPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ckIdentificador.setBackground(new java.awt.Color(240, 237, 255));
-        ckIdentificador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ckIdentificador.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         ckIdentificador.setForeground(new java.awt.Color(0, 0, 0));
         ckIdentificador.setText("Indentificador");
+        ckIdentificador.setContentAreaFilled(false);
         ckIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckIdentificadorActionPerformed(evt);
@@ -105,6 +106,8 @@ public class FiltroSensor extends javax.swing.JDialog {
         ckLocalizaciojn.setForeground(new java.awt.Color(0, 0, 0));
         ckLocalizaciojn.setText("Localizacion");
         ckLocalizaciojn.setBorder(null);
+        ckLocalizaciojn.setContentAreaFilled(false);
+        ckLocalizaciojn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ckLocalizaciojn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckLocalizaciojnActionPerformed(evt);
@@ -117,6 +120,7 @@ public class FiltroSensor extends javax.swing.JDialog {
         ckTipo.setForeground(new java.awt.Color(0, 0, 0));
         ckTipo.setText("Tipo");
         ckTipo.setBorder(null);
+        ckTipo.setContentAreaFilled(false);
         ckTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ckTipoActionPerformed(evt);
