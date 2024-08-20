@@ -15,6 +15,25 @@ Tener instalado
 - Jackson 2.17.2
 - OpenPdf 2.0.2
 - JFreeChar 1.5.3
+
+## Screenshots
+<details>
+  <summary>Login</summary>
+  
+![image](https://github.com/user-attachments/assets/4f3c204b-26be-4930-be56-2810ab49b3a4)
+![image](https://github.com/user-attachments/assets/20b1c48b-068d-468d-8ce8-3f1e77fe8aaa)
+
+
+</details>
+
+<details>
+  <summary>Registro</summary>
+
+![image](https://github.com/user-attachments/assets/b78f1091-284e-4745-8b87-5806dc587aca)
+
+</details>
+
+
 ## Como contribuir 🛠️
 
 1. **Clonar el repositorio:**
