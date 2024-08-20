@@ -18,6 +18,7 @@ public class SerialHandler {
         }
         return null;
     }
+    
 
     public static String obtenerDato(int indice, String puerto) {
         SerialPort comPort = SerialPort.getCommPort(puerto);

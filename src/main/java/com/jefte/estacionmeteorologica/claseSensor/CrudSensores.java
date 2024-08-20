@@ -1,8 +1,10 @@
-package claseSensor;
+package com.jefte.estacionmeteorologica.claseSensor;
 
 import ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.Auth.GUILogin;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.awt.geom.RoundRectangle2D;
 
 
 
@@ -21,7 +23,7 @@ public class CrudSensores extends javax.swing.JFrame {
     private JsonHandler<Sensor> gestioSensor;
     private DefaultTableModel modelo = new DefaultTableModel();
     private String nombreJson = "sensores.json";
-
+    
     public CrudSensores() {
         ConfiguracionTablas.inicializar();
         initComponents();
@@ -35,6 +37,15 @@ public class CrudSensores extends javax.swing.JFrame {
         
 
     }
+    
+    public static void initGUI() {
+    CrudSensores gui = new CrudSensores();
+    gui.setShape(new RoundRectangle2D.Double(0,0,1249, 607, 50,50));
+    gui.setResizable(false);
+    gui.setLocationRelativeTo(null);
+    gui.setVisible(true);
+    
+  }
 
     private void actualizarTabla() {
         this.modelo.setRowCount(0);
