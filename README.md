@@ -16,7 +16,7 @@ Tener instalado
 - OpenPdf 2.0.2
 - JFreeChar 1.5.3
 
-## Screenshots
+## Screenshots 📷
 <details>
   <summary>Login</summary>
   
