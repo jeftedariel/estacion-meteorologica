@@ -4,7 +4,7 @@
  */
 package claseDatosSensor;
 
-import claseSensor.Sensor;
+import com.jefte.estacionmeteorologica.claseSensor.Sensor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.util.Map;
