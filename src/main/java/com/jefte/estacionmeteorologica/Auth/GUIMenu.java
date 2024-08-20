@@ -4,8 +4,11 @@
  */
 package com.jefte.estacionmeteorologica.Auth;
 
-import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Roles.GUIRoles;
+import com.jefte.estacionmeteorologica.Usuarios.GuiUsuario;
+import com.jefte.estacionmeteorologica.claseDatosSensor.GUIDatosSensores;
 import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
+import java.awt.geom.RoundRectangle2D;
 
 /**
  *
@@ -23,7 +26,7 @@ public class GUIMenu extends javax.swing.JFrame {
         
                
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,9 +41,9 @@ public class GUIMenu extends javax.swing.JFrame {
         btnSensores = new javax.swing.JButton();
         btnDatosSensores = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
-        btnReportesEnVivo = new javax.swing.JButton();
         btnUsuario = new javax.swing.JButton();
         btnRoles = new javax.swing.JButton();
+        btnReportesEnVivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,19 +75,44 @@ public class GUIMenu extends javax.swing.JFrame {
         jPanel1.add(btnSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 132, 34));
 
         btnDatosSensores.setText("Datos Sensores");
+        btnDatosSensores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatosSensoresActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnDatosSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, 46));
 
         btnReportes.setText("Reportes");
-        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 136, -1));
-
-        btnReportesEnVivo.setText("Reportes en vivo");
-        jPanel1.add(btnReportesEnVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, -1, 46));
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 136, -1));
 
         btnUsuario.setText("Usuario");
+        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuarioActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 650, -1, -1));
 
         btnRoles.setText("Roles");
+        btnRoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRolesActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 450, -1, -1));
+
+        btnReportesEnVivo.setText("Reportes En vivo");
+        btnReportesEnVivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesEnVivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReportesEnVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 136, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/fondoMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1290, 700));
@@ -98,6 +126,29 @@ public class GUIMenu extends javax.swing.JFrame {
         this.dispose();
         CrudSensores.initGUI();
     }//GEN-LAST:event_btnSensoresActionPerformed
+
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesActionPerformed
+
+    private void btnDatosSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosSensoresActionPerformed
+        this.dispose();
+        GUIDatosSensores.initGUI();
+    }//GEN-LAST:event_btnDatosSensoresActionPerformed
+
+    private void btnReportesEnVivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesEnVivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesEnVivoActionPerformed
+
+    private void btnRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRolesActionPerformed
+        this.dispose();
+        GUIRoles.initGUI();
+    }//GEN-LAST:event_btnRolesActionPerformed
+
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
+        this.dispose();
+        GuiUsuario.initGUI();
+    }//GEN-LAST:event_btnUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

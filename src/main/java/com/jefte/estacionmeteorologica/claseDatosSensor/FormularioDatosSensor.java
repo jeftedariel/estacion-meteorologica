@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package claseDatosSensor;
+package com.jefte.estacionmeteorologica.claseDatosSensor;
 
 import com.jefte.estacionmeteorologica.claseSensor.Sensor;
 import com.fasterxml.jackson.core.type.TypeReference;

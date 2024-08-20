@@ -36,12 +36,12 @@ public class GUILogin extends javax.swing.JFrame {
   }
 
   public static void initGUI() {
-    GUILogin guiLogin = new GUILogin();
+    GUILogin gui = new GUILogin();
     
-    guiLogin.setShape(new RoundRectangle2D.Double(0,0,1294, 730, 50,50));
-    guiLogin.setResizable(false);
-    guiLogin.setLocationRelativeTo(null);
-    guiLogin.setVisible(true);
+    gui.setShape(new RoundRectangle2D.Double(0,0,1294, 730, 50,50));
+    gui.setResizable(false);
+    gui.setLocationRelativeTo(null);
+    gui.setVisible(true);
     
   }
 

@@ -1,6 +1,6 @@
 package com.jefte.estacionmeteorologica.claseSensor;
 
-import ManejoTablas.ConfiguracionTablas;
+import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.Auth.GUILogin;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;

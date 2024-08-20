@@ -4,11 +4,13 @@
  */
 package com.jefte.estacionmeteorologica.Roles;
 
-import ManejoTablas.ConfiguracionTablas;
+import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.jefte.estacionmeteorologica.Roles.GUIBuscarRol;
 import com.jefte.estacionmeteorologica.Roles.GUIAgregarRol;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.Auth.GUILogin;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +26,7 @@ public class GUIRoles extends javax.swing.JFrame {
     private String nombreJson = "roles.json";
 
     public GUIRoles() {
-         ConfiguracionTablas.inicializar();
+        ConfiguracionTablas.inicializar();
         initComponents();
         this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Rol>>() {
         });
@@ -32,7 +34,17 @@ public class GUIRoles extends javax.swing.JFrame {
         this.modelo.setColumnIdentifiers(nombreColumnas);
         this.tbRoles.setModel(modelo);
         this.actualizarTabla();
-         ConfiguracionTablas.styleTable(tbRoles);
+        ConfiguracionTablas.styleTable(tbRoles);
+    }
+
+    public static void initGUI() {
+        GUIRoles gui = new GUIRoles();
+
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1294, 730, 50, 50));
+        gui.setResizable(false);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -163,13 +175,12 @@ public class GUIRoles extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-    this.formFiltro();
+        this.formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
     private void formFiltro() {
         GUIBuscarRol guiBuscarRol = new GUIBuscarRol(this, true, "roles.json");
         guiBuscarRol.setVisible(true);
@@ -179,8 +190,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
             for (Rol rol : gestionRol.obtenerDatos().values()) {
                 System.out.println(rol.isSensores() + "- " + guiBuscarRol.obtenerDatos(0));
-                
-                
+
                 boolean filtro = true;
                 if (guiBuscarRol.getCkSensores() && !String.valueOf(rol.isSensores()).equals(guiBuscarRol.obtenerDatos(0))) {
                     filtro = false;
@@ -197,7 +207,7 @@ public class GUIRoles extends javax.swing.JFrame {
                 if (guiBuscarRol.getCkReportes() && !String.valueOf(rol.isReportes()).equals(guiBuscarRol.obtenerDatos(4))) {
                     filtro = false;
                 }
-                 if (guiBuscarRol.getCkUsuario() && !String.valueOf(rol.isDatosUsuarios()).equals(guiBuscarRol.obtenerDatos(5))) {
+                if (guiBuscarRol.getCkUsuario() && !String.valueOf(rol.isDatosUsuarios()).equals(guiBuscarRol.obtenerDatos(5))) {
                     filtro = false;
                 }
                 if (filtro) {
@@ -219,7 +229,7 @@ public class GUIRoles extends javax.swing.JFrame {
             this.tbRoles.repaint();
         }
     }
-    
+
     private void actualizarTabla() {
         this.modelo.setRowCount(0);
         for (Rol rol : this.gestionRol.obtenerDatos().values()) {
@@ -243,7 +253,7 @@ public class GUIRoles extends javax.swing.JFrame {
                 this.gestionRol.agregar(ro);
 
             } else {
-                
+
                 ro.setId(rol.getId());
                 this.gestionRol.editar(rol.getId(), ro);
                 System.out.println("editando");
@@ -266,7 +276,6 @@ public class GUIRoles extends javax.swing.JFrame {
         }
     }
 
-   
     private void EditarRol() {
         if (this.tbRoles.getSelectedRow() != -1) {
             System.out.println(this.tbRoles.getSelectedRow());

@@ -4,10 +4,12 @@
  */
 package com.jefte.estacionmeteorologica.Usuarios;
 
-import ManejoTablas.ConfiguracionTablas;
+import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.jefte.estacionmeteorologica.Usuarios.Filtrado;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Roles.GUIRoles;
+import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +24,7 @@ public class GuiUsuario extends javax.swing.JFrame {
     private JsonHandler<Usuario> gestionUsuario;
     private DefaultTableModel modelo = new DefaultTableModel();
     private String nombre = "usuarios.json";
-    
+
     private TableRowSorter trsfiltro;
     String filtro;
 
@@ -39,6 +41,16 @@ public class GuiUsuario extends javax.swing.JFrame {
         ConfiguracionTablas.styleTable(tbUsuarios);
 
         actualizarTabla();
+    }
+
+    public static void initGUI() {
+        GuiUsuario gui = new GuiUsuario();
+
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1294, 730, 50, 50));
+        gui.setResizable(false);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+
     }
 
     private void actualizarTabla() {
@@ -65,7 +77,7 @@ public class GuiUsuario extends javax.swing.JFrame {
 
             } else {
                 se.setId(usuario.getId());
-                this.gestionUsuario.editar(usuario.getId(),se);
+                this.gestionUsuario.editar(usuario.getId(), se);
             }
             actualizarTabla();
         }
@@ -96,7 +108,7 @@ public class GuiUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -241,7 +253,7 @@ public class GuiUsuario extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
-    
+
     private void formFiltro() {
 
         Filtrado guiFiltro = new Filtrado(this, true);
@@ -252,10 +264,10 @@ public class GuiUsuario extends javax.swing.JFrame {
 
             for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
                 boolean filtro = true;
-                if (guiFiltro.getCheckId_Rol() && !String.valueOf(usuario.getId_rol()).contentEquals(guiFiltro.getDatos(0))){
+                if (guiFiltro.getCheckId_Rol() && !String.valueOf(usuario.getId_rol()).contentEquals(guiFiltro.getDatos(0))) {
                     filtro = false;
                 }
-                if (guiFiltro.getCheckCedula() && !String.valueOf(usuario.getCedula()).contentEquals(guiFiltro.getDatos(1))){
+                if (guiFiltro.getCheckCedula() && !String.valueOf(usuario.getCedula()).contentEquals(guiFiltro.getDatos(1))) {
                     filtro = false;
                 }
                 if (guiFiltro.getCheckNombre() && !String.valueOf(usuario.getNombre()).contentEquals(guiFiltro.getDatos(2))) {
