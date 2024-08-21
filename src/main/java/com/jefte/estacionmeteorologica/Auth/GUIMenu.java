@@ -4,8 +4,17 @@
  */
 package com.jefte.estacionmeteorologica.Auth;
 
+import claseDatosSensor.DatosSensor;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
+import com.jefte.estacionmeteorologica.reportes.generarReporte;
+import java.util.Map;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  *
@@ -17,11 +26,17 @@ public class GUIMenu extends javax.swing.JFrame {
      * Creates new form GUIAdministrador
      */
     //private JsonHandler<Rol> gestionRol;
-      private String nombreJson = "roles.json";
+    //private JsonHandler<Rol> gestionRol;
+    private String nombreJson = "roles.json";
+
+    private JsonHandler<DatosSensor> gestionDatosSensor;
+    private String nombreJsonSensores = "datosSensores.json";
+
     public GUIMenu(int id_Rol) {
         initComponents();
-        
-               
+        this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {
+        });
+
     }
 
     /**
@@ -53,6 +68,11 @@ public class GUIMenu extends javax.swing.JFrame {
         btnDatosSensores.setText("Datos Sensores");
 
         btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
 
         btnReportesEnVivo.setText("Reportes en vivo");
 
@@ -115,10 +135,32 @@ public class GUIMenu extends javax.swing.JFrame {
         CrudSensores.initGUI();
     }//GEN-LAST:event_btnSensoresActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        JFreeChart[] graficas = {getXYChart()};
+        generarReporte.pdf(graficas);
+    }//GEN-LAST:event_btnReportesActionPerformed
+
+    public JFreeChart getXYChart() {
+        XYSeries series = new XYSeries("Grados Celcius");
+        int i =0;
+        for (DatosSensor dato : gestionDatosSensor.obtenerDatos().values()) {
+            i++;
+            System.out.println(i);
+            if(dato.getId()==0){
+                series.add(i, dato.getValor());
+            }
+        }
+
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series);
+        return ChartFactory.createXYLineChart(
+                "Temperatura", "Tiempo", "Celcius", dataset,
+                PlotOrientation.VERTICAL, true, true, false);
+    }
     /**
      * @param args the command line arguments
      */
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatosSensores;
