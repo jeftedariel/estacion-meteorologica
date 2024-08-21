@@ -21,6 +21,7 @@ import com.jefte.estacionmeteorologica.claseDatosSensor.DatosSensor;
 import com.jefte.estacionmeteorologica.claseDatosSensor.GUIDatosSensores;
 import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
 import com.jefte.estacionmeteorologica.grafica.Grafica;
+import java.awt.geom.RoundRectangle2D;
 
 /**
  *
@@ -50,7 +51,15 @@ public class GUIMenu extends javax.swing.JFrame {
         visibilidadBotones();
 
     }
-
+    
+    public static void initGui(Usuario usuario){
+        GUIMenu guimenu = new GUIMenu(usuario);
+                guimenu.setShape(new RoundRectangle2D.Double(0, 0, 1100, 510, 50, 50));
+                guimenu.setVisible(true);
+                guimenu.setLocationRelativeTo(null);
+                guimenu.setResizable(false);
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

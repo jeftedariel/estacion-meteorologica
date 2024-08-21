@@ -38,16 +38,6 @@ public class GUILogin extends javax.swing.JFrame {
         this.gestionRol = new JsonHandler(nombreJsonRoles, new TypeReference<Map<Integer, Rol>>() {
         });
 
-        for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
-            if (this.gestionUsuario.obtenerDatos().isEmpty() && usuario.getCorreo_electronico() != "admin@admin.com") {
-                this.gestionRol.agregar(new Rol(1, "Admin", true, true, true, true, true, true));
-            }
-        }
-        for (Rol rol : this.gestionRol.obtenerDatos().values()) {
-            if (this.gestionRol.obtenerDatos().isEmpty() && rol.getNombre() != "Admin") {
-                this.gestionUsuario.agregar(new Usuario(1, 1, 000000000, "admin", "admin", "admin", "admin@admin.com", "YWRtaW4="));
-            }
-        }
     }
 
     public static void initGUI() {
@@ -278,28 +268,21 @@ public class GUILogin extends javax.swing.JFrame {
 
             if (usuario.getCorreo_electronico().equals(this.txtCorreoElectronico.getText())) {
                 existe = true;
+                if (new String(decoder.decode(usuario.getContrasena())).equals(this.txtContraseña.getText())) {
+                    passCorrecta = true;
+                    this.dispose();
+                    GUIMenu.initGui(usuario);
+                }
             }
 
-            if (new String(decoder.decode(usuario.getContrasena())).equals(this.txtContraseña.getText())) {
-                passCorrecta = true;
-
+            if (!existe) {
+                JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado.");
+            } else if (!passCorrecta) {
+                JOptionPane.showMessageDialog(null, "La contraseña no es correcta.");
             }
 
-            if (passCorrecta && existe) {
-                this.dispose();
-                GUIMenu guimenu = new GUIMenu(usuario);
-                guimenu.setShape(new RoundRectangle2D.Double(0, 0, 1100, 510, 50, 50));
-                guimenu.setVisible(true);
-                guimenu.setLocationRelativeTo(null);
-                guimenu.setResizable(false);
-            }
         }
 
-        if (!existe) {
-            JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado.");
-        } else if (!passCorrecta) {
-            JOptionPane.showMessageDialog(null, "La contraseña no es correcta.");
-        }
     }// GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtCorreoElectronicoKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtCorreoElectronicoKeyReleased
