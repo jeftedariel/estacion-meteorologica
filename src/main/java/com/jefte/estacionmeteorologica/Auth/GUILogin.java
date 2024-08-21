@@ -275,12 +275,11 @@ public class GUILogin extends javax.swing.JFrame {
                 }
             }
 
-            if (!existe) {
-                JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado.");
-            } else if (!passCorrecta) {
-                JOptionPane.showMessageDialog(null, "La contraseña no es correcta.");
-            }
-
+        }
+        if (!existe) {
+            JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado.");
+        } else if (!passCorrecta) {
+            JOptionPane.showMessageDialog(null, "La contraseña no es correcta.");
         }
 
     }// GEN-LAST:event_btnIngresarActionPerformed
