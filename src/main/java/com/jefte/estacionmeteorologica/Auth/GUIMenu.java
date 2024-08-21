@@ -8,7 +8,7 @@ import com.jefte.estacionmeteorologica.Roles.GUIRoles;
 import com.jefte.estacionmeteorologica.Usuarios.GuiUsuario;
 import com.jefte.estacionmeteorologica.claseDatosSensor.GUIDatosSensores;
 import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
-import java.awt.geom.RoundRectangle2D;
+
 
 /**
  *
@@ -21,11 +21,25 @@ public class GUIMenu extends javax.swing.JFrame {
      */
     //private JsonHandler<Rol> gestionRol;
       private String nombreJson = "roles.json";
-    public GUIMenu(int id_Rol) {
+        public GUIMenu(int id_Rol) {
         initComponents();
         
-               
     }
+    
+    public GUIMenu(){
+     initComponents();
+    }
+    
+    public static void initGui(){
+        //this.dispose();
+        GUIMenu guimenu = new GUIMenu();
+        guimenu.setVisible(true);
+        guimenu.setLocationRelativeTo(null);
+        guimenu.setResizable(false);
+    
+    }
+    
+  
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +50,6 @@ public class GUIMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnSensores = new javax.swing.JButton();
         btnDatosSensores = new javax.swing.JButton();
@@ -45,24 +58,10 @@ public class GUIMenu extends javax.swing.JFrame {
         btnRoles = new javax.swing.JButton();
         btnReportesEnVivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1290, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 40));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -72,7 +71,7 @@ public class GUIMenu extends javax.swing.JFrame {
                 btnSensoresActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 132, 34));
+        jPanel1.add(btnSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 132, 34));
 
         btnDatosSensores.setText("Datos Sensores");
         btnDatosSensores.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +79,7 @@ public class GUIMenu extends javax.swing.JFrame {
                 btnDatosSensoresActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDatosSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, 46));
+        jPanel1.add(btnDatosSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, 46));
 
         btnReportes.setText("Reportes");
         btnReportes.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +87,7 @@ public class GUIMenu extends javax.swing.JFrame {
                 btnReportesActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 136, -1));
+        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 136, -1));
 
         btnUsuario.setText("Usuario");
         btnUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +103,7 @@ public class GUIMenu extends javax.swing.JFrame {
                 btnRolesActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 450, -1, -1));
+        jPanel1.add(btnRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
         btnReportesEnVivo.setText("Reportes En vivo");
         btnReportesEnVivo.addActionListener(new java.awt.event.ActionListener() {
@@ -112,10 +111,25 @@ public class GUIMenu extends javax.swing.JFrame {
                 btnReportesEnVivoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReportesEnVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 136, -1));
+        jPanel1.add(btnReportesEnVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 136, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/fondoMenu.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1290, 700));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 380, 530));
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1290, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1285, 728));
 

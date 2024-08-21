@@ -7,6 +7,7 @@ package com.jefte.estacionmeteorologica.Usuarios;
 import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.jefte.estacionmeteorologica.Usuarios.Filtrado;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import com.jefte.estacionmeteorologica.Roles.GUIRoles;
 import java.awt.geom.RoundRectangle2D;
@@ -46,7 +47,7 @@ public class GuiUsuario extends javax.swing.JFrame {
     public static void initGUI() {
         GuiUsuario gui = new GuiUsuario();
 
-        gui.setShape(new RoundRectangle2D.Double(0, 0, 1294, 730, 50, 50));
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);
         gui.setVisible(true);
@@ -126,6 +127,7 @@ public class GuiUsuario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbUsuarios = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -227,11 +229,22 @@ public class GuiUsuario extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 750, 350));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-left_8196690 (1).png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 80, -1));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Principal2.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.jpeg"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 610));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 610));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 1000, 610));
 
@@ -253,6 +266,11 @@ public class GuiUsuario extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        GUIMenu.initGui();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formFiltro() {
 
@@ -311,6 +329,7 @@ public class GuiUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

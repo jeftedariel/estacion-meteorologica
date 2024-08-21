@@ -37,7 +37,6 @@ public class GUILogin extends javax.swing.JFrame {
 
   public static void initGUI() {
     GUILogin gui = new GUILogin();
-    
     gui.setShape(new RoundRectangle2D.Double(0,0,1294, 730, 50,50));
     gui.setResizable(false);
     gui.setLocationRelativeTo(null);

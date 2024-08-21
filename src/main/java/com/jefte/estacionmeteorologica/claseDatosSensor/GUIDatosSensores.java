@@ -6,6 +6,7 @@ package com.jefte.estacionmeteorologica.claseDatosSensor;
 
 import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import com.jefte.estacionmeteorologica.Roles.GUIRoles;
 import java.awt.geom.RoundRectangle2D;
@@ -39,8 +40,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
 
     public static void initGUI() {
         GUIDatosSensores gui = new GUIDatosSensores();
-
-        gui.setShape(new RoundRectangle2D.Double(0, 0, 1294, 730, 50, 50));
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);
         gui.setVisible(true);
@@ -157,6 +157,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         pPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDatosSensores = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -190,6 +191,17 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbDatosSensores);
 
         pPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 710, 350));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-left_8196690 (1).png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        pPrincipal.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 60, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Principal2.png"))); // NOI18N
         pPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
@@ -286,12 +298,18 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.dispose();
+        GUIMenu.initGui();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

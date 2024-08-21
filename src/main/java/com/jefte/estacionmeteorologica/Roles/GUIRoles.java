@@ -9,6 +9,7 @@ import com.jefte.estacionmeteorologica.Roles.GUIBuscarRol;
 import com.jefte.estacionmeteorologica.Roles.GUIAgregarRol;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.Auth.GUILogin;
+import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
@@ -26,6 +27,7 @@ public class GUIRoles extends javax.swing.JFrame {
     private String nombreJson = "roles.json";
 
     public GUIRoles() {
+        this.setUndecorated(true);
         ConfiguracionTablas.inicializar();
         initComponents();
         this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Rol>>() {
@@ -38,14 +40,13 @@ public class GUIRoles extends javax.swing.JFrame {
     }
 
     public static void initGUI() {
-        GUIRoles gui = new GUIRoles();
+    GUIRoles gui = new GUIRoles();
+    gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50)); 
+    gui.setResizable(false);
+    gui.setLocationRelativeTo(null);
+    gui.setVisible(true);
+}
 
-        gui.setShape(new RoundRectangle2D.Double(0, 0, 1294, 730, 50, 50));
-        gui.setResizable(false);
-        gui.setLocationRelativeTo(null);
-        gui.setVisible(true);
-
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,6 +55,7 @@ public class GUIRoles extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRoles = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -87,6 +89,17 @@ public class GUIRoles extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 770, 350));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-left_8196690 (1).png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 70, 70));
+
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Principal2.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
@@ -105,6 +118,8 @@ public class GUIRoles extends javax.swing.JFrame {
 
         btnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
         btnCrear.setText("Crear");
+        btnCrear.setBorder(null);
+        btnCrear.setFocusPainted(false);
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearActionPerformed(evt);
@@ -119,6 +134,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.setBorder(null);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -133,6 +149,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(null);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -147,6 +164,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (3).png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(null);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -177,6 +195,14 @@ public class GUIRoles extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        GUIMenu guimenu = new GUIMenu();
+        guimenu.setVisible(true);
+        guimenu.setLocationRelativeTo(null);
+        guimenu.setResizable(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,6 +320,7 @@ public class GUIRoles extends javax.swing.JFrame {
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
