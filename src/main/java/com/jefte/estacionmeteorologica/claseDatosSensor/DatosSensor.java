@@ -1,4 +1,4 @@
-package claseDatosSensor;
+package com.jefte.estacionmeteorologica.claseDatosSensor;
 
 
 import java.text.DateFormat;

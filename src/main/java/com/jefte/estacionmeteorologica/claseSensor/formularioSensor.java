@@ -25,9 +25,10 @@ public class formularioSensor extends javax.swing.JDialog {
     public formularioSensor(java.awt.Frame parent, boolean modal, Sensor sensor, String nombreJson) {
         
         super(parent, modal);
-      
+       
         
         initComponents();
+        this.setLocationRelativeTo(null);
         this.gestionSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Sensor>>() {
         });
         guardarDatos(sensor);

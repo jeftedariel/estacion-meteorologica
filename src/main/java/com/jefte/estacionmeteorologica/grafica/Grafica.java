@@ -1,9 +1,9 @@
 package com.jefte.estacionmeteorologica.grafica;
 
-import claseDatosSensor.DatosSensor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import com.jefte.estacionmeteorologica.Serial.SerialHandler;
+import com.jefte.estacionmeteorologica.claseDatosSensor.DatosSensor;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;

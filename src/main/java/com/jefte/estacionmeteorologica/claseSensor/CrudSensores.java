@@ -1,8 +1,8 @@
 package com.jefte.estacionmeteorologica.claseSensor;
 
-import ManejoTablas.ConfiguracionTablas;
+import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.jefte.estacionmeteorologica.Auth.GUILogin;
+import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
 import java.awt.geom.RoundRectangle2D;
 
@@ -162,6 +162,7 @@ public class CrudSensores extends javax.swing.JFrame {
         pPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbSensores = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pBotones = new javax.swing.JPanel();
@@ -204,6 +205,17 @@ public class CrudSensores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbSensores);
 
         pPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 750, 350));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-left_8196690 (1).png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        pPrincipal.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 70, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Principal2.png"))); // NOI18N
         pPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
@@ -302,6 +314,15 @@ public class CrudSensores extends javax.swing.JFrame {
         actualizar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.dispose();
+        GUIMenu gui = new GUIMenu();
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
+        gui.setResizable(false);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -309,6 +330,7 @@ public class CrudSensores extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -36,12 +36,11 @@ public class GUILogin extends javax.swing.JFrame {
   }
 
   public static void initGUI() {
-    GUILogin guiLogin = new GUILogin();
-    
-    guiLogin.setShape(new RoundRectangle2D.Double(0,0,1294, 730, 50,50));
-    guiLogin.setResizable(false);
-    guiLogin.setLocationRelativeTo(null);
-    guiLogin.setVisible(true);
+    GUILogin gui = new GUILogin();
+    gui.setShape(new RoundRectangle2D.Double(0,0,1294, 730, 50,50));
+    gui.setResizable(false);
+    gui.setLocationRelativeTo(null);
+    gui.setVisible(true);
     
   }
 
@@ -274,7 +273,8 @@ public class GUILogin extends javax.swing.JFrame {
 
       if (passCorrecta && existe) {
         this.dispose();
-        GUIMenu guimenu = new GUIMenu(usuario.getId_rol());
+        GUIMenu guimenu = new GUIMenu();
+        guimenu.setShape(new RoundRectangle2D.Double(0,0,1100, 510, 50,50));
         guimenu.setVisible(true);
         guimenu.setLocationRelativeTo(null);
         guimenu.setResizable(false);

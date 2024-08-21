@@ -4,10 +4,11 @@
  */
 package com.jefte.estacionmeteorologica.Usuarios;
 
-import ManejoTablas.ConfiguracionTablas;
-import com.jefte.estacionmeteorologica.Usuarios.Filtrado;
+import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +23,7 @@ public class GuiUsuario extends javax.swing.JFrame {
     private JsonHandler<Usuario> gestionUsuario;
     private DefaultTableModel modelo = new DefaultTableModel();
     private String nombre = "usuarios.json";
-    
+
     private TableRowSorter trsfiltro;
     String filtro;
 
@@ -39,6 +40,16 @@ public class GuiUsuario extends javax.swing.JFrame {
         ConfiguracionTablas.styleTable(tbUsuarios);
 
         actualizarTabla();
+    }
+
+    public static void initGUI() {
+        GuiUsuario gui = new GuiUsuario();
+
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
+        gui.setResizable(false);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+
     }
 
     private void actualizarTabla() {
@@ -65,7 +76,7 @@ public class GuiUsuario extends javax.swing.JFrame {
 
             } else {
                 se.setId(usuario.getId());
-                this.gestionUsuario.editar(usuario.getId(),se);
+                this.gestionUsuario.editar(usuario.getId(), se);
             }
             actualizarTabla();
         }
@@ -96,7 +107,7 @@ public class GuiUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,6 +125,7 @@ public class GuiUsuario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbUsuarios = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -215,11 +227,22 @@ public class GuiUsuario extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 750, 350));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-left_8196690 (1).png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 80, -1));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Principal2.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.jpeg"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 610));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 610));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 1000, 610));
 
@@ -241,7 +264,16 @@ public class GuiUsuario extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
-    
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        GUIMenu gui = new GUIMenu();
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
+        gui.setResizable(false);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void formFiltro() {
 
         Filtrado guiFiltro = new Filtrado(this, true);
@@ -252,10 +284,10 @@ public class GuiUsuario extends javax.swing.JFrame {
 
             for (Usuario usuario : this.gestionUsuario.obtenerDatos().values()) {
                 boolean filtro = true;
-                if (guiFiltro.getCheckId_Rol() && !String.valueOf(usuario.getId_rol()).contentEquals(guiFiltro.getDatos(0))){
+                if (guiFiltro.getCheckId_Rol() && !String.valueOf(usuario.getId_rol()).contentEquals(guiFiltro.getDatos(0))) {
                     filtro = false;
                 }
-                if (guiFiltro.getCheckCedula() && !String.valueOf(usuario.getCedula()).contentEquals(guiFiltro.getDatos(1))){
+                if (guiFiltro.getCheckCedula() && !String.valueOf(usuario.getCedula()).contentEquals(guiFiltro.getDatos(1))) {
                     filtro = false;
                 }
                 if (guiFiltro.getCheckNombre() && !String.valueOf(usuario.getNombre()).contentEquals(guiFiltro.getDatos(2))) {
@@ -299,6 +331,7 @@ public class GuiUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

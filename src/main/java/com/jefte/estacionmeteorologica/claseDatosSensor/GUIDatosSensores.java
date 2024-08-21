@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package claseDatosSensor;
+package com.jefte.estacionmeteorologica.claseDatosSensor;
 
-import ManejoTablas.ConfiguracionTablas;
+import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,80 +22,91 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
     private JsonHandler<DatosSensor> gestionDatosSensor;
     private String nombreJson = "datosSensores.json";
-    
+
     public GUIDatosSensores() {
         ConfiguracionTablas.inicializar();
         initComponents();
-        this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {});
+        this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {
+        });
         String[] columnas = {"id", "Valor", "Id Sensor", "Fecha", "Hora"};
         this.modelo = ConfiguracionTablas.noEditable();
         this.modelo.setColumnIdentifiers(columnas);
         tbDatosSensores.setModel(modelo);
         actualizarTabla();
         ConfiguracionTablas.styleTable(tbDatosSensores);
-        
+
     }
-    
+
+    public static void initGUI() {
+        GUIDatosSensores gui = new GUIDatosSensores();
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
+        gui.setResizable(false);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+
+    }
+
     private void actualizarTabla() {
         this.modelo.setRowCount(0);
         for (DatosSensor datos : this.gestionDatosSensor.obtenerDatos().values()) {
             this.modelo.addRow(new Object[]{datos.getId(), datos.getValor(), datos.getIdSensor(), datos.getFecha(), datos.getHora()});
-            
+
         }
     }
-    
+
     private void abrirFormularioDatosSensor(DatosSensor datosSensor) {
-         
-    FormularioDatosSensor formulario = new FormularioDatosSensor(this, true,nombreJson,datosSensor);
-    
-    formulario.setVisible(true);
 
-    if (formulario.confirmacion()) {
-        DatosSensor ds = formulario.consultarTarea();
+        FormularioDatosSensor formulario = new FormularioDatosSensor(this, true, nombreJson, datosSensor);
 
-        if (datosSensor == null) {
-            
-            this.gestionDatosSensor.agregar(ds);
-           
-        }else{
-               ds.setId(datosSensor.getId());
-               
-            this.gestionDatosSensor.editar(datosSensor.getId(), ds);
-            this.gestionDatosSensor.editar(ds.getId(),ds);
-            
+        formulario.setVisible(true);
+
+        if (formulario.confirmacion()) {
+            DatosSensor ds = formulario.consultarTarea();
+
+            if (datosSensor == null) {
+
+                this.gestionDatosSensor.agregar(ds);
+
+            } else {
+                ds.setId(datosSensor.getId());
+
+                this.gestionDatosSensor.editar(datosSensor.getId(), ds);
+                this.gestionDatosSensor.editar(ds.getId(), ds);
+
             }
-       actualizarTabla();
+            actualizarTabla();
+        }
     }
-}
-        private void eliminarDatoSensor() {
-     
-    int filaSeleccionada = this.tbDatosSensores.getSelectedRow();
-    if (filaSeleccionada != - 1) {
-        
-        String id = String.valueOf(this.tbDatosSensores.getValueAt(filaSeleccionada, 0)); 
-        this.gestionDatosSensor.eliminar(Integer.parseInt(id));
-        actualizarTabla();
-    } else {
-        JOptionPane.showMessageDialog(null, "Debe seleccionar un propietario para eliminarlo.");
-    }
-}
-        
-          private void actualizar(){
 
-       if(this.tbDatosSensores.getSelectedRow()!= -1){
-          
-           String id = String.valueOf(this.tbDatosSensores.getValueAt(this.tbDatosSensores.getSelectedRow(), 0));
-           DatosSensor ds = this.gestionDatosSensor.obtenerObjeto(Integer.parseInt(id));
-           System.out.println(id);
-           this.abrirFormularioDatosSensor(ds);
-         
-       }else{
-           JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
-       }
- 
- }
-          
-           private void formFiltro() {
+    private void eliminarDatoSensor() {
+
+        int filaSeleccionada = this.tbDatosSensores.getSelectedRow();
+        if (filaSeleccionada != - 1) {
+
+            String id = String.valueOf(this.tbDatosSensores.getValueAt(filaSeleccionada, 0));
+            this.gestionDatosSensor.eliminar(Integer.parseInt(id));
+            actualizarTabla();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un propietario para eliminarlo.");
+        }
+    }
+
+    private void actualizar() {
+
+        if (this.tbDatosSensores.getSelectedRow() != -1) {
+
+            String id = String.valueOf(this.tbDatosSensores.getValueAt(this.tbDatosSensores.getSelectedRow(), 0));
+            DatosSensor ds = this.gestionDatosSensor.obtenerObjeto(Integer.parseInt(id));
+            System.out.println(id);
+            this.abrirFormularioDatosSensor(ds);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
+        }
+
+    }
+
+    private void formFiltro() {
 
         Filtro guiFiltro = new Filtro(this, true);
         guiFiltro.setVisible(true);
@@ -103,16 +116,15 @@ public class GUIDatosSensores extends javax.swing.JFrame {
 
             for (DatosSensor datosSensor : this.gestionDatosSensor.obtenerDatos().values()) {
                 boolean filtro = true;
-                if (guiFiltro.getCkIdentificador()&& !String.valueOf(datosSensor.getIdSensor()).contentEquals(guiFiltro.getDatos(0))) {
+                if (guiFiltro.getCkIdentificador() && !String.valueOf(datosSensor.getIdSensor()).contentEquals(guiFiltro.getDatos(0))) {
                     filtro = false;
                 }
-                if (guiFiltro.getCkFecha()&& !String.valueOf(datosSensor.getFecha()).contentEquals(guiFiltro.getDatos(1))) {
+                if (guiFiltro.getCkFecha() && !String.valueOf(datosSensor.getFecha()).contentEquals(guiFiltro.getDatos(1))) {
                     filtro = false;
                 }
-                if (guiFiltro.getCkHora()&& !String.valueOf(datosSensor.getHora()).contentEquals(guiFiltro.getDatos(2))) {
+                if (guiFiltro.getCkHora() && !String.valueOf(datosSensor.getHora()).contentEquals(guiFiltro.getDatos(2))) {
                     filtro = false;
                 }
-               
 
                 if (filtro) {
                     this.modelo.addRow(new Object[]{
@@ -121,7 +133,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
                         datosSensor.getIdSensor(),
                         datosSensor.getFecha(),
                         datosSensor.getHora()
-                       
+
                     });
                 }
 
@@ -131,12 +143,6 @@ public class GUIDatosSensores extends javax.swing.JFrame {
             this.tbDatosSensores.repaint();
         }
     }
-    
-   
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,6 +156,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         pPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDatosSensores = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -183,6 +190,17 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbDatosSensores);
 
         pPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 710, 350));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-left_8196690 (1).png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        pPrincipal.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 60, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Principal2.png"))); // NOI18N
         pPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
@@ -268,16 +286,25 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-      eliminarDatoSensor();
+        eliminarDatoSensor();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-       actualizar();
+        actualizar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       formFiltro();
+        formFiltro();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.dispose();
+        GUIMenu gui = new GUIMenu();
+        gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
+        gui.setResizable(false);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -285,6 +312,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

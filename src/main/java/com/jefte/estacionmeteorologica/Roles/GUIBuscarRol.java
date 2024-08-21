@@ -25,10 +25,12 @@ public class GUIBuscarRol extends javax.swing.JDialog {
 
     public GUIBuscarRol(java.awt.Frame parent, boolean modal, String nombreJson) {
         super(parent, modal);
+       
         this.gestionRol = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Rol>>() {
         });
 
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -42,9 +44,7 @@ public class GUIBuscarRol extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         btnFiltrar = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
         cbxPermisoReportes = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         ckReportes = new javax.swing.JCheckBox();
@@ -72,36 +72,24 @@ public class GUIBuscarRol extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Filtrar");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Volver");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, -1, 30));
 
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnFiltrar.setText("Filtrar");
+        btnFiltrar.setBorder(null);
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 115, 50));
-
-        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 103, 50));
+        jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 320, 50));
 
         cbxPermisoReportes.setBackground(new java.awt.Color(240, 237, 255));
         cbxPermisoReportes.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -262,10 +250,6 @@ public class GUIBuscarRol extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        
-    }//GEN-LAST:event_btnVolverActionPerformed
-
     private void cbxPermisoDatosRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPermisoDatosRolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxPermisoDatosRolActionPerformed
@@ -348,7 +332,6 @@ public class GUIBuscarRol extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFiltrar;
-    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxPermisoDatoSensor;
     private javax.swing.JComboBox<String> cbxPermisoDatosEnVivo;
     private javax.swing.JComboBox<String> cbxPermisoDatosRol;
@@ -366,7 +349,6 @@ public class GUIBuscarRol extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
