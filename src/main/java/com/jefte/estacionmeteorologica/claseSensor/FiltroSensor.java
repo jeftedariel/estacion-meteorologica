@@ -24,7 +24,7 @@ public class FiltroSensor extends javax.swing.JDialog {
         this.setUndecorated(true);
         initComponents();
         this.setResizable(false);
-        this.setLocationRelativeTo(parent);
+        this.setLocationRelativeTo(null);
         this.confirmar = false;
     }
 

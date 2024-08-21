@@ -1,4 +1,4 @@
-package ManejoTablas;
+package com.jefte.estacionmeteorologica.ManejoTablas;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
