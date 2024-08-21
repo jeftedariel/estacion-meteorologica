@@ -8,6 +8,7 @@ import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -22,8 +23,9 @@ public class GUIDatosSensores extends javax.swing.JFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
     private JsonHandler<DatosSensor> gestionDatosSensor;
     private String nombreJson = "datosSensores.json";
+    private Usuario usuario;
 
-    public GUIDatosSensores() {
+    public GUIDatosSensores(Usuario usuario) {
         ConfiguracionTablas.inicializar();
         initComponents();
         this.gestionDatosSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, DatosSensor>>() {
@@ -34,11 +36,13 @@ public class GUIDatosSensores extends javax.swing.JFrame {
         tbDatosSensores.setModel(modelo);
         actualizarTabla();
         ConfiguracionTablas.styleTable(tbDatosSensores);
+        
+        this.usuario = usuario;
 
     }
 
-    public static void initGUI() {
-        GUIDatosSensores gui = new GUIDatosSensores();
+    public static void initGUI(Usuario usuario) {
+        GUIDatosSensores gui = new GUIDatosSensores(usuario);
         gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);
@@ -116,7 +120,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
 
             for (DatosSensor datosSensor : this.gestionDatosSensor.obtenerDatos().values()) {
                 boolean filtro = true;
-                if (guiFiltro.getCkIdentificador() && !String.valueOf(datosSensor.getIdSensor()).contentEquals(guiFiltro.getDatos(0))) {
+                if (guiFiltro.getCkIdentificador() && !String.valueOf(datosSensor.getId()).contentEquals(guiFiltro.getDatos(0))) {
                     filtro = false;
                 }
                 if (guiFiltro.getCkFecha() && !String.valueOf(datosSensor.getFecha()).contentEquals(guiFiltro.getDatos(1))) {
@@ -299,7 +303,7 @@ public class GUIDatosSensores extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        this.dispose();
-        GUIMenu gui = new GUIMenu();
+        GUIMenu gui = new GUIMenu(this.usuario);
         gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);

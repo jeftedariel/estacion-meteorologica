@@ -5,12 +5,10 @@
 package com.jefte.estacionmeteorologica.Roles;
 
 import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
-import com.jefte.estacionmeteorologica.Roles.GUIBuscarRol;
-import com.jefte.estacionmeteorologica.Roles.GUIAgregarRol;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.jefte.estacionmeteorologica.Auth.GUILogin;
 import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -25,8 +23,9 @@ public class GUIRoles extends javax.swing.JFrame {
     private JsonHandler<Rol> gestionRol;
     private final DefaultTableModel modelo = new DefaultTableModel();
     private String nombreJson = "roles.json";
-
-    public GUIRoles() {
+    private Usuario usuario;
+    
+    public GUIRoles(Usuario usuario) {
         this.setUndecorated(true);
         ConfiguracionTablas.inicializar();
         initComponents();
@@ -37,10 +36,12 @@ public class GUIRoles extends javax.swing.JFrame {
         this.tbRoles.setModel(modelo);
         this.actualizarTabla();
         ConfiguracionTablas.styleTable(tbRoles);
+        
+        this.usuario = usuario;
     }
 
-    public static void initGUI() {
-        GUIRoles gui = new GUIRoles();
+    public static void initGUI(Usuario usuario) {
+        GUIRoles gui = new GUIRoles(usuario);
         gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);
@@ -197,7 +198,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        GUIMenu gui = new GUIMenu();
+        GUIMenu gui = new GUIMenu(this.usuario);
         gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);

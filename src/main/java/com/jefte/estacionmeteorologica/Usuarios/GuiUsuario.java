@@ -22,12 +22,12 @@ public class GuiUsuario extends javax.swing.JFrame {
 
     private JsonHandler<Usuario> gestionUsuario;
     private DefaultTableModel modelo = new DefaultTableModel();
-    private String nombre = "usuarios.json";
-
+    private String nombre = "Usuarios.json";
+    private Usuario usuario;
     private TableRowSorter trsfiltro;
     String filtro;
 
-    public GuiUsuario() {
+    public GuiUsuario(Usuario usuario) {
         this.setUndecorated(true);
         ConfiguracionTablas.inicializar();
         initComponents();
@@ -40,10 +40,12 @@ public class GuiUsuario extends javax.swing.JFrame {
         ConfiguracionTablas.styleTable(tbUsuarios);
 
         actualizarTabla();
+        
+        this.usuario = usuario;
     }
 
-    public static void initGUI() {
-        GuiUsuario gui = new GuiUsuario();
+    public static void initGUI(Usuario usuario) {
+        GuiUsuario gui = new GuiUsuario(usuario);
 
         gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
@@ -93,6 +95,7 @@ public class GuiUsuario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un usuario para eliminarlo.");
         }
+        actualizarTabla();
     }
 
     private void editar() {
@@ -106,6 +109,7 @@ public class GuiUsuario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una tarea para poder editarla.");
         }
+        actualizarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -267,7 +271,7 @@ public class GuiUsuario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        GUIMenu gui = new GUIMenu();
+        GUIMenu gui = new GUIMenu(this.usuario);
         gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);

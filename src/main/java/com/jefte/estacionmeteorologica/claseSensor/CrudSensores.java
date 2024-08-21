@@ -4,6 +4,7 @@ import com.jefte.estacionmeteorologica.ManejoTablas.ConfiguracionTablas;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.jefte.estacionmeteorologica.Auth.GUIMenu;
 import com.jefte.estacionmeteorologica.ManejoArchivos.JsonHandler;
+import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import java.awt.geom.RoundRectangle2D;
 
 
@@ -23,8 +24,9 @@ public class CrudSensores extends javax.swing.JFrame {
     private JsonHandler<Sensor> gestioSensor;
     private DefaultTableModel modelo = new DefaultTableModel();
     private String nombreJson = "sensores.json";
+    private Usuario usuario;
     
-    public CrudSensores() {
+    public CrudSensores(Usuario usuario) {
         ConfiguracionTablas.inicializar();
         initComponents();
         this.gestioSensor = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Sensor>>() {});
@@ -35,11 +37,13 @@ public class CrudSensores extends javax.swing.JFrame {
         actualizarTabla();
         ConfiguracionTablas.styleTable(tbSensores);
         
+        this.usuario = usuario;
+        
 
     }
     
-    public static void initGUI() {
-    CrudSensores gui = new CrudSensores();
+    public static void initGUI(Usuario usuario) {
+    CrudSensores gui = new CrudSensores(usuario);
     gui.setShape(new RoundRectangle2D.Double(0,0,1249, 607, 50,50));
     gui.setResizable(false);
     gui.setLocationRelativeTo(null);
@@ -316,7 +320,7 @@ public class CrudSensores extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        this.dispose();
-        GUIMenu gui = new GUIMenu();
+        GUIMenu gui = new GUIMenu(this.usuario);
         gui.setShape(new RoundRectangle2D.Double(0, 0, 1250, 610, 50, 50));
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);

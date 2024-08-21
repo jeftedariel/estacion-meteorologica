@@ -24,15 +24,17 @@ public class GUILogin extends javax.swing.JFrame {
   private JsonHandler<Usuario> gestionUsuario;
   private String nombreJson = "Usuarios.json";
   private boolean[] checks = { false, false };
-
+  private Usuario usuario;
+  
   public GUILogin() {
     this.setUndecorated(true);
     initComponents();
     this.btnIngresar.setEnabled(false);
     this.gestionUsuario = new JsonHandler(nombreJson, new TypeReference<Map<Integer, Usuario>>() {
     });
-    
-
+    if(this.gestionUsuario.obtenerDatos().isEmpty() || this.gestionUsuario.obtenerDatos().values().stream().){
+        this.gestionUsuario.agregar(new usuario(1, 1,000000000,"admin","admin","admin","admin@admin.com","YWRtaW4="));
+    }
   }
 
   public static void initGUI() {
@@ -273,7 +275,7 @@ public class GUILogin extends javax.swing.JFrame {
 
       if (passCorrecta && existe) {
         this.dispose();
-        GUIMenu guimenu = new GUIMenu();
+        GUIMenu guimenu = new GUIMenu(usuario);
         guimenu.setShape(new RoundRectangle2D.Double(0,0,1100, 510, 50,50));
         guimenu.setVisible(true);
         guimenu.setLocationRelativeTo(null);
