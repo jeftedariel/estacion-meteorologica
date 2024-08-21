@@ -10,9 +10,9 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.lang.Math.random;
 import java.util.Map;
 import java.util.Random;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import org.jfree.chart.ChartFactory;
@@ -39,6 +39,7 @@ public class Grafica extends ApplicationFrame {
     private static int MINMAX = 40;
     private JsonHandler<DatosSensor> gestionDatosSensor;
     private String nombreJson = "datosSensores.json";
+    private boolean cerrar = false;
 
     public Grafica(final String title, String idSensor, String tipoDato, double Rango) {
         super(title);
@@ -47,9 +48,9 @@ public class Grafica extends ApplicationFrame {
         this.rango = Rango;
         this.titulo = title;
         this.tipo = tipoDato;
-
-         final DynamicTimeSeriesCollection dataset =
-            new DynamicTimeSeriesCollection(1, COUNT, new Second());
+        ;
+        final DynamicTimeSeriesCollection dataset
+                = new DynamicTimeSeriesCollection(1, COUNT, new Second());
         dataset.setTimeBase(new Second(0, 0, 0, 1, 1, 2011));
         dataset.addSeries(gaussianData(), 0, "Gaussian data");
         JFreeChart chart = createChart(dataset);
@@ -60,6 +61,18 @@ public class Grafica extends ApplicationFrame {
             }
         }, BorderLayout.CENTER);
         JPanel btnPanel = new JPanel(new FlowLayout());
+
+        final JButton salir = new JButton("Salir");
+
+        salir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cerrar();
+                cerrar=true;
+            }
+        });
+        btnPanel.add(salir);
+
         this.add(btnPanel, BorderLayout.SOUTH);
 
         SerialHandler.abrirPuerto("ttyACM0");
@@ -70,10 +83,11 @@ public class Grafica extends ApplicationFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if(!cerrar){
+                 
                 String[] data = SerialHandler.obtenerDato();
 
-                newData[0] = randomValue();
+                newData[0] = datosJson[0];
                 try {
                     for (int i = 0; i < 4; i++) {
                         // Verifica si el dato no es vacío antes de intentar convertirlo
@@ -92,8 +106,7 @@ public class Grafica extends ApplicationFrame {
                 } catch (ArrayIndexOutOfBoundsException ind) {
                     System.out.println("ops:" + ind);
                 }
-                
-                
+
                 System.out.println(datosJson[0] + ", " + datosJson[1] + ", " + datosJson[2] + ", " + datosJson[3]);
                 gestionDatosSensor.agregar(new DatosSensor(0, datosJson[0], "BME280"));
                 gestionDatosSensor.agregar(new DatosSensor(1, datosJson[1], "BME280"));
@@ -101,8 +114,14 @@ public class Grafica extends ApplicationFrame {
                 gestionDatosSensor.agregar(new DatosSensor(3, datosJson[3], "BME280"));
                 dataset.advanceTime();
                 dataset.appendData(newData);
+                   
+                }
             }
         });
+    }
+
+    public void cerrar() {
+        this.dispose();
     }
 
     private float randomValue() {
@@ -142,7 +161,7 @@ public class Grafica extends ApplicationFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Grafica demo = new Grafica("Temperatura", "Grados Celcius", "Grados", 50);
+                Grafica demo = new Grafica("Temperatura", "Grados Celcius", "Grados", 30);
                 demo.pack();
                 UIUtils.centerFrameOnScreen(demo);
                 demo.setVisible(true);
