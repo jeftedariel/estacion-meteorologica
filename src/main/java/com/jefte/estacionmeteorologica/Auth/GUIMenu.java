@@ -20,6 +20,7 @@ import com.jefte.estacionmeteorologica.Usuarios.Usuario;
 import com.jefte.estacionmeteorologica.claseDatosSensor.DatosSensor;
 import com.jefte.estacionmeteorologica.claseDatosSensor.GUIDatosSensores;
 import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
+import com.jefte.estacionmeteorologica.grafica.Grafica;
 
 /**
  *
@@ -45,7 +46,7 @@ public class GUIMenu extends javax.swing.JFrame {
         this.gestionDatosSensor = new JsonHandler(nombreJsonSensores, new TypeReference<Map<Integer, DatosSensor>>() {
         });
         this.usuario = usuario;
-        
+
         visibilidadBotones();
 
     }
@@ -237,11 +238,11 @@ public class GUIMenu extends javax.swing.JFrame {
             this.btnRoles.setEnabled(this.gestionRol.obtenerDatos().get(usuario.getId_rol()).isDatosRoles());
             this.btnSensores.setEnabled(this.gestionRol.obtenerDatos().get(usuario.getId_rol()).isSensores());
             this.btnUsuario.setEnabled(this.gestionRol.obtenerDatos().get(usuario.getId_rol()).isDatosUsuarios());
-        } 
+        }
     }
 
     private void btnReportesEnVivoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnReportesEnVivoActionPerformed
-        // TODO add your handling code here:
+        Grafica.visualizar();
     }// GEN-LAST:event_btnReportesEnVivoActionPerformed
 
     private void btnRolesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRolesActionPerformed
@@ -271,15 +272,13 @@ public class GUIMenu extends javax.swing.JFrame {
 
     public JFreeChart getXYChart() {
         XYSeries series = new XYSeries("Grados Celcius");
-
-        for (DatosSensor dato : gestionDatosSensor.obtenerDatos().values()) {
-            i++;
-            System.out.println(i);
-            if (dato.getId() == 0) {
-                series.add(i, dato.getValor());
+        for (int key : gestionDatosSensor.obtenerDatos().keySet()) {
+            for (DatosSensor dato : gestionDatosSensor.obtenerDatos().values()) {
+                if (dato.getId() == 0) {
+                    series.add(key, dato.getValor());
+                }
             }
         }
-
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
         return ChartFactory.createXYLineChart(

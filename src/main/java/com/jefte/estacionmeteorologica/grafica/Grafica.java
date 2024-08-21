@@ -10,7 +10,9 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Math.random;
 import java.util.Map;
+import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import org.jfree.chart.ChartFactory;
@@ -31,6 +33,10 @@ public class Grafica extends ApplicationFrame {
     private double rango;
     private int count = 1000;
     private Timer timer;
+
+    private static final Random random = new Random();
+    private static final int COUNT = 2 * 60;
+    private static int MINMAX = 40;
     private JsonHandler<DatosSensor> gestionDatosSensor;
     private String nombreJson = "datosSensores.json";
 
@@ -42,10 +48,11 @@ public class Grafica extends ApplicationFrame {
         this.titulo = title;
         this.tipo = tipoDato;
 
-        final DynamicTimeSeriesCollection dataset = new DynamicTimeSeriesCollection(1, count, new Second());
-        dataset.setTimeBase(new Second(0, 0, 0, 1, 1, 2024));
+         final DynamicTimeSeriesCollection dataset =
+            new DynamicTimeSeriesCollection(1, COUNT, new Second());
+        dataset.setTimeBase(new Second(0, 0, 0, 1, 1, 2011));
+        dataset.addSeries(gaussianData(), 0, "Gaussian data");
         JFreeChart chart = createChart(dataset);
-
         this.add(new ChartPanel(chart) {
             @Override
             public Dimension getPreferredSize() {
@@ -60,42 +67,34 @@ public class Grafica extends ApplicationFrame {
         timer = new Timer(1000, new ActionListener() {
             float[] newData = new float[1];
             float[] datosJson = new float[4];
+
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 String[] data = SerialHandler.obtenerDato();
 
-                // Verifica si el dato no es vacío antes de intentar convertirlo
-                if (data[0] != null && !data[0].trim().isEmpty()) {
-                    try {
-                        newData[0] = Float.parseFloat(data[0]);
-                    } catch (NumberFormatException ex) {
-                        System.out.println("Error al convertir el dato: " + ex.getMessage());
-                        newData[0] = 0;  // Asigna un valor por defecto
-                    }
-                } else {
-                    System.out.println("Dato vacío recibido, asignando 0");
-                    newData[0] = 0;  // Asigna un valor por defecto si el dato es vacío
-                }
-                try{
-                for (int i = 0; i < 4; i++) {
-                    // Verifica si el dato no es vacío antes de intentar convertirlo
-                    if (data[i] != null && !data[i].trim().isEmpty()) {
-                        try {
-                            datosJson[i] = Float.parseFloat(data[i]);
-                        } catch (NumberFormatException ex) {
-                            System.out.println("Error al convertir el dato: " + ex.getMessage());
-                            datosJson[i] = 0;  // Asigna un valor por defecto
+                newData[0] = randomValue();
+                try {
+                    for (int i = 0; i < 4; i++) {
+                        // Verifica si el dato no es vacío antes de intentar convertirlo
+                        if (data[i] != null && !data[i].trim().isEmpty()) {
+                            try {
+                                datosJson[i] = Float.parseFloat(data[i]);
+                            } catch (NumberFormatException ex) {
+                                System.out.println("Error al convertir el dato: " + ex.getMessage());
+                                datosJson[i] = 0;  // Asigna un valor por defecto
+                            }
+                        } else {
+                            System.out.println("Dato vacío recibido, asignando 0");
+                            datosJson[i] = 0;  // Asigna un valor por defecto si el dato es vacío
                         }
-                    } else {
-                        System.out.println("Dato vacío recibido, asignando 0");
-                        datosJson[i] = 0;  // Asigna un valor por defecto si el dato es vacío
                     }
+                } catch (ArrayIndexOutOfBoundsException ind) {
+                    System.out.println("ops:" + ind);
                 }
-                } catch(ArrayIndexOutOfBoundsException ind){
-                    System.out.println("ops:" + ind );
-                }
-                System.out.println(datosJson[0] +", " + datosJson[1] +", " + datosJson[2] + ", " + datosJson[3]);
+                
+                
+                System.out.println(datosJson[0] + ", " + datosJson[1] + ", " + datosJson[2] + ", " + datosJson[3]);
                 gestionDatosSensor.agregar(new DatosSensor(0, datosJson[0], "BME280"));
                 gestionDatosSensor.agregar(new DatosSensor(1, datosJson[1], "BME280"));
                 gestionDatosSensor.agregar(new DatosSensor(2, datosJson[2], "BME280"));
@@ -104,6 +103,18 @@ public class Grafica extends ApplicationFrame {
                 dataset.appendData(newData);
             }
         });
+    }
+
+    private float randomValue() {
+        return (float) (random.nextGaussian() * MINMAX / 3);
+    }
+
+    private float[] gaussianData() {
+        float[] a = new float[COUNT];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = randomValue();
+        }
+        return a;
     }
 
     public void start() {
@@ -127,7 +138,7 @@ public class Grafica extends ApplicationFrame {
         return result;
     }
 
-    public static void main(final String[] args) {
+    public static void visualizar() {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {

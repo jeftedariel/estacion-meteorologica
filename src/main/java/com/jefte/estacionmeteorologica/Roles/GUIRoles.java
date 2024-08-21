@@ -38,6 +38,9 @@ public class GUIRoles extends javax.swing.JFrame {
         ConfiguracionTablas.styleTable(tbRoles);
         
         this.usuario = usuario;
+        
+        
+        
     }
 
     public static void initGUI(Usuario usuario) {
@@ -46,6 +49,8 @@ public class GUIRoles extends javax.swing.JFrame {
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);
         gui.setVisible(true);
+        
+        
     }
 
     @SuppressWarnings("unchecked")
