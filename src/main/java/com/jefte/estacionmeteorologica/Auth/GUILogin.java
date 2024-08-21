@@ -274,6 +274,7 @@ public class GUILogin extends javax.swing.JFrame {
       if (passCorrecta && existe) {
         this.dispose();
         GUIMenu guimenu = new GUIMenu(usuario.getId_rol());
+        guimenu.setShape(new RoundRectangle2D.Double(0,0,1100, 510, 50,50));
         guimenu.setVisible(true);
         guimenu.setLocationRelativeTo(null);
         guimenu.setResizable(false);

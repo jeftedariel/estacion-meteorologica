@@ -48,6 +48,7 @@ public class Filtro extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

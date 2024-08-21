@@ -28,6 +28,7 @@ public class GUIAgregarRol extends javax.swing.JDialog {
         });
 
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -70,6 +71,7 @@ public class GUIAgregarRol extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

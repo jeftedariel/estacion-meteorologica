@@ -28,6 +28,7 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
     public FormularioDatosSensor(java.awt.Frame parent, boolean modal, String nombreDatosSensores, DatosSensor datosSensor) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         this.gestionSensor = new JsonHandler(nombreJsonSensores, new TypeReference<Map<Integer, Sensor>>() {
         });
         this.gestionDatosSensor = new JsonHandler(nombreDatosSensores, new TypeReference<Map<Integer, DatosSensor>>() {
@@ -84,6 +85,7 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pPrincipal.setBackground(new java.awt.Color(240, 237, 255));
@@ -117,6 +119,7 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
 
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnVolver.setText("Volver");
+        btnVolver.setBorder(null);
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
@@ -126,6 +129,7 @@ public class FormularioDatosSensor extends javax.swing.JDialog {
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (8).png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);

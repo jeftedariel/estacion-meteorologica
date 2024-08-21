@@ -8,6 +8,7 @@ import com.jefte.estacionmeteorologica.Roles.GUIRoles;
 import com.jefte.estacionmeteorologica.Usuarios.GuiUsuario;
 import com.jefte.estacionmeteorologica.claseDatosSensor.GUIDatosSensores;
 import com.jefte.estacionmeteorologica.claseSensor.CrudSensores;
+import java.awt.geom.RoundRectangle2D;
 
 
 /**
@@ -31,9 +32,9 @@ public class GUIMenu extends javax.swing.JFrame {
     }
     
     public static void initGui(){
-        //this.dispose();
         GUIMenu guimenu = new GUIMenu();
         guimenu.setVisible(true);
+        guimenu.setShape(new RoundRectangle2D.Double(0,0,1100, 510, 50,50));
         guimenu.setLocationRelativeTo(null);
         guimenu.setResizable(false);
     
@@ -51,104 +52,167 @@ public class GUIMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnSensores = new javax.swing.JButton();
-        btnDatosSensores = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
-        btnUsuario = new javax.swing.JButton();
-        btnRoles = new javax.swing.JButton();
-        btnReportesEnVivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        btnDatosSensores = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        btnUsuario = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnReportesEnVivo = new javax.swing.JButton();
+        btnSensores = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btnRoles = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSensores.setText("Sensores");
-        btnSensores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSensoresActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 132, 34));
-
-        btnDatosSensores.setText("Datos Sensores");
-        btnDatosSensores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDatosSensoresActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDatosSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, 46));
-
-        btnReportes.setText("Reportes");
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/grafico-de-barras (1).png"))); // NOI18N
+        btnReportes.setBorder(null);
+        btnReportes.setContentAreaFilled(false);
+        btnReportes.setFocusable(false);
         btnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportesActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 136, -1));
+        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 170, 140));
 
-        btnUsuario.setText("Usuario");
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Reportes");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, -10, 150, 60));
+
+        btnDatosSensores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/control-de-temperatura.png"))); // NOI18N
+        btnDatosSensores.setBorder(null);
+        btnDatosSensores.setContentAreaFilled(false);
+        btnDatosSensores.setFocusable(false);
+        btnDatosSensores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatosSensoresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDatosSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 170, 150));
+
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Datos Sensores");
+        jLabel4.setFocusable(false);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, -1, -1));
+
+        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hacker (1).png"))); // NOI18N
+        btnUsuario.setBorder(null);
+        btnUsuario.setContentAreaFilled(false);
+        btnUsuario.setFocusable(false);
         btnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 650, -1, -1));
+        jPanel1.add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 170, 150));
 
-        btnRoles.setText("Roles");
-        btnRoles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRolesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Usuario");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 100, -1));
 
-        btnReportesEnVivo.setText("Reportes En vivo");
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Reportes en vivo");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, 40));
+
+        btnReportesEnVivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/zumbido.png"))); // NOI18N
+        btnReportesEnVivo.setBorder(null);
+        btnReportesEnVivo.setContentAreaFilled(false);
+        btnReportesEnVivo.setFocusable(false);
         btnReportesEnVivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportesEnVivoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReportesEnVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 136, -1));
+        jPanel1.add(btnReportesEnVivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 150, 130));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/fondoMenu.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 380, 530));
+        btnSensores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/sensor.png"))); // NOI18N
+        btnSensores.setBorder(null);
+        btnSensores.setContentAreaFilled(false);
+        btnSensores.setFocusable(false);
+        btnSensores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSensoresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSensores, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 150, 160));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Sensores");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 237, -1, 50));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1290, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Roles");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 237, 100, 50));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+        btnRoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/papel.png"))); // NOI18N
+        btnRoles.setBorder(null);
+        btnRoles.setContentAreaFilled(false);
+        btnRoles.setFocusable(false);
+        btnRoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRolesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 310, 180, 130));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1285, 728));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (10).png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, 200, 190));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (11).png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 280, 190, 200));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (11).png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 190, 200));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (11).png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 190, 200));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (11).png"))); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 190, 200));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (11).png"))); // NOI18N
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 190, 200));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/volver (6).png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, 40, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/image (9) (1).png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 540));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSensoresActionPerformed
-        this.dispose();
-        CrudSensores.initGUI();
-    }//GEN-LAST:event_btnSensoresActionPerformed
-
-    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportesActionPerformed
-
-    private void btnDatosSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosSensoresActionPerformed
-        this.dispose();
-        GUIDatosSensores.initGUI();
-    }//GEN-LAST:event_btnDatosSensoresActionPerformed
 
     private void btnReportesEnVivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesEnVivoActionPerformed
         // TODO add your handling code here:
@@ -164,6 +228,25 @@ public class GUIMenu extends javax.swing.JFrame {
         GuiUsuario.initGUI();
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesActionPerformed
+
+    private void btnDatosSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosSensoresActionPerformed
+        this.dispose();
+        GUIDatosSensores.initGUI();
+    }//GEN-LAST:event_btnDatosSensoresActionPerformed
+
+    private void btnSensoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSensoresActionPerformed
+        this.dispose();
+        CrudSensores.initGUI();
+    }//GEN-LAST:event_btnSensoresActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        GUILogin.initGUI();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,8 +259,20 @@ public class GUIMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnRoles;
     private javax.swing.JButton btnSensores;
     private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

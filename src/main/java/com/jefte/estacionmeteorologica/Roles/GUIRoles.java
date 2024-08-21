@@ -87,7 +87,7 @@ public class GUIRoles extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbRoles);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 770, 350));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 830, 350));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-left_8196690 (1).png"))); // NOI18N
         jButton2.setToolTipText("");
@@ -198,10 +198,7 @@ public class GUIRoles extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        GUIMenu guimenu = new GUIMenu();
-        guimenu.setVisible(true);
-        guimenu.setLocationRelativeTo(null);
-        guimenu.setResizable(false);
+      GUIMenu.initGui();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
