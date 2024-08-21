@@ -33,6 +33,18 @@ Tener instalado
 
 </details>
 
+<details>
+
+  <summary>Menu Principal</summary>
+![image](https://github.com/user-attachments/assets/f83287e8-162e-4167-9297-40ed0d4389bc)
+</details>
+
+<details>
+<summary>SubMenus Gestiones</summary>
+  
+</details>
+
+
 
 ## Como contribuir 🛠️
 
