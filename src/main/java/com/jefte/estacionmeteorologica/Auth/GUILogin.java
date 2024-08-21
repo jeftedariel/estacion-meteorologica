@@ -77,6 +77,7 @@ public class GUILogin extends javax.swing.JFrame {
         lblContraseña = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -199,6 +200,17 @@ public class GUILogin extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/x-button.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 50, 40));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Estación Meteorológica.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
@@ -218,6 +230,10 @@ public class GUILogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
   private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtCorreoElectronicoActionPerformed
     // TODO add your handling code here:
@@ -268,7 +284,6 @@ public class GUILogin extends javax.swing.JFrame {
       
       if (new String(decoder.decode(usuario.getContrasena())).equals(this.txtContraseña.getText())) {
         passCorrecta = true;
-        
       }
 
       if (passCorrecta && existe) {
@@ -321,6 +336,7 @@ public class GUILogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnIngresar;
     javax.swing.JButton btnRegistreseAqui;
+    javax.swing.JButton jButton1;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel2;
